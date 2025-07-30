@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://cy4mepircebey"]
+
+[ext_resource type="Script" uid="uid://dcp4881wiphnj" path="res://scenes/entities/coaster_part.gd" id="1_q0nch"]
+
+[sub_resource type="Curve2D" id="Curve2D_q0nch"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -2, -1, 0, 0, 0, 0, 36, -150, 0, 0, 0, 0, 91, -173, 0, 0, 0, 0, 138, -168, 0, 0, 0, 0, 204, -4)
+}
+point_count = 5
+
+[node name="coaster_part" type="Node2D"]
+script = ExtResource("1_q0nch")
+
+[node name="art" type="Polygon2D" parent="."]
+color = Color(0.410156, 0.410156, 0.410156, 1)
+polygon = PackedVector2Array(-5, -2, 32, -147, 86, -177, 139, -170, 206, -5, 200, -2, 133, -163, 90, -169, 39, -142, 1, 2)
+
+[node name="coaster_path" type="Path2D" parent="."]
+curve = SubResource("Curve2D_q0nch")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="coaster_path"]
+position = Vector2(-2, -1)
+rotation = -1.32109
