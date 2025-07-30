@@ -1,11 +1,19 @@
-[gd_scene load_steps=8 format=3 uid="uid://d27wma8ot5lbi"]
+[gd_scene load_steps=10 format=3 uid="uid://d27wma8ot5lbi"]
 
 [ext_resource type="Texture2D" uid="uid://cv0r7hvbh08kk" path="res://icon.svg" id="1_6aise"]
 [ext_resource type="Script" uid="uid://y1g1g0ritebn" path="res://scripts/thrusters.gd" id="2_ajmqp"]
 [ext_resource type="Script" uid="uid://yt6q002kj5cr" path="res://scripts/gravity_field_2d.gd" id="4_5fnsx"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_4ha1e"]
-radius = 32.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ajmqp"]
+size = Vector2(70, 70)
+
+[sub_resource type="Curve" id="Curve_ajmqp"]
+_limits = [1.0, 10.0, 0.0, 1.0]
+_data = [Vector2(0, 1.02435), 0.0, 11.2096, 0, 0, Vector2(1, 10), 1.22448, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_ajmqp"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
 
 [sub_resource type="SphereMesh" id="SphereMesh_4ha1e"]
 
@@ -21,7 +29,7 @@ radius = 1056.0
 position = Vector2(0, -557)
 
 [node name="Camera2D" type="Camera2D" parent="TestBody"]
-zoom = Vector2(0.395, 0.395)
+zoom = Vector2(0.29, 0.29)
 
 [node name="Line2D" type="Line2D" parent="TestBody"]
 points = PackedVector2Array(0, -95, 0, 2)
@@ -38,10 +46,20 @@ scale = Vector2(0.53125, 0.53125)
 texture = ExtResource("1_6aise")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TestBody"]
-shape = SubResource("CircleShape2D_4ha1e")
+shape = SubResource("RectangleShape2D_ajmqp")
 
 [node name="Thrusters" type="Node2D" parent="TestBody"]
 script = ExtResource("2_ajmqp")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="TestBody/Thrusters"]
+amount = 16
+direction = Vector2(0, 1)
+spread = 10.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 146.95
+initial_velocity_max = 146.95
+scale_amount_curve = SubResource("Curve_ajmqp")
+color_ramp = SubResource("Gradient_ajmqp")
 
 [node name="Planetoid" type="Node2D" parent="."]
 
