@@ -1,6 +1,11 @@
-extends Node2D
+extends Area2D
 
-func _on_body_entered(body: Node2D) -> void:
-	if body.is_in_group("projectile"):  # Add your projectile to the "projectile" group
+var level_progress: LevelProgress
+
+func _ready():
+	level_progress = get_parent() as LevelProgress
+
+func _on_area_entered(area: Area2D) -> void:
 		print("Asteroid hit by projectile!")
+		level_progress.speed -= 50
 		queue_free()
