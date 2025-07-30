@@ -1,0 +1,61 @@
+[gd_scene load_steps=9 format=3 uid="uid://d27wma8ot5lbi"]
+
+[ext_resource type="Script" uid="uid://chodx6w23j05t" path="res://scenes/test/test_body.gd" id="1_4ha1e"]
+[ext_resource type="Texture2D" uid="uid://cv0r7hvbh08kk" path="res://icon.svg" id="1_6aise"]
+[ext_resource type="Script" uid="uid://c5st63rbia5mq" path="res://scripts/gravity_component.gd" id="3_ajmqp"]
+[ext_resource type="Script" uid="uid://yt6q002kj5cr" path="res://scripts/gravity_field_2d.gd" id="4_5fnsx"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4ha1e"]
+radius = 32.0
+
+[sub_resource type="SphereMesh" id="SphereMesh_4ha1e"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ajmqp"]
+radius = 292.617
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5fnsx"]
+radius = 732.258
+
+[node name="GravityTest" type="Node2D"]
+
+[node name="TestBody" type="CharacterBody2D" parent="." node_paths=PackedStringArray("gravity_component")]
+position = Vector2(0, -557)
+script = ExtResource("1_4ha1e")
+gravity_component = NodePath("GravityComponent")
+
+[node name="Sprite2D" type="Sprite2D" parent="TestBody"]
+scale = Vector2(0.53125, 0.53125)
+texture = ExtResource("1_6aise")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TestBody"]
+shape = SubResource("CircleShape2D_4ha1e")
+
+[node name="GravityComponent" type="Node" parent="TestBody"]
+script = ExtResource("3_ajmqp")
+
+[node name="Planetoid" type="Node2D" parent="."]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Planetoid"]
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Planetoid/StaticBody2D"]
+position = Vector2(0, 9.54064e-05)
+scale = Vector2(580.658, 580.658)
+mesh = SubResource("SphereMesh_4ha1e")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Planetoid/StaticBody2D"]
+shape = SubResource("CircleShape2D_ajmqp")
+
+[node name="Area2D" type="Area2D" parent="Planetoid"]
+gravity_space_override = 3
+gravity_point = true
+gravity_point_center = Vector2(0, 0)
+gravity_direction = Vector2(0, 0)
+script = ExtResource("4_5fnsx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Planetoid/Area2D"]
+shape = SubResource("CircleShape2D_5fnsx")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(0.395, 0.395)
+
+[connection signal="body_entered" from="Planetoid/Area2D" to="Planetoid/Area2D" method="_on_body_entered"]
