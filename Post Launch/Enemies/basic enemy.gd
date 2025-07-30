@@ -1,4 +1,4 @@
-extends Sprite2D
+extends Area2D
 
 class_name BasicEnemy
 
@@ -41,5 +41,11 @@ func shoot():
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.is_in_group("projectile"):  # Add your projectile to the "projectile" group
 		print("Enemy hit by projectile!")
+		level_progress.money += 10
+		level_progress.speed -= 50
 		# Increase customer money
 		queue_free()
+
+
+func _on_area_entered(area: Area2D) -> void:
+	pass # Replace with function body.
