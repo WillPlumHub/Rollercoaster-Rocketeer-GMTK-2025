@@ -21,8 +21,8 @@ func _process(_delta: float) -> void:
 
 
 func _get_configuration_warnings() -> PackedStringArray:
-	if get_parent() is not PhysicsBody2D:
-		return["Parent must be a PhysicsBody2D!"]
+	if get_parent() is not CharacterBody2D:
+		return["Parent must be a CharacterBody2D!"]
 	return []
 
 
