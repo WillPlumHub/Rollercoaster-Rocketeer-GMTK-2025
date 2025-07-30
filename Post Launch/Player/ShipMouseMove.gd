@@ -2,7 +2,7 @@ extends Sprite2D
 
 class_name Ship
 
-const BULLET_SCENE: PackedScene = preload("res://projectile.tscn")
+const BULLET_SCENE: PackedScene = preload("res://Post Launch/Player/projectile.tscn")
 
 # Movement
 var yPosition = 550
