@@ -20,8 +20,22 @@ radius = 732.258
 
 [node name="TestBody" type="CharacterBody2D" parent="." node_paths=PackedStringArray("gravity_component")]
 position = Vector2(0, -557)
+up_direction = Vector2(0, 1)
 script = ExtResource("1_4ha1e")
 gravity_component = NodePath("GravityComponent")
+
+[node name="Camera2D" type="Camera2D" parent="TestBody"]
+zoom = Vector2(0.395, 0.395)
+
+[node name="Line2D" type="Line2D" parent="TestBody"]
+points = PackedVector2Array(0, -95, 0, 2)
+width = 2.0
+default_color = Color(0, 1, 0, 1)
+
+[node name="Line2D2" type="Line2D" parent="TestBody"]
+points = PackedVector2Array(97, 2, 0, 2)
+width = 2.0
+default_color = Color(1, 0, 0, 1)
 
 [node name="Sprite2D" type="Sprite2D" parent="TestBody"]
 scale = Vector2(0.53125, 0.53125)
@@ -54,8 +68,3 @@ script = ExtResource("4_5fnsx")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Planetoid/Area2D"]
 shape = SubResource("CircleShape2D_5fnsx")
-
-[node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(0.395, 0.395)
-
-[connection signal="body_entered" from="Planetoid/Area2D" to="Planetoid/Area2D" method="_on_body_entered"]
