@@ -68,10 +68,10 @@ text = "DEVELOPMENT
 - Miguel, The Ace of Spade
 -Taylor Blanche
 - Renee DeVivo
-- Grimp
 - Marcus Laudadio
 - Barrett Timmons
-- Unkawa"
+- Unkawa
+- WillPlum"
 label_settings = SubResource("LabelSettings_g3j2f")
 
 [node name="music" type="Label" parent="."]
@@ -81,6 +81,7 @@ offset_top = 316.0
 offset_right = 309.0
 offset_bottom = 373.0
 text = "MUSIC/SFX
+- BitLag
 - Ben Colgan"
 label_settings = SubResource("LabelSettings_jq8gn")
 
