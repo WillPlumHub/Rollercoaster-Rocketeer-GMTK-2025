@@ -13,7 +13,7 @@ var right: Vector2 = Vector2.RIGHT
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if _body && in_gravity_field:
 		up = -(_body.position - center_point).normalized()
 		right = up.rotated(-PI / 2.0)
