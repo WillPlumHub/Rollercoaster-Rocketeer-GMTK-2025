@@ -11,9 +11,15 @@ config_version=5
 [application]
 
 config/name="New Game Project"
+run/main_scene="uid://crtg2aujnc5rl"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 
 [display]
 
 window/stretch/mode="canvas_items"
+
+[layer_names]
+
+2d_physics/layer_5="track_start"
+2d_physics/layer_6="track_end"

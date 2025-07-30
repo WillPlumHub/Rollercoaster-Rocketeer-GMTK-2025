@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://ciqsnavw4c72n"]
+
+[ext_resource type="Script" uid="uid://h4voga0pd62" path="res://scenes/entities/car.gd" id="1_l37lr"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kpd8a"]
+bg_color = Color(0.183594, 0.183594, 0.183594, 1)
+
+[node name="car" type="PathFollow2D"]
+script = ExtResource("1_l37lr")
+
+[node name="Panel" type="Panel" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.5
+offset_top = -16.0
+offset_right = 20.5
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_kpd8a")
