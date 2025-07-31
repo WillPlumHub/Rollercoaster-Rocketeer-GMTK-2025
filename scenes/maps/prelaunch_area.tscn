@@ -48,6 +48,7 @@ offset_top = 22.0
 offset_right = 65.0
 offset_bottom = 72.0
 grow_horizontal = 2
+focus_mode = 0
 text = "Launch"
 
 [node name="coaster_part" parent="." instance=ExtResource("2_8q4c4")]

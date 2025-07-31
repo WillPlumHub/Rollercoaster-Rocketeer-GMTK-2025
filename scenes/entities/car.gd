@@ -12,7 +12,8 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	# MOVE ALONG TRACK
-	progress_ratio += 0.2 * delta * speed
+	if !end_of_track:
+		progress_ratio += 0.2 * delta * speed
 	
 	if rotation_degrees > 10 and !end_of_track:
 		# IF FACING DOWN, ACCELERATE
@@ -35,5 +36,4 @@ func _process(delta: float) -> void:
 			queue_free()
 		else:
 			if end_of_track == false:
-				speed = 0
 				end_of_track = true
