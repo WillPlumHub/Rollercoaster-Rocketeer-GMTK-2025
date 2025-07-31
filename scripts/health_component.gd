@@ -36,7 +36,7 @@ func _ready() -> void:
 func _on_body_entered(n: Node2D):
 	if _parent is RigidBody2D && !_inv_timer:
 		var damage = (_parent.linear_velocity / 10.0).length()
-		if damage >= 50:
+		if damage >= 10:
 			_inv_timer = get_tree().create_timer(1.0, false, true, false)
 			_inv_timer.timeout.connect(_on_timeout)
 			health -= damage

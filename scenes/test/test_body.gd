@@ -6,6 +6,7 @@ func _ready():
 
 
 func _on_health_component_killed() -> void:
+	print("You died")
 	queue_free()
 
 
