@@ -6,11 +6,17 @@
 [ext_resource type="PackedScene" uid="uid://ka06oh8liyb6" path="res://Post Launch/Enemies/asteroid.tscn" id="4_2emnh"]
 
 [node name="Node2D" type="Node2D"]
+position = Vector2(47, 0)
 
 [node name="Ship" parent="." instance=ExtResource("1_am5gq")]
 position = Vector2(400, 528)
 
+<<<<<<< Updated upstream
 [node name="Node2D" type="Node2D" parent="."]
+=======
+[node name="LevelProgress" type="Node2D" parent="."]
+position = Vector2(306, 65)
+>>>>>>> Stashed changes
 script = ExtResource("2_c4tr2")
 
 [node name="Enemy" parent="Node2D" instance=ExtResource("3_6bl6h")]
