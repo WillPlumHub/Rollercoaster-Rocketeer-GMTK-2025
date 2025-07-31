@@ -4,6 +4,10 @@
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kpd8a"]
 bg_color = Color(0.183594, 0.183594, 0.183594, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
 
 [node name="car" type="PathFollow2D"]
 script = ExtResource("1_l37lr")
