@@ -1,17 +1,18 @@
-[gd_scene load_steps=12 format=3 uid="uid://d27wma8ot5lbi"]
+[gd_scene load_steps=13 format=3 uid="uid://d27wma8ot5lbi"]
 
 [ext_resource type="Texture2D" uid="uid://cv0r7hvbh08kk" path="res://icon.svg" id="1_6aise"]
 [ext_resource type="Script" uid="uid://chodx6w23j05t" path="res://scenes/test/test_body.gd" id="1_rlarx"]
 [ext_resource type="Script" uid="uid://y1g1g0ritebn" path="res://scripts/thrusters.gd" id="2_ajmqp"]
 [ext_resource type="Script" uid="uid://lets3pwxygq1" path="res://scripts/health_component.gd" id="3_5fnsx"]
 [ext_resource type="Script" uid="uid://yt6q002kj5cr" path="res://scripts/gravity_field_2d.gd" id="4_5fnsx"]
+[ext_resource type="Texture2D" uid="uid://bpie22j2ha5k" path="res://assets/art/Smoke.png" id="4_saeka"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ajmqp"]
 size = Vector2(70, 70)
 
 [sub_resource type="Curve" id="Curve_ajmqp"]
-_limits = [1.0, 10.0, 0.0, 1.0]
-_data = [Vector2(0, 1.02435), 0.0, 11.2096, 0, 0, Vector2(1, 10), 1.22448, 0.0, 0, 0]
+_limits = [0.1, 1.0, 0.0, 1.0]
+_data = [Vector2(0.0326193, 0.1), 0.0, 0.267521, 0, 0, Vector2(1, 1), -0.326749, 0.0, 0, 0]
 point_count = 2
 
 [sub_resource type="Gradient" id="Gradient_ajmqp"]
@@ -58,6 +59,7 @@ script = ExtResource("2_ajmqp")
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="TestBody/Thrusters"]
 amount = 16
+texture = ExtResource("4_saeka")
 direction = Vector2(0, 1)
 spread = 10.0
 gravity = Vector2(0, 0)
