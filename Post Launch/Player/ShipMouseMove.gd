@@ -30,8 +30,7 @@ func _ready():
 
 func _process(delta):
 	if (level_progress and level_progress.speed < 0):
-		if (shooting):
-			shooting = false
+		shooting = false
 	var global_mouse_pos = get_global_mouse_position()
 	global_position.x = global_mouse_pos.x
 	# Movement limits
