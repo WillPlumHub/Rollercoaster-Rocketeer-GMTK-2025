@@ -1,8 +1,0 @@
-[gd_scene load_steps=3 format=3 uid="uid://erbjwqmwualv"]
-
-[ext_resource type="Texture2D" uid="uid://cv0r7hvbh08kk" path="res://icon.svg" id="1_vpq67"]
-[ext_resource type="Script" uid="uid://inx1oy8l0iia" path="res://EnemyProjectile.gd" id="2_ccnu0"]
-
-[node name="EnemyProjectile" type="Sprite2D"]
-texture = ExtResource("1_vpq67")
-script = ExtResource("2_ccnu0")

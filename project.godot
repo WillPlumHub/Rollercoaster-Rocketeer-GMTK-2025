@@ -15,6 +15,11 @@ run/main_scene="uid://crtg2aujnc5rl"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+GameData="*res://scenes/game_data.gd"
+SoundManager="*res://scenes/SoundManager.tscn"
+
 [display]
 
 window/stretch/mode="canvas_items"
@@ -29,6 +34,9 @@ launch.activate_thrust={
 
 [layer_names]
 
+2d_physics/layer_1="Player"
+2d_physics/layer_2="Hazards"
+2d_physics/layer_3="Projectiles"
 2d_physics/layer_5="track_start"
 2d_physics/layer_6="track_end"
 

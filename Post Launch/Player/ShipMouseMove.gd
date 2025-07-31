@@ -1,8 +1,8 @@
-extends Sprite2D
+extends Node2D
 
 class_name Ship
 
-const BULLET_SCENE: PackedScene = preload("res://projectile.tscn")
+const BULLET_SCENE: PackedScene = preload("res://Post Launch/Player/projectile.tscn")
 
 # Movement
 var yPosition = 550
@@ -11,7 +11,7 @@ var Speed = 100
 # Shooting
 var shooting = true
 var projectileOffset = 0
-var shot_cooldown = 2.0  # Seconds
+var shot_cooldown = 0.5  # Seconds
 var time_since_last_shot = 0.0
 
 func _process(delta):
