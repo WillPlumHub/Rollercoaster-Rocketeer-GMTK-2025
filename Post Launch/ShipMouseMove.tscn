@@ -16,6 +16,9 @@ position = Vector2(400, 528)
 =======
 [node name="LevelProgress" type="Node2D" parent="."]
 position = Vector2(306, 65)
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 script = ExtResource("2_c4tr2")
 
