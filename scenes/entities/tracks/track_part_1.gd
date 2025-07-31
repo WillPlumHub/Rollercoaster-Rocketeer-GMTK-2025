@@ -4,12 +4,12 @@ class_name TrackPart
 # EXPORTED VARs
 @export var track_right:NodePath
 @export var is_starting_track:bool = false
+@export var track_speed:float = 3
 
 # GETTING NODES
 @onready var coaster_path: Path2D = $coaster_path
 
 # SCRIPT VARs
-var track_speed:float = 3
 var car_count:int = 5
 var grabbed:bool = false
 var grab_offset:Vector2 = Vector2.ZERO
