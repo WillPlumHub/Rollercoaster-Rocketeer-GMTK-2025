@@ -19,15 +19,16 @@ func _process(delta: float) -> void:
 		# IF FACING DOWN, ACCELERATE
 		speed += 0.1 * delta
 		speed *= 1.01
-		
-	if rotation_degrees < -10 and !end_of_track:
+	elif rotation_degrees < -10 and !end_of_track:
 		# IF FACING UP SLOW DOWN
 		speed -= 0.07 * delta
 		speed *= 0.99
+	elif speed > track_attached.track_speed:
+		speed = lerp(speed, track_attached.track_speed, 0.3)
 	
 	if !end_of_track:
 		# ClAMP THE SPEED WHILE RIDING THE TRACK
-		speed = clamp(speed, 0.3, 3)
+		speed = max(speed, 0.3)
 	
 	if progress_ratio >= 0.99:
 		# WHEN FINISHED TRACK, EITHER STOP OR MOVE TO NEXT TRACK
