@@ -18,7 +18,6 @@ config/icon="res://icon.svg"
 [autoload]
 
 GameData="*res://scenes/game_data.gd"
-
 TrackFactory="*res://scripts/global/track_factory.gd"
 CartFactory="*res://scripts/global/cart_factory.gd"
 EngineCartFactory="*res://scripts/global/engine_cart_factory.gd"
