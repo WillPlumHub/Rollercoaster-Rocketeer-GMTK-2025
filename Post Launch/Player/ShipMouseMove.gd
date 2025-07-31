@@ -11,7 +11,7 @@ var Speed = 100
 # Shooting
 var shooting = true
 var projectileOffset = 0
-var shot_cooldown = 0.5  # Seconds
+var shot_cooldown = 2.5  # Seconds
 var time_since_last_shot = 0.0
 
 # Armor
