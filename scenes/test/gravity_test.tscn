@@ -1,7 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://d27wma8ot5lbi"]
+[gd_scene load_steps=11 format=3 uid="uid://d27wma8ot5lbi"]
 
 [ext_resource type="Texture2D" uid="uid://cv0r7hvbh08kk" path="res://icon.svg" id="1_6aise"]
 [ext_resource type="Script" uid="uid://y1g1g0ritebn" path="res://scripts/thrusters.gd" id="2_ajmqp"]
+[ext_resource type="Script" uid="uid://lets3pwxygq1" path="res://scripts/health_component.gd" id="3_5fnsx"]
 [ext_resource type="Script" uid="uid://yt6q002kj5cr" path="res://scripts/gravity_field_2d.gd" id="4_5fnsx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ajmqp"]
@@ -27,6 +28,8 @@ radius = 1056.0
 
 [node name="TestBody" type="RigidBody2D" parent="."]
 position = Vector2(0, -557)
+contact_monitor = true
+max_contacts_reported = 5
 
 [node name="Camera2D" type="Camera2D" parent="TestBody"]
 zoom = Vector2(0.29, 0.29)
@@ -60,6 +63,10 @@ initial_velocity_min = 146.95
 initial_velocity_max = 146.95
 scale_amount_curve = SubResource("Curve_ajmqp")
 color_ramp = SubResource("Gradient_ajmqp")
+
+[node name="HealthComponent" type="Node" parent="TestBody"]
+script = ExtResource("3_5fnsx")
+metadata/_custom_type_script = "uid://lets3pwxygq1"
 
 [node name="Planetoid" type="Node2D" parent="."]
 
