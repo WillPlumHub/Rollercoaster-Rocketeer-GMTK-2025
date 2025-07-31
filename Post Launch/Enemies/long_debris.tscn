@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://dipmgw27827tf"]
+
+[ext_resource type="Script" uid="uid://cylypl3qul4lm" path="res://Post Launch/Enemies/Obstacle.gd" id="1_cdbn3"]
+[ext_resource type="Texture2D" uid="uid://cnococohrhdyj" path="res://Post Launch/ima1ge.png" id="2_oomw5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x4d0c"]
+size = Vector2(146, 66)
+
+[node name="LongDebris" type="Area2D"]
+scale = Vector2(3, 1)
+collision_layer = 2
+collision_mask = 5
+script = ExtResource("1_cdbn3")
+
+[node name="Ima1Ge" type="Sprite2D" parent="."]
+texture = ExtResource("2_oomw5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_x4d0c")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

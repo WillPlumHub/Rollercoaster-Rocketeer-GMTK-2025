@@ -5,7 +5,7 @@ class_name BasicEnemy
 var shooting = false
 var level_progress: LevelProgress
 var projectileOffset := 10
-var shot_cooldown := 0.5
+var shot_cooldown := 1
 var time_since_last_shot := 0.0
 var ship: Node2D
 
