@@ -1,6 +1,7 @@
-[gd_scene load_steps=11 format=3 uid="uid://d27wma8ot5lbi"]
+[gd_scene load_steps=12 format=3 uid="uid://d27wma8ot5lbi"]
 
 [ext_resource type="Texture2D" uid="uid://cv0r7hvbh08kk" path="res://icon.svg" id="1_6aise"]
+[ext_resource type="Script" uid="uid://chodx6w23j05t" path="res://scenes/test/test_body.gd" id="1_rlarx"]
 [ext_resource type="Script" uid="uid://y1g1g0ritebn" path="res://scripts/thrusters.gd" id="2_ajmqp"]
 [ext_resource type="Script" uid="uid://lets3pwxygq1" path="res://scripts/health_component.gd" id="3_5fnsx"]
 [ext_resource type="Script" uid="uid://yt6q002kj5cr" path="res://scripts/gravity_field_2d.gd" id="4_5fnsx"]
@@ -30,6 +31,7 @@ radius = 1056.0
 position = Vector2(0, -557)
 contact_monitor = true
 max_contacts_reported = 5
+script = ExtResource("1_rlarx")
 
 [node name="Camera2D" type="Camera2D" parent="TestBody"]
 zoom = Vector2(0.29, 0.29)
@@ -66,6 +68,7 @@ color_ramp = SubResource("Gradient_ajmqp")
 
 [node name="HealthComponent" type="Node" parent="TestBody"]
 script = ExtResource("3_5fnsx")
+max_health = 1000
 metadata/_custom_type_script = "uid://lets3pwxygq1"
 
 [node name="Planetoid" type="Node2D" parent="."]
@@ -227,3 +230,6 @@ script = ExtResource("4_5fnsx")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Planetoid7/Area2D"]
 shape = SubResource("CircleShape2D_5fnsx")
+
+[connection signal="damaged" from="TestBody/HealthComponent" to="TestBody" method="_on_health_component_damaged"]
+[connection signal="killed" from="TestBody/HealthComponent" to="TestBody" method="_on_health_component_killed"]
