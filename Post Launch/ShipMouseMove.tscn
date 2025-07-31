@@ -10,13 +10,11 @@
 [node name="Ship" parent="." instance=ExtResource("1_am5gq")]
 position = Vector2(400, 528)
 
-[node name="Node2D" type="Node2D" parent="."]
+[node name="LevelProgress" type="Node2D" parent="."]
 script = ExtResource("2_c4tr2")
 
-[node name="Enemy" parent="Node2D" instance=ExtResource("3_6bl6h")]
-position = Vector2(704, 239)
+[node name="Enemy" parent="LevelProgress" instance=ExtResource("3_6bl6h")]
+position = Vector2(464, -339)
 
-[node name="Asteroid" parent="Node2D" instance=ExtResource("4_2emnh")]
+[node name="Asteroid" parent="LevelProgress" instance=ExtResource("4_2emnh")]
 position = Vector2(328, -190)
-
-[connection signal="area_entered" from="Node2D/Enemy" to="Node2D/Enemy" method="_on_area_entered"]
