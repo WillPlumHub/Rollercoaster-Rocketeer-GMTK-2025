@@ -1,5 +1,5 @@
 @tool
-extends PanelContainer
+class_name MarketCard extends PanelContainer
 
 const PROPERTY_LABEL_SCENE: PackedScene = preload("res://scenes/maps/market/market_card/property_label/property_label.tscn")
 

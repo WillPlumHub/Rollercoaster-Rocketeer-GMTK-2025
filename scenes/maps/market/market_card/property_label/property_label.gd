@@ -47,7 +47,7 @@ func _update_type_label():
 		type_label.text = "empty"
 		type_label.modulate = Color.WHITE
 		return
-	var affected_property_data: PropertyModifier.PropertyData = PropertyModifier.affected_property_data_lookup.get(modifier.affected_property)
+	var affected_property_data: LaunchStats.PropertyData = LaunchStats.affected_property_data_lookup.get(modifier.affected_property)
 	if affected_property_data == null:
 		return
 	type_label.text = affected_property_data.display_text

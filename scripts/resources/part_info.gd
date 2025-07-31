@@ -1,5 +1,13 @@
 @tool
+## This can be carts/tracks we can possibly extend PartInfo into carts and tracks
+## as they become more specialized
 class_name PartInfo extends Resource
+
+
+## IMPORTANT NOTE: WHEN UPDATED UPDATE THE FOLLOWING:
+## scripts/global/cart_factory.gd
+## scripts/global/engine_cart_factory.gd
+## scripts/global/track_factory.gd
 
 @export var name: String = "":
 	get:
