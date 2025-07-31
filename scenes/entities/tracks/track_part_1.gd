@@ -28,7 +28,7 @@ var grabbed:bool = false
 var grab_offset:Vector2 = Vector2.ZERO
 var track_delay:float = 0.3
 var cars_on_track: Array[Car] = []
-var snap_size:int = 192.0
+var snap_size:int = 64
 
 func _ready() -> void:
 	# MAKE SURE SNAPPED
