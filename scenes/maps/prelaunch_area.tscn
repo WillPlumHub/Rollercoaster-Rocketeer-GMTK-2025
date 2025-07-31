@@ -61,7 +61,7 @@ position = Vector2(128, 312)
 
 [node name="coaster_part" parent="." instance=ExtResource("2_8q4c4")]
 position = Vector2(93, 579)
-is_starting_track = true
+track_type = 1
 
 [node name="coaster_part2" parent="." instance=ExtResource("2_8q4c4")]
 position = Vector2(366, 518)

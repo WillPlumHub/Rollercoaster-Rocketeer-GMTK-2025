@@ -1,10 +1,23 @@
 extends Node2D
 class_name TrackPart
 
+enum TrackType {
+	NORMAL,
+	BEGINING,
+	ENDING,
+}
+
 # EXPORTED VARs
+@export var track_type: TrackType
 @export var track_right:NodePath
-@export var is_starting_track:bool = false
 @export var track_speed:float = 3
+
+# READ-ONLY PROPERTIES
+var is_starting_track:bool : 
+	get: return track_type == TrackType.BEGINING
+
+var is_ending_track: bool :
+	get: return track_type == TrackType.ENDING
 
 # GETTING NODES
 @onready var coaster_path: Path2D = $coaster_path
