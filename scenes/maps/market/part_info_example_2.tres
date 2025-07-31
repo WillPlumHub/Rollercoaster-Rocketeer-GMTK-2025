@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="PartInfo" load_steps=4 format=3 uid="uid://c2hteksq6kd8c"]
+
+[ext_resource type="Script" uid="uid://ihc052gicko4" path="res://scripts/resources/property_modifier.gd" id="1_2awj5"]
+[ext_resource type="Script" uid="uid://bluaqh66nedak" path="res://scripts/resources/part_info.gd" id="2_6gb05"]
+
+[sub_resource type="Resource" id="Resource_2awj5"]
+script = ExtResource("1_2awj5")
+compounding_type = 0
+affected_property = 3
+amount = 10.0
+metadata/_custom_type_script = "uid://ihc052gicko4"
+
+[resource]
+script = ExtResource("2_6gb05")
+name = "Another Part"
+modifiers = Array[ExtResource("1_2awj5")]([SubResource("Resource_2awj5")])
