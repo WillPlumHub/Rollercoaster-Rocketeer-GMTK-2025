@@ -12,12 +12,10 @@ const PROPERTY_LABEL_SCENE: PackedScene = preload("res://scenes/maps/market/mark
 	set(new_part_info):
 		if part_info != null and part_info.changed.has_connections():
 			part_info.changed.disconnect(_update_part_info_scene)
-		print("updating print info")
 		part_info = new_part_info
 		_update_part_info()
 
 func _update_part_info():
-	print("updating part info")
 	if part_info != null and !part_info.changed.has_connections():
 		part_info.changed.connect(_update_part_info_scene)
 	_update_part_info_scene()
