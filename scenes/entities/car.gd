@@ -12,27 +12,35 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	# MOVE ALONG TRACK
+	var next = false;
+	var offset = 2.0 * delta * speed
 	if !end_of_track:
-		progress_ratio += 0.2 * delta * speed
+		var f = progress
+		progress += offset
+		if f > progress:
+			progress_ratio = .999
+			next = true
+	else:
+		position += Vector2(cos(rotation), sin(rotation)) * offset
 	
 	if rotation_degrees > 10 and !end_of_track:
 		# IF FACING DOWN, ACCELERATE
-		speed += 0.1 * delta
+		speed += 1.0 * delta
 		speed *= 1.01
 	elif rotation_degrees < -10 and !end_of_track:
 		# IF FACING UP SLOW DOWN
-		speed -= 0.07 * delta
+		speed -= .70 * delta
 		speed *= 0.99
 	elif speed > track_attached.track_speed:
-		speed = lerp(speed, track_attached.track_speed, 0.3)
+		speed = lerp(speed, track_attached.track_speed, 0.01)
 	
 	if !end_of_track:
 		# ClAMP THE SPEED WHILE RIDING THE TRACK
-		speed = max(speed, 0.3)
+		speed = max(speed, 3.0)
 	
-	if progress_ratio >= 0.99:
+	if next:
 		# WHEN FINISHED TRACK, EITHER STOP OR MOVE TO NEXT TRACK
-		if track_attached.track_right:
+		if track_attached.track_right && !track_attached.is_ending_track:
 			track_attached.pass_on_train_car(speed)
 			queue_free()
 		else:

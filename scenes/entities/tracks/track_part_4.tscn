@@ -1,37 +1,37 @@
-[gd_scene load_steps=4 format=3 uid="uid://cy4mepircebey"]
+[gd_scene load_steps=4 format=3 uid="uid://livv5577jy07"]
 
-[ext_resource type="Script" uid="uid://dcp4881wiphnj" path="res://scenes/entities/tracks/track_part_1.gd" id="1_q0nch"]
+[ext_resource type="Script" uid="uid://dcp4881wiphnj" path="res://scenes/entities/tracks/track_part_1.gd" id="1_cftvv"]
 
 [sub_resource type="Curve2D" id="Curve2D_q0nch"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, -2, -1, 0, 0, 0, 0, 35, -145, 0, 0, 0, 0, 88, -174, 0, 0, 0, 0, 136, -167, 0, 0, 0, 0, 192, 1)
+"points": PackedVector2Array(0, 0, 0, 0, -2, -1, 0, 0, 0, 0, 192, 0)
 }
-point_count = 5
+point_count = 2
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_oxk6s"]
 radius = 14.0357
 
 [node name="track_part_1" type="Node2D"]
-script = ExtResource("1_q0nch")
-track_speed = 300.0
+script = ExtResource("1_cftvv")
+track_speed = 10000.0
 
 [node name="grab_detect" type="Button" parent="."]
 modulate = Color(1, 1, 1, 0.454902)
-offset_top = -177.0
+offset_top = -64.0
 offset_right = 192.0
-offset_bottom = 15.0
+offset_bottom = 64.0
 focus_mode = 0
 
-[node name="art" type="Polygon2D" parent="."]
-color = Color(0.410156, 0.410156, 0.410156, 1)
-polygon = PackedVector2Array(-5, -2, 32, -147, 86, -177, 139, -170, 195, 0, 189, 3, 133, -163, 90, -169, 39, -142, 1, 2)
+[node name="Line2D" type="Line2D" parent="."]
+points = PackedVector2Array(192, 0, 0, 0)
+default_color = Color(0.410156, 0.410156, 0.410156, 1)
 
 [node name="coaster_path" type="Path2D" parent="."]
 curve = SubResource("Curve2D_q0nch")
 
 [node name="start" type="PathFollow2D" parent="coaster_path"]
 position = Vector2(-2, -1)
-rotation = -1.31929
+rotation = 0.00515459
 
 [node name="track_start" type="Area2D" parent="coaster_path/start"]
 rotation = 1.32109
@@ -42,8 +42,8 @@ collision_mask = 32
 shape = SubResource("CircleShape2D_oxk6s")
 
 [node name="end" type="PathFollow2D" parent="coaster_path"]
-position = Vector2(192, 1)
-rotation = 1.24905
+position = Vector2(192, 0)
+rotation = 0.00515459
 progress = 437.432
 
 [node name="track_end" type="Area2D" parent="coaster_path/end"]
