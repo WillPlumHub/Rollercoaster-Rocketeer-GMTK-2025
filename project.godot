@@ -11,16 +11,16 @@ config_version=5
 [application]
 
 config/name="New Game Project"
-run/main_scene="uid://crtg2aujnc5rl"
+run/main_scene="uid://d0nw6kwdutj3x"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 
 [autoload]
 
-GameData="*res://scenes/game_data.gd"
+EngineCartFactory="*res://scripts/global/engine_cart_factory.gd"
+GameData="*res://scripts/global/game_data.gd"
 TrackFactory="*res://scripts/global/track_factory.gd"
 CartFactory="*res://scripts/global/cart_factory.gd"
-EngineCartFactory="*res://scripts/global/engine_cart_factory.gd"
 GlobalRng="*res://scripts/global/global_rng.gd"
 RarityRandomizer="*res://scripts/global/rarity_randomizer.gd"
 SoundManager="*res://scenes/SoundManager.tscn"

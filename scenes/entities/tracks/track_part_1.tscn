@@ -16,14 +16,14 @@ script = ExtResource("1_q0nch")
 track_speed = 300.0
 
 [node name="grab_detect" type="Button" parent="."]
-modulate = Color(1, 1, 1, 0.454902)
+modulate = Color(1, 1, 1, 0)
 offset_top = -177.0
 offset_right = 192.0
 offset_bottom = 15.0
 focus_mode = 0
 
 [node name="art" type="Polygon2D" parent="."]
-color = Color(0.410156, 0.410156, 0.410156, 1)
+color = Color(0, 0, 0, 1)
 polygon = PackedVector2Array(-5, -2, 32, -147, 86, -177, 139, -170, 195, 0, 189, 3, 133, -163, 90, -169, 39, -142, 1, 2)
 
 [node name="coaster_path" type="Path2D" parent="."]

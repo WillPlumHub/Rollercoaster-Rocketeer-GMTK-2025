@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bigsuppxpog77"]
+
+[ext_resource type="Script" uid="uid://8ta78wi4afqu" path="res://Post Launch/Shoot.gd" id="1_i5mdh"]
+
+[node name="Gun" type="Area2D"]
+script = ExtResource("1_i5mdh")

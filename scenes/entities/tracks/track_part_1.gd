@@ -28,7 +28,7 @@ var grabbed:bool = false
 var grab_offset:Vector2 = Vector2.ZERO
 var track_delay:float = 0.3
 var cars_on_track: Array[Car] = []
-var snap_size:int = 64
+var snap_size:int = 192.0
 
 func _ready() -> void:
 	# MAKE SURE SNAPPED
@@ -79,12 +79,12 @@ func _on_track_end_area_entered(area: Area2D) -> void:
 		return
 	else:
 		# MAKES SURE THERES NOT ALREADY A TRACK ATTACHED
-		track_right = area.get_parent().get_parent().get_parent().get_path()
+		track_right = area.owner.get_path()
 
 func _on_track_end_area_exited(area: Area2D) -> void:
 	# IF THE TRACK CONNECTED MOVES AWAY, DISCONNECT IT
 	# ONLY IF THE TRACK MOVES AWAY WAS THE ONE THAT WAS PREVIOUSLY CONNECTED
-	if area.get_parent().get_parent().get_parent().get_path() == track_right:
+	if area.owner.get_path() == track_right:
 		track_right = ""
 
 func _on_grab_detect_button_down() -> void:
