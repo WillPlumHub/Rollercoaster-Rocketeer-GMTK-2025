@@ -140,6 +140,7 @@ metadata/_custom_type_script = "uid://lets3pwxygq1"
 
 [node name="Cart3" type="RigidBody2D" parent="."]
 position = Vector2(-372, -557)
+collision_layer = 2
 contact_monitor = true
 max_contacts_reported = 1
 
