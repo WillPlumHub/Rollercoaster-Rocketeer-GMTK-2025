@@ -1,0 +1,701 @@
+[gd_scene load_steps=15 format=3 uid="uid://d27wma8ot5lbi"]
+
+[ext_resource type="Texture2D" uid="uid://cv0r7hvbh08kk" path="res://icon.svg" id="1_6aise"]
+[ext_resource type="Script" uid="uid://chodx6w23j05t" path="res://scenes/test/test_body.gd" id="1_rlarx"]
+[ext_resource type="Script" uid="uid://y1g1g0ritebn" path="res://scripts/thrusters.gd" id="2_ajmqp"]
+[ext_resource type="Script" uid="uid://lets3pwxygq1" path="res://scripts/health_component.gd" id="3_5fnsx"]
+[ext_resource type="Script" uid="uid://yt6q002kj5cr" path="res://scripts/gravity_field_2d.gd" id="4_5fnsx"]
+[ext_resource type="Texture2D" uid="uid://bpie22j2ha5k" path="res://assets/art/Smoke.png" id="4_saeka"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ajmqp"]
+size = Vector2(70, 70)
+
+[sub_resource type="Curve" id="Curve_ajmqp"]
+_limits = [0.1, 1.0, 0.0, 1.0]
+_data = [Vector2(0.0326193, 0.1), 0.0, 0.267521, 0, 0, Vector2(1, 1), -0.326749, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_ajmqp"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_saeka"]
+size = Vector2(120, 70)
+
+[sub_resource type="BoxMesh" id="BoxMesh_saeka"]
+size = Vector3(120, 70, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_4ha1e"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ajmqp"]
+radius = 292.617
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5fnsx"]
+radius = 1056.0
+
+[node name="GravityTest" type="Node2D"]
+
+[node name="TestBody" type="RigidBody2D" parent="."]
+position = Vector2(0, -557)
+contact_monitor = true
+max_contacts_reported = 5
+script = ExtResource("1_rlarx")
+
+[node name="Camera2D" type="Camera2D" parent="TestBody"]
+zoom = Vector2(0.29, 0.29)
+
+[node name="Line2D" type="Line2D" parent="TestBody"]
+points = PackedVector2Array(0, -95, 0, 2)
+width = 2.0
+default_color = Color(0, 1, 0, 1)
+
+[node name="Line2D2" type="Line2D" parent="TestBody"]
+points = PackedVector2Array(97, 2, 0, 2)
+width = 2.0
+default_color = Color(1, 0, 0, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="TestBody"]
+scale = Vector2(0.53125, 0.53125)
+texture = ExtResource("1_6aise")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TestBody"]
+shape = SubResource("RectangleShape2D_ajmqp")
+
+[node name="Thrusters" type="Node2D" parent="TestBody"]
+script = ExtResource("2_ajmqp")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="TestBody/Thrusters"]
+amount = 16
+texture = ExtResource("4_saeka")
+direction = Vector2(0, 1)
+spread = 10.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 146.95
+initial_velocity_max = 146.95
+scale_amount_curve = SubResource("Curve_ajmqp")
+color_ramp = SubResource("Gradient_ajmqp")
+
+[node name="HealthComponent" type="Node" parent="TestBody"]
+script = ExtResource("3_5fnsx")
+max_health = 1000
+metadata/_custom_type_script = "uid://lets3pwxygq1"
+
+[node name="PinJoint2D" type="PinJoint2D" parent="TestBody"]
+position = Vector2(-41, 0)
+node_a = NodePath("..")
+node_b = NodePath("../../Cart")
+
+[node name="Cart" type="RigidBody2D" parent="."]
+position = Vector2(-108, -557)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Cart"]
+shape = SubResource("RectangleShape2D_saeka")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Cart"]
+mesh = SubResource("BoxMesh_saeka")
+
+[node name="PinJoint2D" type="PinJoint2D" parent="Cart"]
+position = Vector2(-66, 0)
+node_a = NodePath("..")
+node_b = NodePath("../../Cart2")
+
+[node name="Cart2" type="RigidBody2D" parent="."]
+position = Vector2(-240, -557)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Cart2"]
+shape = SubResource("RectangleShape2D_saeka")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Cart2"]
+mesh = SubResource("BoxMesh_saeka")
+
+[node name="PinJoint2D" type="PinJoint2D" parent="Cart2"]
+position = Vector2(-66, 0)
+node_a = NodePath("..")
+node_b = NodePath("../../Cart3")
+
+[node name="Cart3" type="RigidBody2D" parent="."]
+position = Vector2(-372, -557)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Cart3"]
+shape = SubResource("RectangleShape2D_saeka")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Cart3"]
+mesh = SubResource("BoxMesh_saeka")
+
+[node name="Planetoids" type="Node2D" parent="."]
+
+[node name="Planetoid" type="Node2D" parent="Planetoids"]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Planetoids/Planetoid"]
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Planetoids/Planetoid/StaticBody2D"]
+position = Vector2(0, 9.54064e-05)
+scale = Vector2(580.658, 580.658)
+mesh = SubResource("SphereMesh_4ha1e")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Planetoids/Planetoid/StaticBody2D"]
+shape = SubResource("CircleShape2D_ajmqp")
+
+[node name="Area2D" type="Area2D" parent="Planetoids/Planetoid"]
+gravity_space_override = 2
+gravity_point = true
+gravity_point_center = Vector2(0, 0)
+gravity_direction = Vector2(0, 0)
+script = ExtResource("4_5fnsx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Planetoids/Planetoid/Area2D"]
+shape = SubResource("CircleShape2D_5fnsx")
+
+[node name="Planetoid2" type="Node2D" parent="Planetoids"]
+position = Vector2(-22, -1834)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Planetoids/Planetoid2"]
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Planetoids/Planetoid2/StaticBody2D"]
+position = Vector2(0, 9.54064e-05)
+scale = Vector2(580.658, 580.658)
+mesh = SubResource("SphereMesh_4ha1e")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Planetoids/Planetoid2/StaticBody2D"]
+shape = SubResource("CircleShape2D_ajmqp")
+
+[node name="Area2D" type="Area2D" parent="Planetoids/Planetoid2"]
+gravity_space_override = 2
+gravity_point = true
+gravity_point_center = Vector2(0, 0)
+gravity_direction = Vector2(0, 0)
+script = ExtResource("4_5fnsx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Planetoids/Planetoid2/Area2D"]
+shape = SubResource("CircleShape2D_5fnsx")
+
+[node name="Planetoid3" type="Node2D" parent="Planetoids"]
+position = Vector2(2004, -1179)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Planetoids/Planetoid3"]
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Planetoids/Planetoid3/StaticBody2D"]
+position = Vector2(0, 9.54064e-05)
+scale = Vector2(580.658, 580.658)
+mesh = SubResource("SphereMesh_4ha1e")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Planetoids/Planetoid3/StaticBody2D"]
+shape = SubResource("CircleShape2D_ajmqp")
+
+[node name="Area2D" type="Area2D" parent="Planetoids/Planetoid3"]
+gravity_space_override = 2
+gravity_point = true
+gravity_point_center = Vector2(0, 0)
+gravity_direction = Vector2(0, 0)
+script = ExtResource("4_5fnsx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Planetoids/Planetoid3/Area2D"]
+shape = SubResource("CircleShape2D_5fnsx")
+
+[node name="Planetoid4" type="Node2D" parent="Planetoids"]
+position = Vector2(2903, 72)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Planetoids/Planetoid4"]
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Planetoids/Planetoid4/StaticBody2D"]
+position = Vector2(0, 9.54064e-05)
+scale = Vector2(580.658, 580.658)
+mesh = SubResource("SphereMesh_4ha1e")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Planetoids/Planetoid4/StaticBody2D"]
+shape = SubResource("CircleShape2D_ajmqp")
+
+[node name="Area2D" type="Area2D" parent="Planetoids/Planetoid4"]
+gravity_space_override = 2
+gravity_point = true
+gravity_point_center = Vector2(0, 0)
+gravity_direction = Vector2(0, 0)
+script = ExtResource("4_5fnsx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Planetoids/Planetoid4/Area2D"]
+shape = SubResource("CircleShape2D_5fnsx")
+
+[node name="Planetoid5" type="Node2D" parent="Planetoids"]
+position = Vector2(1313, 907)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Planetoids/Planetoid5"]
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Planetoids/Planetoid5/StaticBody2D"]
+position = Vector2(0, 9.54064e-05)
+scale = Vector2(580.658, 580.658)
+mesh = SubResource("SphereMesh_4ha1e")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Planetoids/Planetoid5/StaticBody2D"]
+shape = SubResource("CircleShape2D_ajmqp")
+
+[node name="Area2D" type="Area2D" parent="Planetoids/Planetoid5"]
+gravity_space_override = 2
+gravity_point = true
+gravity_point_center = Vector2(0, 0)
+gravity_direction = Vector2(0, 0)
+script = ExtResource("4_5fnsx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Planetoids/Planetoid5/Area2D"]
+shape = SubResource("CircleShape2D_5fnsx")
+
+[node name="Planetoid6" type="Node2D" parent="Planetoids"]
+position = Vector2(3914, -1842)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Planetoids/Planetoid6"]
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Planetoids/Planetoid6/StaticBody2D"]
+position = Vector2(0, 9.54064e-05)
+scale = Vector2(580.658, 580.658)
+mesh = SubResource("SphereMesh_4ha1e")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Planetoids/Planetoid6/StaticBody2D"]
+shape = SubResource("CircleShape2D_ajmqp")
+
+[node name="Area2D" type="Area2D" parent="Planetoids/Planetoid6"]
+gravity_space_override = 2
+gravity_point = true
+gravity_point_center = Vector2(0, 0)
+gravity_direction = Vector2(0, 0)
+script = ExtResource("4_5fnsx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Planetoids/Planetoid6/Area2D"]
+shape = SubResource("CircleShape2D_5fnsx")
+
+[node name="Planetoid7" type="Node2D" parent="Planetoids"]
+position = Vector2(1696, -3085)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Planetoids/Planetoid7"]
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Planetoids/Planetoid7/StaticBody2D"]
+position = Vector2(0, 9.54064e-05)
+scale = Vector2(580.658, 580.658)
+mesh = SubResource("SphereMesh_4ha1e")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Planetoids/Planetoid7/StaticBody2D"]
+shape = SubResource("CircleShape2D_ajmqp")
+
+[node name="Area2D" type="Area2D" parent="Planetoids/Planetoid7"]
+gravity_space_override = 2
+gravity_point = true
+gravity_point_center = Vector2(0, 0)
+gravity_direction = Vector2(0, 0)
+script = ExtResource("4_5fnsx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Planetoids/Planetoid7/Area2D"]
+shape = SubResource("CircleShape2D_5fnsx")
+
+[node name="Planetoid8" type="Node2D" parent="Planetoids"]
+position = Vector2(-1744, -961)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Planetoids/Planetoid8"]
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Planetoids/Planetoid8/StaticBody2D"]
+position = Vector2(0, 9.54064e-05)
+scale = Vector2(580.658, 580.658)
+mesh = SubResource("SphereMesh_4ha1e")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Planetoids/Planetoid8/StaticBody2D"]
+shape = SubResource("CircleShape2D_ajmqp")
+
+[node name="Area2D" type="Area2D" parent="Planetoids/Planetoid8"]
+gravity_space_override = 2
+gravity_point = true
+gravity_point_center = Vector2(0, 0)
+gravity_direction = Vector2(0, 0)
+script = ExtResource("4_5fnsx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Planetoids/Planetoid8/Area2D"]
+shape = SubResource("CircleShape2D_5fnsx")
+
+[node name="Planetoid9" type="Node2D" parent="Planetoids"]
+position = Vector2(-1914, 1063)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Planetoids/Planetoid9"]
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Planetoids/Planetoid9/StaticBody2D"]
+position = Vector2(0, 9.54064e-05)
+scale = Vector2(580.658, 580.658)
+mesh = SubResource("SphereMesh_4ha1e")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Planetoids/Planetoid9/StaticBody2D"]
+shape = SubResource("CircleShape2D_ajmqp")
+
+[node name="Area2D" type="Area2D" parent="Planetoids/Planetoid9"]
+gravity_space_override = 2
+gravity_point = true
+gravity_point_center = Vector2(0, 0)
+gravity_direction = Vector2(0, 0)
+script = ExtResource("4_5fnsx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Planetoids/Planetoid9/Area2D"]
+shape = SubResource("CircleShape2D_5fnsx")
+
+[node name="Planetoid10" type="Node2D" parent="Planetoids"]
+position = Vector2(-321, 2387)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Planetoids/Planetoid10"]
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Planetoids/Planetoid10/StaticBody2D"]
+position = Vector2(0, 9.54064e-05)
+scale = Vector2(580.658, 580.658)
+mesh = SubResource("SphereMesh_4ha1e")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Planetoids/Planetoid10/StaticBody2D"]
+shape = SubResource("CircleShape2D_ajmqp")
+
+[node name="Area2D" type="Area2D" parent="Planetoids/Planetoid10"]
+gravity_space_override = 2
+gravity_point = true
+gravity_point_center = Vector2(0, 0)
+gravity_direction = Vector2(0, 0)
+script = ExtResource("4_5fnsx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Planetoids/Planetoid10/Area2D"]
+shape = SubResource("CircleShape2D_5fnsx")
+
+[node name="Planetoid11" type="Node2D" parent="Planetoids"]
+position = Vector2(-2069, -2568)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Planetoids/Planetoid11"]
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Planetoids/Planetoid11/StaticBody2D"]
+position = Vector2(0, 9.54064e-05)
+scale = Vector2(580.658, 580.658)
+mesh = SubResource("SphereMesh_4ha1e")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Planetoids/Planetoid11/StaticBody2D"]
+shape = SubResource("CircleShape2D_ajmqp")
+
+[node name="Area2D" type="Area2D" parent="Planetoids/Planetoid11"]
+gravity_space_override = 2
+gravity_point = true
+gravity_point_center = Vector2(0, 0)
+gravity_direction = Vector2(0, 0)
+script = ExtResource("4_5fnsx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Planetoids/Planetoid11/Area2D"]
+shape = SubResource("CircleShape2D_5fnsx")
+
+[node name="Planetoid12" type="Node2D" parent="Planetoids"]
+position = Vector2(-3803, -91)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Planetoids/Planetoid12"]
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Planetoids/Planetoid12/StaticBody2D"]
+position = Vector2(0, 9.54064e-05)
+scale = Vector2(580.658, 580.658)
+mesh = SubResource("SphereMesh_4ha1e")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Planetoids/Planetoid12/StaticBody2D"]
+shape = SubResource("CircleShape2D_ajmqp")
+
+[node name="Area2D" type="Area2D" parent="Planetoids/Planetoid12"]
+gravity_space_override = 2
+gravity_point = true
+gravity_point_center = Vector2(0, 0)
+gravity_direction = Vector2(0, 0)
+script = ExtResource("4_5fnsx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Planetoids/Planetoid12/Area2D"]
+shape = SubResource("CircleShape2D_5fnsx")
+
+[node name="Planetoid13" type="Node2D" parent="Planetoids"]
+position = Vector2(-2184, 2622)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Planetoids/Planetoid13"]
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Planetoids/Planetoid13/StaticBody2D"]
+position = Vector2(0, 9.54064e-05)
+scale = Vector2(580.658, 580.658)
+mesh = SubResource("SphereMesh_4ha1e")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Planetoids/Planetoid13/StaticBody2D"]
+shape = SubResource("CircleShape2D_ajmqp")
+
+[node name="Area2D" type="Area2D" parent="Planetoids/Planetoid13"]
+gravity_space_override = 2
+gravity_point = true
+gravity_point_center = Vector2(0, 0)
+gravity_direction = Vector2(0, 0)
+script = ExtResource("4_5fnsx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Planetoids/Planetoid13/Area2D"]
+shape = SubResource("CircleShape2D_5fnsx")
+
+[node name="Planetoid14" type="Node2D" parent="Planetoids"]
+position = Vector2(-3905, 1710)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Planetoids/Planetoid14"]
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Planetoids/Planetoid14/StaticBody2D"]
+position = Vector2(0, 9.54064e-05)
+scale = Vector2(580.658, 580.658)
+mesh = SubResource("SphereMesh_4ha1e")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Planetoids/Planetoid14/StaticBody2D"]
+shape = SubResource("CircleShape2D_ajmqp")
+
+[node name="Area2D" type="Area2D" parent="Planetoids/Planetoid14"]
+gravity_space_override = 2
+gravity_point = true
+gravity_point_center = Vector2(0, 0)
+gravity_direction = Vector2(0, 0)
+script = ExtResource("4_5fnsx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Planetoids/Planetoid14/Area2D"]
+shape = SubResource("CircleShape2D_5fnsx")
+
+[node name="Planetoid15" type="Node2D" parent="Planetoids"]
+position = Vector2(-3495, -1904)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Planetoids/Planetoid15"]
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Planetoids/Planetoid15/StaticBody2D"]
+position = Vector2(0, 9.54064e-05)
+scale = Vector2(580.658, 580.658)
+mesh = SubResource("SphereMesh_4ha1e")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Planetoids/Planetoid15/StaticBody2D"]
+shape = SubResource("CircleShape2D_ajmqp")
+
+[node name="Area2D" type="Area2D" parent="Planetoids/Planetoid15"]
+gravity_space_override = 2
+gravity_point = true
+gravity_point_center = Vector2(0, 0)
+gravity_direction = Vector2(0, 0)
+script = ExtResource("4_5fnsx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Planetoids/Planetoid15/Area2D"]
+shape = SubResource("CircleShape2D_5fnsx")
+
+[node name="Planetoid16" type="Node2D" parent="Planetoids"]
+position = Vector2(-189, -3865)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Planetoids/Planetoid16"]
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Planetoids/Planetoid16/StaticBody2D"]
+position = Vector2(0, 9.54064e-05)
+scale = Vector2(580.658, 580.658)
+mesh = SubResource("SphereMesh_4ha1e")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Planetoids/Planetoid16/StaticBody2D"]
+shape = SubResource("CircleShape2D_ajmqp")
+
+[node name="Area2D" type="Area2D" parent="Planetoids/Planetoid16"]
+gravity_space_override = 2
+gravity_point = true
+gravity_point_center = Vector2(0, 0)
+gravity_direction = Vector2(0, 0)
+script = ExtResource("4_5fnsx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Planetoids/Planetoid16/Area2D"]
+shape = SubResource("CircleShape2D_5fnsx")
+
+[node name="Planetoid17" type="Node2D" parent="Planetoids"]
+position = Vector2(2832, 1744)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Planetoids/Planetoid17"]
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Planetoids/Planetoid17/StaticBody2D"]
+position = Vector2(0, 9.54064e-05)
+scale = Vector2(580.658, 580.658)
+mesh = SubResource("SphereMesh_4ha1e")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Planetoids/Planetoid17/StaticBody2D"]
+shape = SubResource("CircleShape2D_ajmqp")
+
+[node name="Area2D" type="Area2D" parent="Planetoids/Planetoid17"]
+gravity_space_override = 2
+gravity_point = true
+gravity_point_center = Vector2(0, 0)
+gravity_direction = Vector2(0, 0)
+script = ExtResource("4_5fnsx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Planetoids/Planetoid17/Area2D"]
+shape = SubResource("CircleShape2D_5fnsx")
+
+[node name="Planetoid18" type="Node2D" parent="Planetoids"]
+position = Vector2(1555, 3101)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Planetoids/Planetoid18"]
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Planetoids/Planetoid18/StaticBody2D"]
+position = Vector2(0, 9.54064e-05)
+scale = Vector2(580.658, 580.658)
+mesh = SubResource("SphereMesh_4ha1e")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Planetoids/Planetoid18/StaticBody2D"]
+shape = SubResource("CircleShape2D_ajmqp")
+
+[node name="Area2D" type="Area2D" parent="Planetoids/Planetoid18"]
+gravity_space_override = 2
+gravity_point = true
+gravity_point_center = Vector2(0, 0)
+gravity_direction = Vector2(0, 0)
+script = ExtResource("4_5fnsx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Planetoids/Planetoid18/Area2D"]
+shape = SubResource("CircleShape2D_5fnsx")
+
+[node name="Planetoid19" type="Node2D" parent="Planetoids"]
+position = Vector2(4610, 1117)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Planetoids/Planetoid19"]
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Planetoids/Planetoid19/StaticBody2D"]
+position = Vector2(0, 9.54064e-05)
+scale = Vector2(580.658, 580.658)
+mesh = SubResource("SphereMesh_4ha1e")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Planetoids/Planetoid19/StaticBody2D"]
+shape = SubResource("CircleShape2D_ajmqp")
+
+[node name="Area2D" type="Area2D" parent="Planetoids/Planetoid19"]
+gravity_space_override = 2
+gravity_point = true
+gravity_point_center = Vector2(0, 0)
+gravity_direction = Vector2(0, 0)
+script = ExtResource("4_5fnsx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Planetoids/Planetoid19/Area2D"]
+shape = SubResource("CircleShape2D_5fnsx")
+
+[node name="Planetoid20" type="Node2D" parent="Planetoids"]
+position = Vector2(3778, 3454)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Planetoids/Planetoid20"]
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Planetoids/Planetoid20/StaticBody2D"]
+position = Vector2(0, 9.54064e-05)
+scale = Vector2(580.658, 580.658)
+mesh = SubResource("SphereMesh_4ha1e")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Planetoids/Planetoid20/StaticBody2D"]
+shape = SubResource("CircleShape2D_ajmqp")
+
+[node name="Area2D" type="Area2D" parent="Planetoids/Planetoid20"]
+gravity_space_override = 2
+gravity_point = true
+gravity_point_center = Vector2(0, 0)
+gravity_direction = Vector2(0, 0)
+script = ExtResource("4_5fnsx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Planetoids/Planetoid20/Area2D"]
+shape = SubResource("CircleShape2D_5fnsx")
+
+[node name="Planetoid21" type="Node2D" parent="Planetoids"]
+position = Vector2(5431, -639)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Planetoids/Planetoid21"]
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Planetoids/Planetoid21/StaticBody2D"]
+position = Vector2(0, 9.54064e-05)
+scale = Vector2(580.658, 580.658)
+mesh = SubResource("SphereMesh_4ha1e")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Planetoids/Planetoid21/StaticBody2D"]
+shape = SubResource("CircleShape2D_ajmqp")
+
+[node name="Area2D" type="Area2D" parent="Planetoids/Planetoid21"]
+gravity_space_override = 2
+gravity_point = true
+gravity_point_center = Vector2(0, 0)
+gravity_direction = Vector2(0, 0)
+script = ExtResource("4_5fnsx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Planetoids/Planetoid21/Area2D"]
+shape = SubResource("CircleShape2D_5fnsx")
+
+[node name="Planetoid22" type="Node2D" parent="Planetoids"]
+position = Vector2(3778, -4048)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Planetoids/Planetoid22"]
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Planetoids/Planetoid22/StaticBody2D"]
+position = Vector2(0, 9.54064e-05)
+scale = Vector2(580.658, 580.658)
+mesh = SubResource("SphereMesh_4ha1e")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Planetoids/Planetoid22/StaticBody2D"]
+shape = SubResource("CircleShape2D_ajmqp")
+
+[node name="Area2D" type="Area2D" parent="Planetoids/Planetoid22"]
+gravity_space_override = 2
+gravity_point = true
+gravity_point_center = Vector2(0, 0)
+gravity_direction = Vector2(0, 0)
+script = ExtResource("4_5fnsx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Planetoids/Planetoid22/Area2D"]
+shape = SubResource("CircleShape2D_5fnsx")
+
+[node name="Planetoid23" type="Node2D" parent="Planetoids"]
+position = Vector2(-2709, -4664)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Planetoids/Planetoid23"]
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Planetoids/Planetoid23/StaticBody2D"]
+position = Vector2(0, 9.54064e-05)
+scale = Vector2(580.658, 580.658)
+mesh = SubResource("SphereMesh_4ha1e")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Planetoids/Planetoid23/StaticBody2D"]
+shape = SubResource("CircleShape2D_ajmqp")
+
+[node name="Area2D" type="Area2D" parent="Planetoids/Planetoid23"]
+gravity_space_override = 2
+gravity_point = true
+gravity_point_center = Vector2(0, 0)
+gravity_direction = Vector2(0, 0)
+script = ExtResource("4_5fnsx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Planetoids/Planetoid23/Area2D"]
+shape = SubResource("CircleShape2D_5fnsx")
+
+[node name="Planetoid24" type="Node2D" parent="Planetoids"]
+position = Vector2(-5456, -3421)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Planetoids/Planetoid24"]
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Planetoids/Planetoid24/StaticBody2D"]
+position = Vector2(0, 9.54064e-05)
+scale = Vector2(580.658, 580.658)
+mesh = SubResource("SphereMesh_4ha1e")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Planetoids/Planetoid24/StaticBody2D"]
+shape = SubResource("CircleShape2D_ajmqp")
+
+[node name="Area2D" type="Area2D" parent="Planetoids/Planetoid24"]
+gravity_space_override = 2
+gravity_point = true
+gravity_point_center = Vector2(0, 0)
+gravity_direction = Vector2(0, 0)
+script = ExtResource("4_5fnsx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Planetoids/Planetoid24/Area2D"]
+shape = SubResource("CircleShape2D_5fnsx")
+
+[node name="Planetoid25" type="Node2D" parent="Planetoids"]
+position = Vector2(-5775, -879)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Planetoids/Planetoid25"]
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Planetoids/Planetoid25/StaticBody2D"]
+position = Vector2(0, 9.54064e-05)
+scale = Vector2(580.658, 580.658)
+mesh = SubResource("SphereMesh_4ha1e")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Planetoids/Planetoid25/StaticBody2D"]
+shape = SubResource("CircleShape2D_ajmqp")
+
+[node name="Area2D" type="Area2D" parent="Planetoids/Planetoid25"]
+gravity_space_override = 2
+gravity_point = true
+gravity_point_center = Vector2(0, 0)
+gravity_direction = Vector2(0, 0)
+script = ExtResource("4_5fnsx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Planetoids/Planetoid25/Area2D"]
+shape = SubResource("CircleShape2D_5fnsx")
+
+[connection signal="damaged" from="TestBody/HealthComponent" to="TestBody" method="_on_health_component_damaged"]
+[connection signal="killed" from="TestBody/HealthComponent" to="TestBody" method="_on_health_component_killed"]
