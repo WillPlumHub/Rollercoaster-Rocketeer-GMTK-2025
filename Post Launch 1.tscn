@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://b1ib2yg3ob724"]
+
+[ext_resource type="PackedScene" uid="uid://cc7n6b4f4dn4h" path="res://Post Launch/Player/Ship.tscn" id="1_ety2v"]
+[ext_resource type="PackedScene" uid="uid://ct3ph1qpsisya" path="res://Post Launch/Enemies/Enemy.tscn" id="2_5if7e"]
+[ext_resource type="Script" uid="uid://cb7aya5joume7" path="res://Post Launch/LevelProgress.gd" id="2_j3rgj"]
+[ext_resource type="PackedScene" uid="uid://ka06oh8liyb6" path="res://Post Launch/Enemies/asteroid.tscn" id="3_j3rgj"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Ship" parent="." instance=ExtResource("1_ety2v")]
+position = Vector2(519, 483)
+
+[node name="Node2D" type="Node2D" parent="."]
+position = Vector2(724, 85)
+script = ExtResource("2_j3rgj")
+
+[node name="Enemy" parent="Node2D" instance=ExtResource("2_5if7e")]
+position = Vector2(-136, -374)
+
+[node name="Asteroid" parent="Node2D" instance=ExtResource("3_j3rgj")]
+position = Vector2(-330, -157)
+
+[node name="Asteroid2" parent="Node2D" instance=ExtResource("3_j3rgj")]
