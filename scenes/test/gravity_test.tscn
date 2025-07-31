@@ -45,6 +45,7 @@ size = Vector2(50000, 4000)
 
 [node name="TestBody" type="RigidBody2D" parent="."]
 position = Vector2(0, -557)
+collision_layer = 2
 contact_monitor = true
 max_contacts_reported = 5
 script = ExtResource("1_rlarx")
@@ -95,6 +96,7 @@ node_b = NodePath("../../Cart")
 
 [node name="Cart" type="RigidBody2D" parent="."]
 position = Vector2(-108, -557)
+collision_layer = 2
 contact_monitor = true
 max_contacts_reported = 1
 
@@ -116,6 +118,7 @@ metadata/_custom_type_script = "uid://lets3pwxygq1"
 
 [node name="Cart2" type="RigidBody2D" parent="."]
 position = Vector2(-240, -557)
+collision_layer = 2
 contact_monitor = true
 max_contacts_reported = 1
 
@@ -166,6 +169,7 @@ mesh = SubResource("SphereMesh_4ha1e")
 shape = SubResource("CircleShape2D_ajmqp")
 
 [node name="Area2D" type="Area2D" parent="Planetoids/Planetoid"]
+collision_mask = 2
 gravity_space_override = 2
 gravity_point = true
 gravity_point_center = Vector2(0, 0)
@@ -189,6 +193,7 @@ mesh = SubResource("SphereMesh_4ha1e")
 shape = SubResource("CircleShape2D_ajmqp")
 
 [node name="Area2D" type="Area2D" parent="Planetoids/Planetoid2"]
+collision_mask = 2
 gravity_space_override = 2
 gravity_point = true
 gravity_point_center = Vector2(0, 0)
@@ -212,6 +217,7 @@ mesh = SubResource("SphereMesh_4ha1e")
 shape = SubResource("CircleShape2D_ajmqp")
 
 [node name="Area2D" type="Area2D" parent="Planetoids/Planetoid3"]
+collision_mask = 2
 gravity_space_override = 2
 gravity_point = true
 gravity_point_center = Vector2(0, 0)
@@ -235,6 +241,7 @@ mesh = SubResource("SphereMesh_4ha1e")
 shape = SubResource("CircleShape2D_ajmqp")
 
 [node name="Area2D" type="Area2D" parent="Planetoids/Planetoid4"]
+collision_mask = 2
 gravity_space_override = 2
 gravity_point = true
 gravity_point_center = Vector2(0, 0)
@@ -258,6 +265,7 @@ mesh = SubResource("SphereMesh_4ha1e")
 shape = SubResource("CircleShape2D_ajmqp")
 
 [node name="Area2D" type="Area2D" parent="Planetoids/Planetoid5"]
+collision_mask = 2
 gravity_space_override = 2
 gravity_point = true
 gravity_point_center = Vector2(0, 0)
@@ -281,6 +289,7 @@ mesh = SubResource("SphereMesh_4ha1e")
 shape = SubResource("CircleShape2D_ajmqp")
 
 [node name="Area2D" type="Area2D" parent="Planetoids/Planetoid6"]
+collision_mask = 2
 gravity_space_override = 2
 gravity_point = true
 gravity_point_center = Vector2(0, 0)
@@ -304,6 +313,7 @@ mesh = SubResource("SphereMesh_4ha1e")
 shape = SubResource("CircleShape2D_ajmqp")
 
 [node name="Area2D" type="Area2D" parent="Planetoids/Planetoid7"]
+collision_mask = 2
 gravity_space_override = 2
 gravity_point = true
 gravity_point_center = Vector2(0, 0)
@@ -327,6 +337,7 @@ mesh = SubResource("SphereMesh_4ha1e")
 shape = SubResource("CircleShape2D_ajmqp")
 
 [node name="Area2D" type="Area2D" parent="Planetoids/Planetoid8"]
+collision_mask = 2
 gravity_space_override = 2
 gravity_point = true
 gravity_point_center = Vector2(0, 0)
@@ -350,6 +361,7 @@ mesh = SubResource("SphereMesh_4ha1e")
 shape = SubResource("CircleShape2D_ajmqp")
 
 [node name="Area2D" type="Area2D" parent="Planetoids/Planetoid9"]
+collision_mask = 2
 gravity_space_override = 2
 gravity_point = true
 gravity_point_center = Vector2(0, 0)
@@ -373,6 +385,7 @@ mesh = SubResource("SphereMesh_4ha1e")
 shape = SubResource("CircleShape2D_ajmqp")
 
 [node name="Area2D" type="Area2D" parent="Planetoids/Planetoid10"]
+collision_mask = 2
 gravity_space_override = 2
 gravity_point = true
 gravity_point_center = Vector2(0, 0)
@@ -396,6 +409,7 @@ mesh = SubResource("SphereMesh_4ha1e")
 shape = SubResource("CircleShape2D_ajmqp")
 
 [node name="Area2D" type="Area2D" parent="Planetoids/Planetoid11"]
+collision_mask = 2
 gravity_space_override = 2
 gravity_point = true
 gravity_point_center = Vector2(0, 0)
@@ -419,6 +433,7 @@ mesh = SubResource("SphereMesh_4ha1e")
 shape = SubResource("CircleShape2D_ajmqp")
 
 [node name="Area2D" type="Area2D" parent="Planetoids/Planetoid12"]
+collision_mask = 2
 gravity_space_override = 2
 gravity_point = true
 gravity_point_center = Vector2(0, 0)
@@ -442,6 +457,7 @@ mesh = SubResource("SphereMesh_4ha1e")
 shape = SubResource("CircleShape2D_ajmqp")
 
 [node name="Area2D" type="Area2D" parent="Planetoids/Planetoid13"]
+collision_mask = 2
 gravity_space_override = 2
 gravity_point = true
 gravity_point_center = Vector2(0, 0)
@@ -465,6 +481,7 @@ mesh = SubResource("SphereMesh_4ha1e")
 shape = SubResource("CircleShape2D_ajmqp")
 
 [node name="Area2D" type="Area2D" parent="Planetoids/Planetoid14"]
+collision_mask = 2
 gravity_space_override = 2
 gravity_point = true
 gravity_point_center = Vector2(0, 0)
@@ -488,6 +505,7 @@ mesh = SubResource("SphereMesh_4ha1e")
 shape = SubResource("CircleShape2D_ajmqp")
 
 [node name="Area2D" type="Area2D" parent="Planetoids/Planetoid15"]
+collision_mask = 2
 gravity_space_override = 2
 gravity_point = true
 gravity_point_center = Vector2(0, 0)
@@ -511,6 +529,7 @@ mesh = SubResource("SphereMesh_4ha1e")
 shape = SubResource("CircleShape2D_ajmqp")
 
 [node name="Area2D" type="Area2D" parent="Planetoids/Planetoid16"]
+collision_mask = 2
 gravity_space_override = 2
 gravity_point = true
 gravity_point_center = Vector2(0, 0)
@@ -534,6 +553,7 @@ mesh = SubResource("SphereMesh_4ha1e")
 shape = SubResource("CircleShape2D_ajmqp")
 
 [node name="Area2D" type="Area2D" parent="Planetoids/Planetoid17"]
+collision_mask = 2
 gravity_space_override = 2
 gravity_point = true
 gravity_point_center = Vector2(0, 0)
@@ -557,6 +577,7 @@ mesh = SubResource("SphereMesh_4ha1e")
 shape = SubResource("CircleShape2D_ajmqp")
 
 [node name="Area2D" type="Area2D" parent="Planetoids/Planetoid18"]
+collision_mask = 2
 gravity_space_override = 2
 gravity_point = true
 gravity_point_center = Vector2(0, 0)
@@ -580,6 +601,7 @@ mesh = SubResource("SphereMesh_4ha1e")
 shape = SubResource("CircleShape2D_ajmqp")
 
 [node name="Area2D" type="Area2D" parent="Planetoids/Planetoid19"]
+collision_mask = 2
 gravity_space_override = 2
 gravity_point = true
 gravity_point_center = Vector2(0, 0)
@@ -603,6 +625,7 @@ mesh = SubResource("SphereMesh_4ha1e")
 shape = SubResource("CircleShape2D_ajmqp")
 
 [node name="Area2D" type="Area2D" parent="Planetoids/Planetoid20"]
+collision_mask = 2
 gravity_space_override = 2
 gravity_point = true
 gravity_point_center = Vector2(0, 0)
@@ -626,6 +649,7 @@ mesh = SubResource("SphereMesh_4ha1e")
 shape = SubResource("CircleShape2D_ajmqp")
 
 [node name="Area2D" type="Area2D" parent="Planetoids/Planetoid21"]
+collision_mask = 2
 gravity_space_override = 2
 gravity_point = true
 gravity_point_center = Vector2(0, 0)
@@ -649,6 +673,7 @@ mesh = SubResource("SphereMesh_4ha1e")
 shape = SubResource("CircleShape2D_ajmqp")
 
 [node name="Area2D" type="Area2D" parent="Planetoids/Planetoid22"]
+collision_mask = 2
 gravity_space_override = 2
 gravity_point = true
 gravity_point_center = Vector2(0, 0)
@@ -672,6 +697,7 @@ mesh = SubResource("SphereMesh_4ha1e")
 shape = SubResource("CircleShape2D_ajmqp")
 
 [node name="Area2D" type="Area2D" parent="Planetoids/Planetoid23"]
+collision_mask = 2
 gravity_space_override = 2
 gravity_point = true
 gravity_point_center = Vector2(0, 0)
@@ -695,6 +721,7 @@ mesh = SubResource("SphereMesh_4ha1e")
 shape = SubResource("CircleShape2D_ajmqp")
 
 [node name="Area2D" type="Area2D" parent="Planetoids/Planetoid24"]
+collision_mask = 2
 gravity_space_override = 2
 gravity_point = true
 gravity_point_center = Vector2(0, 0)
@@ -718,6 +745,7 @@ mesh = SubResource("SphereMesh_4ha1e")
 shape = SubResource("CircleShape2D_ajmqp")
 
 [node name="Area2D" type="Area2D" parent="Planetoids/Planetoid25"]
+collision_mask = 2
 gravity_space_override = 2
 gravity_point = true
 gravity_point_center = Vector2(0, 0)
@@ -737,6 +765,7 @@ shape = SubResource("RectangleShape2D_syyh8")
 mesh = SubResource("QuadMesh_di5vh")
 
 [node name="GravityField2D" type="Area2D" parent="StaticBody2D"]
+collision_mask = 2
 gravity_space_override = 2
 script = ExtResource("4_5fnsx")
 metadata/_custom_type_script = "uid://yt6q002kj5cr"
