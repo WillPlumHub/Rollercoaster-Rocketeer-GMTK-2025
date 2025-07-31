@@ -2,7 +2,7 @@
 extends Node2D
 class_name Thrusters
 
-const FORCE = 1000.0
+const FORCE = 3000.0
 
 var body: RigidBody2D:
 	get: return get_parent()
