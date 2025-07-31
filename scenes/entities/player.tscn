@@ -24,3 +24,8 @@ position_smoothing_enabled = true
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(5, 2)
 texture = ExtResource("2_08t41")
+
+[node name="InteractionDetector" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionDetector"]
+shape = SubResource("RectangleShape2D_0qees")
