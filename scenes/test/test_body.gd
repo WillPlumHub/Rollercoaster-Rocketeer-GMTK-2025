@@ -2,7 +2,8 @@ extends RigidBody2D
 
 
 func _ready(): 
-	print($HealthComponent.health)
+	#print($HealthComponent.health)
+	pass
 
 
 func _on_health_component_killed() -> void:
@@ -11,4 +12,5 @@ func _on_health_component_killed() -> void:
 
 
 func _on_health_component_damaged() -> void:
-	print($HealthComponent.health)
+	#print($HealthComponent.health)
+	pass

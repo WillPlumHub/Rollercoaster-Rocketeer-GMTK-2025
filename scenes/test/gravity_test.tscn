@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://d27wma8ot5lbi"]
+[gd_scene load_steps=18 format=3 uid="uid://d27wma8ot5lbi"]
 
 [ext_resource type="Texture2D" uid="uid://cv0r7hvbh08kk" path="res://icon.svg" id="1_6aise"]
 [ext_resource type="Script" uid="uid://chodx6w23j05t" path="res://scenes/test/test_body.gd" id="1_rlarx"]
@@ -31,6 +31,15 @@ radius = 292.617
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_5fnsx"]
 radius = 1056.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_syyh8"]
+size = Vector2(50000, 1000)
+
+[sub_resource type="QuadMesh" id="QuadMesh_di5vh"]
+size = Vector2(50000, 1000)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r0a1w"]
+size = Vector2(50000, 4000)
 
 [node name="GravityTest" type="Node2D"]
 
@@ -86,6 +95,8 @@ node_b = NodePath("../../Cart")
 
 [node name="Cart" type="RigidBody2D" parent="."]
 position = Vector2(-108, -557)
+contact_monitor = true
+max_contacts_reported = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Cart"]
 shape = SubResource("RectangleShape2D_saeka")
@@ -98,8 +109,15 @@ position = Vector2(-66, 0)
 node_a = NodePath("..")
 node_b = NodePath("../../Cart2")
 
+[node name="HealthComponent" type="Node" parent="Cart"]
+script = ExtResource("3_5fnsx")
+max_health = 100
+metadata/_custom_type_script = "uid://lets3pwxygq1"
+
 [node name="Cart2" type="RigidBody2D" parent="."]
 position = Vector2(-240, -557)
+contact_monitor = true
+max_contacts_reported = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Cart2"]
 shape = SubResource("RectangleShape2D_saeka")
@@ -112,14 +130,26 @@ position = Vector2(-66, 0)
 node_a = NodePath("..")
 node_b = NodePath("../../Cart3")
 
+[node name="HealthComponent" type="Node" parent="Cart2"]
+script = ExtResource("3_5fnsx")
+max_health = 100
+metadata/_custom_type_script = "uid://lets3pwxygq1"
+
 [node name="Cart3" type="RigidBody2D" parent="."]
 position = Vector2(-372, -557)
+contact_monitor = true
+max_contacts_reported = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Cart3"]
 shape = SubResource("RectangleShape2D_saeka")
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="Cart3"]
 mesh = SubResource("BoxMesh_saeka")
+
+[node name="HealthComponent" type="Node" parent="Cart3"]
+script = ExtResource("3_5fnsx")
+max_health = 100
+metadata/_custom_type_script = "uid://lets3pwxygq1"
 
 [node name="Planetoids" type="Node2D" parent="."]
 
@@ -697,5 +727,26 @@ script = ExtResource("4_5fnsx")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Planetoids/Planetoid25/Area2D"]
 shape = SubResource("CircleShape2D_5fnsx")
 
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(0, 11532)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("RectangleShape2D_syyh8")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="StaticBody2D"]
+mesh = SubResource("QuadMesh_di5vh")
+
+[node name="GravityField2D" type="Area2D" parent="StaticBody2D"]
+gravity_space_override = 2
+script = ExtResource("4_5fnsx")
+metadata/_custom_type_script = "uid://yt6q002kj5cr"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D/GravityField2D"]
+position = Vector2(0, -1569)
+shape = SubResource("RectangleShape2D_r0a1w")
+
 [connection signal="damaged" from="TestBody/HealthComponent" to="TestBody" method="_on_health_component_damaged"]
 [connection signal="killed" from="TestBody/HealthComponent" to="TestBody" method="_on_health_component_killed"]
+[connection signal="killed" from="Cart/HealthComponent" to="Cart" method="queue_free"]
+[connection signal="killed" from="Cart2/HealthComponent" to="Cart2" method="queue_free"]
+[connection signal="killed" from="Cart3/HealthComponent" to="Cart3" method="queue_free"]
