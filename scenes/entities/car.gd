@@ -1,14 +1,20 @@
 extends PathFollow2D
 class_name Car
 
+@export_flags_2d_physics var collision_layer: int = 1
+@export_flags_2d_physics var collision_mask: int = 1
+@export var rigid_body: RigidBody2D
+
 var track_attached:TrackPart
 var speed:float = -1
 var end_of_track:bool = false
+
 
 func _ready() -> void:
 	if speed == -1:
 		# IF SPEED IS -1 THEN IT IS A NEW CAR AND DOESNT CARE ABOUT KEEPING MOMENTUM
 		speed = track_attached.track_speed
+
 
 func _process(delta: float) -> void:
 	# MOVE ALONG TRACK
@@ -41,8 +47,13 @@ func _process(delta: float) -> void:
 	if next:
 		# WHEN FINISHED TRACK, EITHER STOP OR MOVE TO NEXT TRACK
 		if track_attached.track_right && !track_attached.is_ending_track:
-			track_attached.pass_on_train_car(speed)
-			queue_free()
+			track_attached.pass_on_train_car(self, speed)
+			# queue_free()
 		else:
-			if end_of_track == false:
-				end_of_track = true
+			rigid_body.reparent(get_tree().current_scene)
+			rigid_body.sleeping = false
+			rigid_body.freeze = false
+			rigid_body.linear_velocity =  Vector2(cos(rotation), sin(rotation)) * speed * 2.0
+			rigid_body.collision_layer = collision_layer
+			rigid_body.collision_mask = collision_mask
+			queue_free()

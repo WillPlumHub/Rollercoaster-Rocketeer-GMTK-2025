@@ -17,6 +17,7 @@ script = ExtResource("1_ucweq")
 shape = SubResource("RectangleShape2D_0qees")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+visible = false
 position = Vector2(0, -223)
 process_callback = 0
 position_smoothing_enabled = true
