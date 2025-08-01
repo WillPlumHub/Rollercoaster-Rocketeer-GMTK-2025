@@ -36,7 +36,7 @@ func _ready() -> void:
 			c.progress = SEPERATION * float(i)
 			if i == cart_count-1:
 				var cam = Camera2D.new()
-				cam.zoom = Vector2.ONE * 0.24
+				cam.zoom = Vector2.ONE * 0.5
 				c.rigid_body.add_child(cam)
 
 				var th = Thrusters.new()
