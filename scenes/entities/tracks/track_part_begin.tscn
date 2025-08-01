@@ -1,0 +1,80 @@
+[gd_scene load_steps=5 format=3 uid="uid://di4vh4401voyy"]
+
+[ext_resource type="Script" uid="uid://dcp4881wiphnj" path="res://scenes/entities/tracks/track_part_1.gd" id="1_dlh7h"]
+[ext_resource type="PackedScene" uid="uid://dxfqyqp4acdt0" path="res://scenes/entities/rigid_car.tscn" id="2_t8kqr"]
+
+[sub_resource type="Curve2D" id="Curve2D_q0nch"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 384, 0)
+}
+point_count = 2
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_oxk6s"]
+radius = 14.0357
+
+[node name="track_part_1" type="Node2D"]
+script = ExtResource("1_dlh7h")
+track_speed = 400.0
+
+[node name="grab_detect" type="Button" parent="."]
+modulate = Color(1, 1, 1, 0.454902)
+offset_top = -64.0
+offset_right = 384.0
+offset_bottom = 64.0
+focus_mode = 0
+
+[node name="Line2D" type="Line2D" parent="."]
+points = PackedVector2Array(384, 0, 0, 0)
+default_color = Color(0.618289, 0.298994, 0.303947, 1)
+
+[node name="coaster_path" type="Path2D" parent="."]
+curve = SubResource("Curve2D_q0nch")
+
+[node name="start" type="PathFollow2D" parent="coaster_path"]
+
+[node name="track_start" type="Area2D" parent="coaster_path/start"]
+rotation = 1.32109
+collision_layer = 16
+collision_mask = 32
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="coaster_path/start/track_start"]
+shape = SubResource("CircleShape2D_oxk6s")
+
+[node name="end" type="PathFollow2D" parent="coaster_path"]
+position = Vector2(384, 0)
+progress = 437.432
+
+[node name="track_end" type="Area2D" parent="coaster_path/end"]
+rotation = 1.32109
+collision_layer = 32
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="coaster_path/end/track_end"]
+shape = SubResource("CircleShape2D_oxk6s")
+
+[node name="car" parent="coaster_path" node_paths=PackedStringArray("join_to") instance=ExtResource("2_t8kqr")]
+position = Vector2(208.001, 0)
+progress = 208.0
+join_to = NodePath("../car2")
+
+[node name="car2" parent="coaster_path" node_paths=PackedStringArray("join_to") instance=ExtResource("2_t8kqr")]
+position = Vector2(156, 0)
+progress = 156.0
+join_to = NodePath("../car3")
+
+[node name="car3" parent="coaster_path" node_paths=PackedStringArray("join_to") instance=ExtResource("2_t8kqr")]
+position = Vector2(103.996, 0)
+progress = 104.0
+join_to = NodePath("../car4")
+
+[node name="car4" parent="coaster_path" node_paths=PackedStringArray("join_to") instance=ExtResource("2_t8kqr")]
+position = Vector2(51.9907, 0)
+progress = 52.0
+join_to = NodePath("../car5")
+
+[node name="car5" parent="coaster_path" instance=ExtResource("2_t8kqr")]
+
+[connection signal="button_down" from="grab_detect" to="." method="_on_grab_detect_button_down"]
+[connection signal="button_up" from="grab_detect" to="." method="_on_grab_detect_button_up"]
+[connection signal="area_entered" from="coaster_path/end/track_end" to="." method="_on_track_end_area_entered"]
+[connection signal="area_exited" from="coaster_path/end/track_end" to="." method="_on_track_end_area_exited"]
