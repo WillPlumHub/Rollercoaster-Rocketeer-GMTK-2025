@@ -38,7 +38,8 @@ func _ready() -> void:
 	
 	if is_starting_track:
 		# IF THIS TRACK IS THE FIRST ONE, CONNECT TO SPAWN CARS ON SIGNAL
-		GameData.launch_train_cars.connect(spawn_cars)
+		# GameData.launch_train_cars.connect(spawn_cars)
+		pass
 		
 
 func spawn_cars():

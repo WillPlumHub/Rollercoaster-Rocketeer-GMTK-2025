@@ -4,7 +4,7 @@
 
 [sub_resource type="Curve2D" id="Curve2D_q0nch"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, -2, -1, 0, 0, 0, 0, 64, 40, 0, 0, 0, 0, 104, 64, 0, 0, 0, 0, 128, 72, -23.6499, 18.7414, 23.6499, -18.7414, 192, 64, -6.24714, 24.5423, 6.24714, -24.5423, 224, 8, 14.2792, 15.1716, -14.2792, -15.1716, 208, -56, 36.5904, 0, -36.5904, 0, 136, -88, 4.46224, -26.7735, -4.46224, 26.7735, 64, -32, -17.4028, -26.7735, 17.4028, 26.7735, 80, 56, 0, 0, 0, 0, 144, 104, -26.7735, -24.9886, 26.7735, 24.9886, 208, 136, 0, 0, 0, 0, 256, 184)
+"points": PackedVector2Array(0, 0, 0, 0, 0, -8, 0, 0, 0, 0, 64, 40, 0, 0, 0, 0, 104, 64, 0, 0, 0, 0, 128, 72, -23.6499, 18.7414, 23.6499, -18.7414, 192, 64, -6.24714, 24.5423, 6.24714, -24.5423, 224, 8, 14.2792, 15.1716, -14.2792, -15.1716, 208, -56, 36.5904, 0, -36.5904, 0, 136, -88, 4.46224, -26.7735, -4.46224, 26.7735, 64, -32, -17.4028, -26.7735, 17.4028, 26.7735, 80, 56, 0, 0, 0, 0, 144, 104, -26.7735, -24.9886, 26.7735, 24.9886, 208, 136, 0, 0, 0, 0, 256, 184)
 }
 point_count = 13
 
@@ -31,8 +31,8 @@ position = Vector2(0, -184)
 curve = SubResource("Curve2D_q0nch")
 
 [node name="start" type="PathFollow2D" parent="coaster_path"]
-position = Vector2(-2, -1)
-rotation = 0.555871
+position = Vector2(0, -8)
+rotation = 0.643501
 
 [node name="track_start" type="Area2D" parent="coaster_path/start"]
 rotation = 1.32109
@@ -43,8 +43,8 @@ collision_mask = 32
 shape = SubResource("CircleShape2D_oxk6s")
 
 [node name="end" type="PathFollow2D" parent="coaster_path"]
-position = Vector2(255.602, 183.57)
-rotation = 0.80598
+position = Vector2(253.938, 181.793)
+rotation = 0.817211
 progress = 842.359
 
 [node name="track_end" type="Area2D" parent="coaster_path/end"]
