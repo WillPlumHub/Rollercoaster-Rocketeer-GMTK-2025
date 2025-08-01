@@ -31,7 +31,7 @@ var _common_tracks: Array[PartInfo] = [
 			PropertyModifier.new(
 				LaunchStats.AffectedProperty.SPEED,
 				1.0, # amount
-				PropertyModifier.CompoundingType.ADDITIVE_FLAT,
+				PropertyModifier.CompoundingType.MULTIPLICATIVE,
 			)
 		]
 	)
