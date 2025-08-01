@@ -1,0 +1,10 @@
+[gd_resource type="StyleBoxTexture" load_steps=2 format=3 uid="uid://d2xtiecw4gt18"]
+
+[ext_resource type="Texture2D" uid="uid://b01go5jcqu8go" path="res://scenes/entities/tracks/taylor_test/images/CoasterMask1.png" id="1_vlb6f"]
+
+[resource]
+content_margin_bottom = 0.0
+texture = ExtResource("1_vlb6f")
+texture_margin_top = 245.194
+texture_margin_bottom = 47.3665
+region_rect = Rect2(0, 0.697067, 255.88, 510.177)

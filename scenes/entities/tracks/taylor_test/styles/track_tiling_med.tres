@@ -1,0 +1,14 @@
+[gd_resource type="StyleBoxTexture" load_steps=2 format=3 uid="uid://bk548u4fq2k3l"]
+
+[ext_resource type="Texture2D" uid="uid://0uo7ifgc8wf4" path="res://scenes/entities/tracks/taylor_test/images/CoasterTilingMed.png" id="1_11f7h"]
+
+[resource]
+content_margin_bottom = 0.0
+texture = ExtResource("1_11f7h")
+texture_margin_left = 50.0
+texture_margin_top = 8.0
+texture_margin_right = 14.0
+texture_margin_bottom = 248.0
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+region_rect = Rect2(0, 8, 256, 504)
