@@ -13,7 +13,7 @@ class_name LaunchStats extends Resource
 @export var passenger_count: float = 0.0
 
 enum AffectedProperty {
-	SPEED,
+	SPEED = 0,
 	FUN,
 	GOLD,
 	PACKAGE_COUNT,

@@ -3,8 +3,8 @@ extends Node
 
 const BASE_COMMON_FIND_CHANCE: float = 93.9
 const BASE_UNCOMMON_FIND_CHANCE: float = 5
-const BASE_RARE_FIND_CHANCE: int = 1
-const BASE_LEGENDARY_FIND_CHANCE: int = 0.1
+const BASE_RARE_FIND_CHANCE: float = 1
+const BASE_LEGENDARY_FIND_CHANCE: float = 0.1
 
 enum Rarity {
 	COMMON = 0,
@@ -19,7 +19,7 @@ func get_random_rarity(
 	uncommon_find_mod: float,
 	rare_find_mod: float,
 	legendary_find_mod: float
-) -> Rarity:
+) -> int:
 	return GlobalRng.rng.rand_weighted([
 		BASE_COMMON_FIND_CHANCE + common_find_mod,
 		BASE_UNCOMMON_FIND_CHANCE + uncommon_find_mod,
