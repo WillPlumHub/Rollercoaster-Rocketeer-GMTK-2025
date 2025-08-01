@@ -1,0 +1,20 @@
+[gd_scene load_steps=2 format=3 uid="uid://dj7lyp4r8k7eh"]
+
+[ext_resource type="Script" uid="uid://cwkoq15tkfkkk" path="res://scenes/UI/hud.gd" id="1_c4vmg"]
+
+[node name="CanvasLayer" type="CanvasLayer"]
+script = ExtResource("1_c4vmg")
+
+[node name="launch" type="Button" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -65.0
+offset_top = 22.0
+offset_right = 65.0
+offset_bottom = 72.0
+grow_horizontal = 2
+focus_mode = 0
+text = "Launch"
+
+[connection signal="pressed" from="launch" to="." method="_on_launch_pressed"]
