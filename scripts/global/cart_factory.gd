@@ -2,6 +2,8 @@
 ## Class to grab part info for carts
 ## class_name CartFactory
 extends Node
+
+# TODO: (not required) to help testing add a get_card method to get a specific cart?
 	
 ## Provided a rarity matching RarityRandomizer.Rarity enum return a cart
 func get_random_cart_by_rarity(

@@ -10,10 +10,6 @@ func _ready():
 	_load_cards()
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
-
 func _load_cart_cards():
 	# TODO: if we allow freezing it would change below
 	for cart_child in cart_cards.get_children():
