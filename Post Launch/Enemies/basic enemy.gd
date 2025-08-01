@@ -5,7 +5,7 @@ class_name BasicEnemy
 var shooting = false
 var level_progress: LevelProgress
 var projectileOffset := 10
-var shot_cooldown := 0.5
+var shot_cooldown := 1
 var time_since_last_shot := 0.0
 var ship: Node2D
 
@@ -37,12 +37,8 @@ func _process(delta):
 
 
 func shoot():
-	if BULLET_SCENE:
-		var shot = BULLET_SCENE.instantiate()
-		shot.global_position = global_position + Vector2(0, projectileOffset)
-		shot.position = Vector2(0, projectileOffset)  # local to enemy
-		add_child(shot)
-
+	var gun = get_node("Gun")
+	gun.shoot(10, BULLET_SCENE)
 
 
 func _on_area_entered(area: Area2D) -> void:

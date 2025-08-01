@@ -1,0 +1,61 @@
+[gd_scene load_steps=4 format=3 uid="uid://datatrsbrqlp6"]
+
+[ext_resource type="Script" uid="uid://dcp4881wiphnj" path="res://scenes/entities/tracks/track_part_1.gd" id="1_ekg5b"]
+
+[sub_resource type="Curve2D" id="Curve2D_q0nch"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -2, -1, 0, 0, 0, 0, 64, 128, 0, 0, 0, 0, 128, 168, 0, 0, 0, 0, 192, 128, 0, 0, 0, 0, 224, 136, 0, 0, 0, 0, 256, 192)
+}
+point_count = 6
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_oxk6s"]
+radius = 14.0357
+
+[node name="TrackPart" type="Node2D"]
+script = ExtResource("1_ekg5b")
+track_speed = 500.0
+
+[node name="grab_detect" type="Button" parent="."]
+modulate = Color(1, 1, 1, 0.454902)
+offset_top = -193.0
+offset_right = 256.0
+focus_mode = 0
+
+[node name="Line2D" type="Line2D" parent="."]
+position = Vector2(0, -192)
+points = PackedVector2Array(0, 0, 64, 128, 128, 168, 192, 128, 224, 136, 256, 192)
+default_color = Color(0.410156, 0.410156, 0.410156, 1)
+
+[node name="coaster_path" type="Path2D" parent="."]
+position = Vector2(0, -192)
+curve = SubResource("Curve2D_q0nch")
+
+[node name="start" type="PathFollow2D" parent="coaster_path"]
+position = Vector2(-2, -1)
+rotation = 1.09789
+
+[node name="track_start" type="Area2D" parent="coaster_path/start"]
+rotation = 1.32109
+collision_layer = 16
+collision_mask = 32
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="coaster_path/start/track_start"]
+shape = SubResource("CircleShape2D_oxk6s")
+
+[node name="end" type="PathFollow2D" parent="coaster_path"]
+position = Vector2(256, 192)
+rotation = 1.05165
+progress = 437.432
+
+[node name="track_end" type="Area2D" parent="coaster_path/end"]
+rotation = 1.32109
+collision_layer = 32
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="coaster_path/end/track_end"]
+shape = SubResource("CircleShape2D_oxk6s")
+
+[connection signal="button_down" from="grab_detect" to="." method="_on_grab_detect_button_down"]
+[connection signal="button_up" from="grab_detect" to="." method="_on_grab_detect_button_up"]
+[connection signal="area_entered" from="coaster_path/end/track_end" to="." method="_on_track_end_area_entered"]
+[connection signal="area_exited" from="coaster_path/end/track_end" to="." method="_on_track_end_area_exited"]

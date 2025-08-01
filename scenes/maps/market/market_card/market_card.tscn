@@ -1,0 +1,57 @@
+[gd_scene load_steps=2 format=3 uid="uid://cdn28awqv7bh7"]
+
+[ext_resource type="Script" uid="uid://b4uif563yamr4" path="res://scenes/maps/market/market_card/market_card.gd" id="1_kp7f8"]
+
+[node name="MarketCard" type="PanelContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+script = ExtResource("1_kp7f8")
+
+[node name="Margins" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 25
+theme_override_constants/margin_top = 25
+theme_override_constants/margin_right = 25
+theme_override_constants/margin_bottom = 25
+
+[node name="Details" type="VBoxContainer" parent="Margins"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="MarginContainer" type="MarginContainer" parent="Margins/Details"]
+layout_mode = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="Margins/Details/MarginContainer"]
+layout_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="Margins/Details/MarginContainer/CenterContainer"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+
+[node name="CostLabel" type="Label" parent="Margins/Details/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+text = "5g"
+horizontal_alignment = 2
+
+[node name="DescriptionContainer" type="MarginContainer" parent="Margins/Details"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Margins/Details/DescriptionContainer"]
+layout_mode = 2
+
+[node name="NameLabel" type="Label" parent="Margins/Details/DescriptionContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = "no data"
+
+[node name="PropertyLabelContainer" type="VBoxContainer" parent="Margins/Details/DescriptionContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3

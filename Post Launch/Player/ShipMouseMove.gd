@@ -10,8 +10,7 @@ var Speed = 100
 
 # Shooting
 var shooting = true
-var projectileOffset = 0
-var shot_cooldown = 2.5  # Seconds
+var shot_cooldown = 0.5  # Seconds
 var time_since_last_shot = 0.0
 
 # Armor
@@ -30,8 +29,7 @@ func _ready():
 
 func _process(delta):
 	if (level_progress and level_progress.speed < 0):
-		if (shooting):
-			shooting = false
+		shooting = false
 	var global_mouse_pos = get_global_mouse_position()
 	global_position.x = global_mouse_pos.x
 	# Movement limits
@@ -45,9 +43,5 @@ func _process(delta):
 
 
 func shoot():
-	if BULLET_SCENE:
-		var shot = BULLET_SCENE.instantiate()
-		shot.global_position = global_position + Vector2(0, projectileOffset)
-		get_tree().current_scene.add_child(shot)
-	else:
-		print("Projectile not assigned!")
+	var gun = get_node("Gun")
+	gun.shoot(-10, BULLET_SCENE)

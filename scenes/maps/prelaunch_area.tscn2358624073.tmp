@@ -1,0 +1,69 @@
+[gd_scene load_steps=5 format=3 uid="uid://crtg2aujnc5rl"]
+
+[ext_resource type="Script" uid="uid://dm30ouip10g0o" path="res://scenes/maps/prelaunch_area.gd" id="1_031nh"]
+[ext_resource type="PackedScene" uid="uid://b2bc0hsiynf81" path="res://scenes/entities/player.tscn" id="3_feoef"]
+[ext_resource type="PackedScene" uid="uid://8tfrb2tmibpr" path="res://scenes/entities/building.tscn" id="3_we6vc"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_we6vc"]
+
+[node name="prelaunch_area" type="Node2D"]
+script = ExtResource("1_031nh")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="bg" type="ColorRect" parent="CanvasLayer"]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.38269, 0.803514, 0.859375, 1)
+
+[node name="ground" type="ColorRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 592.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.292969, 0.113931, 0.0354767, 1)
+
+[node name="groundgrass" type="ColorRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 592.0
+offset_bottom = -36.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.388965, 0.902344, 0.264359, 1)
+
+[node name="launch" type="Button" parent="CanvasLayer"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -65.0
+offset_top = 22.0
+offset_right = 65.0
+offset_bottom = 72.0
+grow_horizontal = 2
+focus_mode = 0
+text = "Launch"
+
+[node name="Player" parent="." instance=ExtResource("3_feoef")]
+position = Vector2(638, 550)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(561, 594)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("WorldBoundaryShape2D_we6vc")
+
+[node name="Building" parent="." instance=ExtResource("3_we6vc")]
+position = Vector2(457, 559)
+
+[connection signal="pressed" from="CanvasLayer/launch" to="." method="_on_launch_pressed"]

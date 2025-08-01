@@ -1,0 +1,31 @@
+[gd_resource type="Resource" script_class="PartInfo" load_steps=6 format=3 uid="uid://bsar2lowe6j8f"]
+
+[ext_resource type="Script" uid="uid://ihc052gicko4" path="res://scripts/resources/property_modifier.gd" id="1_4gmej"]
+[ext_resource type="Script" uid="uid://bluaqh66nedak" path="res://scripts/resources/part_info.gd" id="2_onahp"]
+
+[sub_resource type="Resource" id="Resource_ywq37"]
+script = ExtResource("1_4gmej")
+compounding_type = 0
+affected_property = 2
+amount = 50.0
+metadata/_custom_type_script = "uid://ihc052gicko4"
+
+[sub_resource type="Resource" id="Resource_4gmej"]
+script = ExtResource("1_4gmej")
+compounding_type = 1
+affected_property = 4
+amount = 20.0
+metadata/_custom_type_script = "uid://ihc052gicko4"
+
+[sub_resource type="Resource" id="Resource_onahp"]
+script = ExtResource("1_4gmej")
+compounding_type = 2
+affected_property = 2
+amount = 5.0
+metadata/_custom_type_script = "uid://ihc052gicko4"
+
+[resource]
+script = ExtResource("2_onahp")
+name = "Test Part"
+modifiers = Array[ExtResource("1_4gmej")]([SubResource("Resource_ywq37"), SubResource("Resource_4gmej"), SubResource("Resource_onahp")])
+metadata/_custom_type_script = "uid://bluaqh66nedak"

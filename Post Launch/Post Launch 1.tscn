@@ -1,0 +1,38 @@
+[gd_scene load_steps=7 format=3 uid="uid://b1ib2yg3ob724"]
+
+[ext_resource type="PackedScene" uid="uid://cc7n6b4f4dn4h" path="res://Post Launch/Player/Ship.tscn" id="1_mcgx7"]
+[ext_resource type="Script" uid="uid://cb7aya5joume7" path="res://Post Launch/LevelProgress.gd" id="2_k6qpi"]
+[ext_resource type="PackedScene" uid="uid://ct3ph1qpsisya" path="res://Post Launch/Enemies/Enemy.tscn" id="3_t77fa"]
+[ext_resource type="PackedScene" uid="uid://ka06oh8liyb6" path="res://Post Launch/Enemies/asteroid.tscn" id="5_l76vq"]
+[ext_resource type="Script" uid="uid://xwloo23d48xp" path="res://Post Launch/SecondDebris.gd" id="5_t77fa"]
+[ext_resource type="PackedScene" uid="uid://dipmgw27827tf" path="res://Post Launch/Enemies/long_debris.tscn" id="6_k6qpi"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Ship" parent="." instance=ExtResource("1_mcgx7")]
+position = Vector2(519, 483)
+
+[node name="Node2D" type="Node2D" parent="."]
+position = Vector2(724, 85)
+script = ExtResource("2_k6qpi")
+
+[node name="Enemy" parent="Node2D" instance=ExtResource("3_t77fa")]
+position = Vector2(12, -550)
+
+[node name="Enemy2" parent="Node2D" instance=ExtResource("3_t77fa")]
+position = Vector2(-299, -888)
+
+[node name="Asteroid" parent="Node2D" instance=ExtResource("5_l76vq")]
+position = Vector2(-330, -281)
+
+[node name="Asteroid2" parent="Node2D" instance=ExtResource("5_l76vq")]
+position = Vector2(127, -58)
+
+[node name="Asteroid3" parent="Node2D" instance=ExtResource("5_l76vq")]
+position = Vector2(27, -804)
+
+[node name="Node2D2" type="Node2D" parent="."]
+script = ExtResource("5_t77fa")
+
+[node name="LongDebris" parent="Node2D2" instance=ExtResource("6_k6qpi")]
+position = Vector2(430, 157)

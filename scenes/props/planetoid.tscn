@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://cqaur568cgb1w"]
+
+[ext_resource type="Script" uid="uid://yt6q002kj5cr" path="res://scripts/gravity_field_2d.gd" id="1_2trx7"]
+[ext_resource type="Texture2D" uid="uid://bx2pr8cmryyje" path="res://assets/art/planetoid.png" id="1_eklo6"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_aiq0e"]
+radius = 292.617
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_cfvu2"]
+radius = 1056.0
+
+[node name="Planetoid" type="Node2D"]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="Planetoid" type="Sprite2D" parent="StaticBody2D"]
+position = Vector2(-24, -56)
+scale = Vector2(0.409301, 0.409301)
+texture = ExtResource("1_eklo6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("CircleShape2D_aiq0e")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_mask = 2
+gravity_space_override = 2
+gravity_point = true
+gravity_point_center = Vector2(0, 0)
+gravity_direction = Vector2(0, 0)
+script = ExtResource("1_2trx7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_cfvu2")
