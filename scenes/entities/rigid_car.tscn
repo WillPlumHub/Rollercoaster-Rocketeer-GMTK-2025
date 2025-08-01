@@ -17,6 +17,7 @@ pin_joint = NodePath("RigidBody2D/PinJoint2D")
 [node name="RigidBody2D" type="RigidBody2D" parent="."]
 collision_layer = 0
 collision_mask = 0
+mass = 0.5
 freeze = true
 contact_monitor = true
 max_contacts_reported = 1

@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://debaeg15rk26a"]
+[gd_scene load_steps=17 format=3 uid="uid://debaeg15rk26a"]
 
 [ext_resource type="Script" uid="uid://dm30ouip10g0o" path="res://scenes/maps/prelaunch_area.gd" id="1_0et32"]
 [ext_resource type="PackedScene" uid="uid://datatrsbrqlp6" path="res://scenes/entities/tracks/track_part_2.tscn" id="2_ti75c"]
@@ -11,13 +11,14 @@
 [ext_resource type="PackedScene" uid="uid://cqaur568cgb1w" path="res://scenes/props/planetoid.tscn" id="9_y3ptb"]
 [ext_resource type="Texture2D" uid="uid://bpie22j2ha5k" path="res://assets/art/Smoke.png" id="9_yrt3e"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_aobmw"]
-size = Vector2(10000, 420)
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_yrt3e"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_0et32"]
 size = Vector2(10000, 50)
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_we6vc"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_spx7k"]
 
 [sub_resource type="Curve" id="Curve_spx7k"]
 _limits = [0.1, 1.0, 0.0, 1.0]
@@ -65,8 +66,8 @@ collision_mask = 2
 gravity_space_override = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Ground/Area2D"]
-position = Vector2(0, 290)
-shape = SubResource("RectangleShape2D_aobmw")
+position = Vector2(-32, -160)
+shape = SubResource("WorldBoundaryShape2D_yrt3e")
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="Ground"]
 position = Vector2(-569, 22)
@@ -87,7 +88,7 @@ gravity_space_override = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Dest/Area2D"]
 position = Vector2(0, 290)
-shape = SubResource("RectangleShape2D_aobmw")
+shape = SubResource("WorldBoundaryShape2D_spx7k")
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="Dest"]
 position = Vector2(-569, 22)
@@ -115,8 +116,11 @@ position = Vector2(-384, 136)
 [node name="car" parent="track_part_4/coaster_path" index="2"]
 position = Vector2(208.001, 0)
 
+[node name="RigidBody2D" parent="track_part_4/coaster_path/car" index="0"]
+mass = 1.0
+
 [node name="Camera2D" type="Camera2D" parent="track_part_4/coaster_path/car/RigidBody2D" index="3"]
-zoom = Vector2(0.235, 0.235)
+zoom = Vector2(0.5, 0.5)
 
 [node name="Thrusters" type="Node2D" parent="track_part_4/coaster_path/car/RigidBody2D" index="4"]
 script = ExtResource("8_ti75c")
