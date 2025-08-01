@@ -3,6 +3,8 @@
 ## class_name EngineCartFactory
 extends Node
 
+# TODO: (not required) to help testing add a get_engine_cart method to get a specific engine_cart?
+
 ## Provided a rarity matching RarityRandomizer.Rarity enum return a engine_cart
 func get_random_engine_cart_by_rarity(
 	rarity: int = 0

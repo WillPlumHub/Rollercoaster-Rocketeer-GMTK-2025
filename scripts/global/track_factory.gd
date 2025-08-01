@@ -3,6 +3,8 @@
 ## class_name TrackFactory
 extends Node
 
+# TODO: (not required) to help testing add a get_track method to get a specific track?
+
 ## Provided a rarity matching RarityRandomizer.Rarity enum return a track
 func get_random_track_by_rarity(
 	rarity: int = 0
