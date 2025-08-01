@@ -24,8 +24,13 @@ class_name PlayerInfo extends Resource
 # TODO: add engine_cart to calculations.
 func calculate_final_launch_stats() -> LaunchStats:
 	var new_launch_stats: LaunchStats = base_stats.duplicate(true) if base_stats != null else LaunchStats.new()
-	# set base to 100%
+	# set base to 100% for percentage_launch_stats
 	var additive_percentage_launch_stats: LaunchStats = LaunchStats.new(
+		1.0,
+		1.0,
+		1.0,
+		1.0,
+		1.0,
 		1.0,
 		1.0,
 		1.0,
@@ -33,26 +38,39 @@ func calculate_final_launch_stats() -> LaunchStats:
 		1.0
 	)
 	var multiplicative_launch_stats: LaunchStats = LaunchStats.new()
+	var had_multiplicative_value: bool = false
+	for engine_cart_modifier in engine_cart.modifiers:
+		match engine_cart_modifier.compounding_type:
+			PropertyModifier.CompoundingType.ADDITIVE_FLAT:
+				new_launch_stats.add_property_modifier(engine_cart_modifier)
+			PropertyModifier.CompoundingType.ADDITIVE_PERCENTAGE:
+				additive_percentage_launch_stats.add_property_modifier(engine_cart_modifier)
+			PropertyModifier.CompoundingType.MULTIPLICATIVE:
+				had_multiplicative_value = true
+				multiplicative_launch_stats.add_property_modifier(engine_cart_modifier)
 	for placed_track in placed_tracks:
 		for track_modifier in placed_track.modifiers:
-			match track_modifier.CompoundingType:
+			match track_modifier.compounding_type:
 				PropertyModifier.CompoundingType.ADDITIVE_FLAT:
 					new_launch_stats.add_property_modifier(track_modifier)
 				PropertyModifier.CompoundingType.ADDITIVE_PERCENTAGE:
 					additive_percentage_launch_stats.add_property_modifier(track_modifier)
 				PropertyModifier.CompoundingType.MULTIPLICATIVE:
+					had_multiplicative_value = true
 					multiplicative_launch_stats.add_property_modifier(track_modifier)
 	for linked_cart in linked_carts:
 		for cart_modifier in linked_cart.modifiers:
-			match cart_modifier.CompoundingType:
+			match cart_modifier.compounding_type:
 				PropertyModifier.CompoundingType.ADDITIVE_FLAT:
 					new_launch_stats.add_property_modifier(cart_modifier)
 				PropertyModifier.CompoundingType.ADDITIVE_PERCENTAGE:
 					additive_percentage_launch_stats.add_property_modifier(cart_modifier)
 				PropertyModifier.CompoundingType.MULTIPLICATIVE:
+					had_multiplicative_value = true
 					multiplicative_launch_stats.add_property_modifier(cart_modifier)
 	new_launch_stats.multiply(additive_percentage_launch_stats)
-	new_launch_stats.multiply(multiplicative_launch_stats)
+	if had_multiplicative_value:
+		new_launch_stats.multiply(multiplicative_launch_stats)
 	current_stats = new_launch_stats
 	return new_launch_stats
 
