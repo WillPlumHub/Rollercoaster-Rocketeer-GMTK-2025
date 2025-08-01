@@ -21,6 +21,7 @@ class_name PlayerInfo extends Resource
 ## The carts you have currently linked (should be a subset of owned carts)
 @export var linked_carts: Array[PartInfo] = []
 
+
 func calculate_final_launch_stats() -> LaunchStats:
 	var new_launch_stats: LaunchStats = base_stats.duplicate(true) if base_stats != null else LaunchStats.new()
 	var additive_percentage_launch_stats: LaunchStats = LaunchStats.new()
