@@ -61,17 +61,18 @@ func _process(delta: float) -> void:
 			track_attached.pass_on_train_car(self, speed)
 			# queue_free()
 		else:
-			rigid_body.reparent(get_tree().current_scene)
+			# rigid_body.reparent(get_tree().current_scene)
 			rigid_body.sleeping = false
 			rigid_body.freeze = false
 			rigid_body.linear_velocity =  Vector2(cos(rotation), sin(rotation)) * speed * 2.0
 			rigid_body.collision_layer = collision_layer
 			rigid_body.collision_mask = collision_mask
-			queue_free()
-			_join_bodies.call_deferred()
+			if join_to:
+				Car._join_bodies.call_deferred(pin_joint, rigid_body, join_to.rigid_body)
+			# queue_free()
+			_init = false
 	
 
-func _join_bodies():
-	if join_to && pin_joint:
-		pin_joint.node_a = rigid_body.get_path()
-		pin_joint.node_b = join_to.rigid_body.get_path()
+static func _join_bodies(joint: Joint2D, bodyA: PhysicsBody2D, bodyB: PhysicsBody2D):
+	joint.node_a = bodyA.get_path()
+	joint.node_b = bodyB.get_path()
