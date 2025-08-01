@@ -1,6 +1,7 @@
-[gd_scene load_steps=17 format=3 uid="uid://debaeg15rk26a"]
+[gd_scene load_steps=18 format=3 uid="uid://debaeg15rk26a"]
 
 [ext_resource type="Script" uid="uid://dm30ouip10g0o" path="res://scenes/maps/prelaunch_area.gd" id="1_0et32"]
+[ext_resource type="PackedScene" uid="uid://b8unyji1o4s1f" path="res://scenes/UI/hud.tscn" id="2_spx7k"]
 [ext_resource type="PackedScene" uid="uid://datatrsbrqlp6" path="res://scenes/entities/tracks/track_part_2.tscn" id="2_ti75c"]
 [ext_resource type="PackedScene" uid="uid://cy4mepircebey" path="res://scenes/entities/tracks/track_part_1.tscn" id="3_y3ptb"]
 [ext_resource type="PackedScene" uid="uid://daumqxv4g2jxy" path="res://scenes/entities/tracks/track_part_3.tscn" id="5_spx7k"]
@@ -28,22 +29,10 @@ point_count = 2
 [sub_resource type="Gradient" id="Gradient_pv1k2"]
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
 
-[node name="prelaunch_area" type="Node2D"]
+[node name="prelaunch_area2" type="Node2D"]
 script = ExtResource("1_0et32")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="launch" type="Button" parent="CanvasLayer"]
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -65.0
-offset_top = 22.0
-offset_right = 65.0
-offset_bottom = 72.0
-grow_horizontal = 2
-focus_mode = 0
-text = "Launch"
+[node name="HUD" parent="." instance=ExtResource("2_spx7k")]
 
 [node name="TrackPart" parent="." instance=ExtResource("2_ti75c")]
 position = Vector2(200, 336)
@@ -157,8 +146,6 @@ position = Vector2(5456, -2912)
 
 [node name="Planetoid3" parent="." instance=ExtResource("9_y3ptb")]
 position = Vector2(6944, -1208)
-
-[connection signal="pressed" from="CanvasLayer/launch" to="." method="_on_launch_pressed"]
 
 [editable path="track_part_4"]
 [editable path="track_part_4/coaster_path/car"]

@@ -30,6 +30,11 @@ class_name PartInfo extends Resource
 		modifiers = new_modifiers
 		emit_changed()
 
+func debug_print():
+	print("part_name: ", name)
+	for modifier in modifiers:
+		modifier.debug_print()
+
 func _init(
 	p_name: String = "",
 	p_image: Texture = null,

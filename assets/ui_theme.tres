@@ -1,0 +1,30 @@
+[gd_resource type="Theme" load_steps=5 format=3 uid="uid://myuj1yo75kir"]
+
+[ext_resource type="FontFile" uid="uid://byr5ua7821djh" path="res://assets/Oswald-VariableFont_wght.ttf" id="1_wf4hb"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rv7sn"]
+bg_color = Color(0.214844, 0.214844, 0.214844, 0.843137)
+border_width_left = 3
+border_width_right = 3
+border_color = Color(0.6875, 0.6875, 0.6875, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wf4hb"]
+bg_color = Color(0.13, 0.13, 0.13, 0.843137)
+border_width_left = 3
+border_width_right = 3
+border_color = Color(0.269531, 0.269531, 0.269531, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n3ym3"]
+bg_color = Color(0.214844, 0.214844, 0.214844, 0.843137)
+border_width_left = 3
+border_width_right = 3
+border_color = Color(0.953125, 0.739335, 0.171265, 1)
+
+[resource]
+Button/colors/font_pressed_color = Color(0.952941, 0.741176, 0.172549, 1)
+Button/fonts/font = ExtResource("1_wf4hb")
+Button/styles/disabled = null
+Button/styles/focus = null
+Button/styles/hover = SubResource("StyleBoxFlat_rv7sn")
+Button/styles/normal = SubResource("StyleBoxFlat_wf4hb")
+Button/styles/pressed = SubResource("StyleBoxFlat_n3ym3")
