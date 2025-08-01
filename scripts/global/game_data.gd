@@ -50,11 +50,11 @@ func _ready():
 	var final_stats = player_info.calculate_final_launch_stats()
 	print("Final Launch Stats:")
 	print("Speed: ", final_stats.speed)
-	print("Acceleration: ", final_stats.acceleration)
+	#print("Acceleration: ", final_stats.acceleration)
 
 	# === USAGE EXAMPLE ===
 	# Access calculated stats during launch or gameplay:
 	var launch_speed = player_info.current_stats.speed
-	var launch_force = player_info.current_stats.acceleration
+	#var launch_force = player_info.current_stats.acceleration
 	print("Using launch speed: ", launch_speed)
-	print("Using launch force: ", launch_force)
+	#print("Using launch force: ", launch_force)
