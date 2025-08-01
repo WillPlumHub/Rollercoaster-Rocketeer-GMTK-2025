@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://di4vh4401voyy"]
 
 [ext_resource type="Script" uid="uid://dcp4881wiphnj" path="res://scenes/entities/tracks/track_part_1.gd" id="1_dlh7h"]
-[ext_resource type="PackedScene" uid="uid://dxfqyqp4acdt0" path="res://scenes/entities/rigid_car.tscn" id="2_t8kqr"]
+[ext_resource type="Script" uid="uid://cp2pdp7mh6isl" path="res://scripts/car_spawner.gd" id="2_g6r8f"]
 
 [sub_resource type="Curve2D" id="Curve2D_q0nch"]
 _data = {
@@ -52,27 +52,8 @@ collision_mask = 16
 [node name="CollisionShape2D" type="CollisionShape2D" parent="coaster_path/end/track_end"]
 shape = SubResource("CircleShape2D_oxk6s")
 
-[node name="car" parent="coaster_path" node_paths=PackedStringArray("join_to") instance=ExtResource("2_t8kqr")]
-position = Vector2(208.001, 0)
-progress = 208.0
-join_to = NodePath("../car2")
-
-[node name="car2" parent="coaster_path" node_paths=PackedStringArray("join_to") instance=ExtResource("2_t8kqr")]
-position = Vector2(156, 0)
-progress = 156.0
-join_to = NodePath("../car3")
-
-[node name="car3" parent="coaster_path" node_paths=PackedStringArray("join_to") instance=ExtResource("2_t8kqr")]
-position = Vector2(103.996, 0)
-progress = 104.0
-join_to = NodePath("../car4")
-
-[node name="car4" parent="coaster_path" node_paths=PackedStringArray("join_to") instance=ExtResource("2_t8kqr")]
-position = Vector2(51.9907, 0)
-progress = 52.0
-join_to = NodePath("../car5")
-
-[node name="car5" parent="coaster_path" instance=ExtResource("2_t8kqr")]
+[node name="CarSpawner" type="Node2D" parent="coaster_path"]
+script = ExtResource("2_g6r8f")
 
 [connection signal="button_down" from="grab_detect" to="." method="_on_grab_detect_button_down"]
 [connection signal="button_up" from="grab_detect" to="." method="_on_grab_detect_button_up"]

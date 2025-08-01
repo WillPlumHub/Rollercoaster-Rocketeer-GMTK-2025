@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://debaeg15rk26a"]
+[gd_scene load_steps=14 format=3 uid="uid://debaeg15rk26a"]
 
 [ext_resource type="Script" uid="uid://dm30ouip10g0o" path="res://scenes/maps/prelaunch_area.gd" id="1_0et32"]
 [ext_resource type="PackedScene" uid="uid://dj7lyp4r8k7eh" path="res://scenes/UI/hud.tscn" id="2_spx7k"]
@@ -8,9 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://dbwbnuxjh618g" path="res://scenes/entities/tracks/track_part_5.tscn" id="6_pv1k2"]
 [ext_resource type="PackedScene" uid="uid://di4vh4401voyy" path="res://scenes/entities/tracks/track_part_begin.tscn" id="7_0et32"]
 [ext_resource type="PackedScene" uid="uid://livv5577jy07" path="res://scenes/entities/tracks/track_part_4.tscn" id="7_ejv5p"]
-[ext_resource type="Script" uid="uid://y1g1g0ritebn" path="res://scripts/thrusters.gd" id="8_ti75c"]
 [ext_resource type="PackedScene" uid="uid://i5aogpbxnfau" path="res://scenes/props/planetoid.tscn" id="9_y3ptb"]
-[ext_resource type="Texture2D" uid="uid://bpie22j2ha5k" path="res://assets/art/Smoke.png" id="9_yrt3e"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_yrt3e"]
 
@@ -20,14 +18,6 @@ size = Vector2(10000, 50)
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_we6vc"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_spx7k"]
-
-[sub_resource type="Curve" id="Curve_spx7k"]
-_limits = [0.1, 1.0, 0.0, 1.0]
-_data = [Vector2(0.0326193, 0.1), 0.0, 0.267521, 0, 0, Vector2(1, 1), -0.326749, 0.0, 0, 0]
-point_count = 2
-
-[sub_resource type="Gradient" id="Gradient_pv1k2"]
-colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
 
 [node name="prelaunch_area" type="Node2D"]
 script = ExtResource("1_0et32")
@@ -102,42 +92,6 @@ position = Vector2(-136, 328)
 [node name="track_part_4" parent="." instance=ExtResource("7_0et32")]
 position = Vector2(-384, 136)
 
-[node name="car" parent="track_part_4/coaster_path" index="2"]
-position = Vector2(208.001, 0)
-
-[node name="RigidBody2D" parent="track_part_4/coaster_path/car" index="0"]
-mass = 1.0
-
-[node name="Camera2D" type="Camera2D" parent="track_part_4/coaster_path/car/RigidBody2D" index="3"]
-zoom = Vector2(0.5, 0.5)
-
-[node name="Thrusters" type="Node2D" parent="track_part_4/coaster_path/car/RigidBody2D" index="4"]
-script = ExtResource("8_ti75c")
-metadata/_custom_type_script = "uid://y1g1g0ritebn"
-
-[node name="CPUParticles2D" type="CPUParticles2D" parent="track_part_4/coaster_path/car/RigidBody2D/Thrusters"]
-amount = 16
-texture = ExtResource("9_yrt3e")
-direction = Vector2(0, 1)
-spread = 10.0
-gravity = Vector2(0, 0)
-initial_velocity_min = 146.95
-initial_velocity_max = 146.95
-scale_amount_curve = SubResource("Curve_spx7k")
-color_ramp = SubResource("Gradient_pv1k2")
-
-[node name="HealthComponent" parent="track_part_4/coaster_path/car/RigidBody2D" index="5"]
-max_health = 1000
-
-[node name="car2" parent="track_part_4/coaster_path" index="3"]
-position = Vector2(156, 0)
-
-[node name="car3" parent="track_part_4/coaster_path" index="4"]
-position = Vector2(103.996, 0)
-
-[node name="car4" parent="track_part_4/coaster_path" index="5"]
-position = Vector2(51.9907, 0)
-
 [node name="Planetoid" parent="." instance=ExtResource("9_y3ptb")]
 position = Vector2(2520, -1712)
 
@@ -146,6 +100,3 @@ position = Vector2(5456, -2912)
 
 [node name="Planetoid3" parent="." instance=ExtResource("9_y3ptb")]
 position = Vector2(6944, -1208)
-
-[editable path="track_part_4"]
-[editable path="track_part_4/coaster_path/car"]
