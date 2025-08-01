@@ -5,13 +5,12 @@ class_name CarSpawner
 const CAR_SCENE = preload("res://scenes/entities/rigid_car.tscn")
 const SEPERATION = 52.0
 
-@export var cart_count = 5
+@export var override_cart_count:int = 5
 var _carts: Array[Car] = []
 
 func _enter_tree() -> void:
 	if Engine.is_editor_hint():
-		var info = GameData.player_info
-		#var cart_count = info.linked_carts
+		var cart_count = override_cart_count
 		for i in range(cart_count):
 			var c = CAR_SCENE.instantiate()
 			c.position = position + Vector2.RIGHT * SEPERATION * i
@@ -23,7 +22,11 @@ func _ready() -> void:
 	if !Engine.is_editor_hint():
 		# Prepare to spawn the carts
 		var info = GameData.player_info
-		#var cart_count = info.linked_carts
+		#var launch_info = info.calculate_final_launch_stats()
+		var launch_info = info.base_stats
+		var cart_count = info.linked_carts.size()
+		if override_cart_count > 0:
+			cart_count = override_cart_count
 		for i in range(cart_count):
 			var c = CAR_SCENE.instantiate()
 			if owner is TrackPart:
@@ -32,8 +35,14 @@ func _ready() -> void:
 			_carts.append(c)
 			c.progress = SEPERATION * float(i)
 			if i == cart_count-1:
-				c.rigid_body.add_child(Camera2D.new())
-				c.rigid_body.add_child(Thrusters.new())
+				var cam = Camera2D.new()
+				cam.zoom = Vector2.ONE * 0.24
+				c.rigid_body.add_child(cam)
+
+				var th = Thrusters.new()
+				th.fuel = launch_info.thruster_fuel
+				th.power = launch_info.thruster_power / 100.0
+				c.rigid_body.add_child(th)
 		
 		# Join the cars together
 		var raang = range(_carts.size()-1)
