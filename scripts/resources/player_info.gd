@@ -23,7 +23,14 @@ class_name PlayerInfo extends Resource
 
 func calculate_final_launch_stats() -> LaunchStats:
 	var new_launch_stats: LaunchStats = base_stats.duplicate(true) if base_stats != null else LaunchStats.new()
-	var additive_percentage_launch_stats: LaunchStats = LaunchStats.new()
+	# set base to 100%
+	var additive_percentage_launch_stats: LaunchStats = LaunchStats.new(
+		1.0,
+		1.0,
+		1.0,
+		1.0,
+		1.0
+	)
 	var multiplicative_launch_stats: LaunchStats = LaunchStats.new()
 	for placed_track in placed_tracks:
 		for track_modifier in placed_track.modifiers:

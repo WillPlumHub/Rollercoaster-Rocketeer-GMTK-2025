@@ -32,8 +32,9 @@ class_name PartInfo extends Resource
 
 func _init(
 	p_name: String = "",
-	image: Texture = null,
+	p_image: Texture = null,
 	p_modifiers: Array[PropertyModifier] = []
 ):
 	name = p_name
+	image = p_image
 	modifiers = p_modifiers
