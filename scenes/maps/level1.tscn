@@ -1,0 +1,77 @@
+[gd_scene load_steps=10 format=3 uid="uid://debaeg15rk26a"]
+
+[ext_resource type="Script" uid="uid://dm30ouip10g0o" path="res://scenes/maps/prelaunch_area.gd" id="1_0et32"]
+[ext_resource type="PackedScene" uid="uid://datatrsbrqlp6" path="res://scenes/entities/tracks/track_part_2.tscn" id="2_ti75c"]
+[ext_resource type="PackedScene" uid="uid://cy4mepircebey" path="res://scenes/entities/tracks/track_part_1.tscn" id="3_y3ptb"]
+[ext_resource type="PackedScene" uid="uid://daumqxv4g2jxy" path="res://scenes/entities/tracks/track_part_3.tscn" id="5_spx7k"]
+[ext_resource type="PackedScene" uid="uid://dbwbnuxjh618g" path="res://scenes/entities/tracks/track_part_5.tscn" id="6_pv1k2"]
+[ext_resource type="PackedScene" uid="uid://livv5577jy07" path="res://scenes/entities/tracks/track_part_4.tscn" id="7_ejv5p"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_0et32"]
+size = Vector2(10000, 50)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_we6vc"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_aobmw"]
+size = Vector2(10000, 1000)
+
+[node name="prelaunch_area" type="Node2D"]
+script = ExtResource("1_0et32")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="launch" type="Button" parent="CanvasLayer"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -65.0
+offset_top = 22.0
+offset_right = 65.0
+offset_bottom = 72.0
+grow_horizontal = 2
+focus_mode = 0
+text = "Launch"
+
+[node name="TrackPart" parent="." instance=ExtResource("2_ti75c")]
+position = Vector2(128, 312)
+
+[node name="coaster_part" parent="." instance=ExtResource("3_y3ptb")]
+position = Vector2(93, 579)
+track_type = 1
+
+[node name="coaster_part5" parent="." instance=ExtResource("3_y3ptb")]
+position = Vector2(864, 531)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(561, 594)
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="StaticBody2D"]
+position = Vector2(-569, 22)
+mesh = SubResource("QuadMesh_0et32")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("WorldBoundaryShape2D_we6vc")
+
+[node name="TrackPart2" parent="." instance=ExtResource("5_spx7k")]
+position = Vector2(440, 288)
+
+[node name="track_part_1" parent="." instance=ExtResource("6_pv1k2")]
+position = Vector2(784, 320)
+
+[node name="track_part_2" parent="." instance=ExtResource("7_ejv5p")]
+position = Vector2(800, 192)
+
+[node name="track_part_3" parent="." instance=ExtResource("7_ejv5p")]
+position = Vector2(520, 384)
+
+[node name="Area2D" type="Area2D" parent="."]
+visible = false
+position = Vector2(32, 184)
+collision_layer = 0
+collision_mask = 2
+gravity_space_override = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_aobmw")
+
+[connection signal="pressed" from="CanvasLayer/launch" to="." method="_on_launch_pressed"]
