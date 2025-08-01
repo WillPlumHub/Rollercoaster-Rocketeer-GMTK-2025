@@ -1,6 +1,6 @@
 [gd_scene load_steps=16 format=3 uid="uid://d27wma8ot5lbi"]
 
-[ext_resource type="Texture2D" uid="uid://cv0r7hvbh08kk" path="res://icon.svg" id="1_6aise"]
+[ext_resource type="Texture2D" uid="uid://mm0ekwsn7kak" path="res://icon.svg" id="1_6aise"]
 [ext_resource type="Script" uid="uid://chodx6w23j05t" path="res://scenes/test/test_body.gd" id="1_rlarx"]
 [ext_resource type="Script" uid="uid://y1g1g0ritebn" path="res://scripts/thrusters.gd" id="2_ajmqp"]
 [ext_resource type="Script" uid="uid://lets3pwxygq1" path="res://scripts/health_component.gd" id="3_5fnsx"]
