@@ -3,12 +3,12 @@
 [ext_resource type="Script" uid="uid://h4voga0pd62" path="res://scenes/entities/car.gd" id="1_xmqho"]
 [ext_resource type="Script" uid="uid://lets3pwxygq1" path="res://scripts/health_component.gd" id="2_sypbk"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_xmqho"]
-size = Vector2(48, 16)
-
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_xmqho"]
 
 [node name="car" type="PathFollow2D" node_paths=PackedStringArray("rigid_body", "pin_joint", "health_component")]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xmqho"]
+size = Vector2(64, 32)
+
 script = ExtResource("1_xmqho")
 collision_layer = 2
 rigid_body = NodePath("RigidBody2D")
@@ -23,17 +23,18 @@ freeze = true
 contact_monitor = true
 max_contacts_reported = 1
 
+[node name="MeshInstance2D" type="MeshInstance2D" parent="RigidBody2D"]
+position = Vector2(0, -8)
+scale = Vector2(80, 24)
+mesh = SubResource("CapsuleMesh_xmqho")
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
 position = Vector2(0, -8)
 shape = SubResource("RectangleShape2D_xmqho")
 
-[node name="MeshInstance2D" type="MeshInstance2D" parent="RigidBody2D"]
-position = Vector2(0, -8)
-scale = Vector2(48, 8)
-mesh = SubResource("CapsuleMesh_xmqho")
-
 [node name="PinJoint2D" type="PinJoint2D" parent="RigidBody2D"]
-position = Vector2(-24, -8)
+position = Vector2(-40, -8)
+rotation = 1.57079
 node_a = NodePath("..")
 
 [node name="HealthComponent" type="Node" parent="RigidBody2D"]

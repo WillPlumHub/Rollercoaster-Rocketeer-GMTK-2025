@@ -1,6 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://daumqxv4g2jxy"]
+[gd_scene load_steps=7 format=3 uid="uid://daumqxv4g2jxy"]
 
 [ext_resource type="Script" uid="uid://dcp4881wiphnj" path="res://scenes/entities/tracks/track_part_1.gd" id="1_me4sk"]
+[ext_resource type="PackedScene" uid="uid://b7p8cmat2ofin" path="res://scenes/entities/tracks/taylor_test/track_art.tscn" id="2_viluo"]
+[ext_resource type="StyleBox" uid="uid://b747xg5ip3eec" path="res://scenes/entities/tracks/taylor_test/styles/track_3_mask.tres" id="3_7ui7i"]
+[ext_resource type="Texture2D" uid="uid://b7drtkvp6a06f" path="res://scenes/entities/tracks/taylor_test/images/CoasterTrack3.png" id="3_flma3"]
 
 [sub_resource type="Curve2D" id="Curve2D_q0nch"]
 _data = {
@@ -20,8 +23,10 @@ modulate = Color(1, 1, 1, 0.454902)
 offset_top = -320.0
 offset_right = 256.0
 focus_mode = 0
+flat = true
 
 [node name="Line2D" type="Line2D" parent="."]
+visible = false
 position = Vector2(0, -192)
 points = PackedVector2Array(0, 0, 96, 72, 184, 80, 224, 24, 208, -48, 136, -80, 96, -64, 64, -32, 64, 40, 112, 96, 192, 136, 256, 192)
 default_color = Color(0.410156, 0.410156, 0.410156, 1)
@@ -54,6 +59,19 @@ collision_mask = 16
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="coaster_path/end/track_end"]
 shape = SubResource("CircleShape2D_oxk6s")
+
+[node name="TrackArt" parent="." node_paths=PackedStringArray("ground_marker", "left_beam_marker", "right_beam_marker") instance=ExtResource("2_viluo")]
+unique_name_in_owner = true
+offset_top = -299.0
+offset_right = 256.0
+offset_bottom = 172.0
+ground_marker = NodePath(".")
+left_beam_marker = NodePath("../coaster_path/start")
+right_beam_marker = NodePath("../coaster_path/end")
+is_right_connected = false
+style_box_mask = ExtResource("3_7ui7i")
+debug_mask_layer = false
+track_path_art_behind_texture = ExtResource("3_flma3")
 
 [connection signal="button_down" from="grab_detect" to="." method="_on_grab_detect_button_down"]
 [connection signal="button_up" from="grab_detect" to="." method="_on_grab_detect_button_up"]
