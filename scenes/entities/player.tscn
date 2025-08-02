@@ -1,8 +1,45 @@
-[gd_scene load_steps=5 format=3 uid="uid://b2bc0hsiynf81"]
+[gd_scene load_steps=11 format=3 uid="uid://b2bc0hsiynf81"]
 
 [ext_resource type="Script" uid="uid://c07qc025g5504" path="res://scenes/entities/player.gd" id="1_ucweq"]
 [ext_resource type="Script" uid="uid://c018cvjugx7ox" path="res://camera.gd" id="2_1ie0h"]
 [ext_resource type="Texture2D" uid="uid://mm0ekwsn7kak" path="res://icon.svg" id="2_08t41"]
+[ext_resource type="Texture2D" uid="uid://dhqkikn1funhn" path="res://assets/art/delirun.png" id="2_42nxq"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5u6hq"]
+atlas = ExtResource("2_42nxq")
+region = Rect2(0, 0, 400, 400)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d4qa6"]
+atlas = ExtResource("2_42nxq")
+region = Rect2(400, 0, 400, 400)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ss7kx"]
+atlas = ExtResource("2_42nxq")
+region = Rect2(800, 0, 400, 400)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dnykm"]
+atlas = ExtResource("2_42nxq")
+region = Rect2(1200, 0, 400, 400)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_c5rqy"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5u6hq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d4qa6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ss7kx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dnykm")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0qees"]
 size = Vector2(50, 50)
@@ -13,6 +50,11 @@ collision_mask = 1024
 script = ExtResource("1_ucweq")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.21, 0.21)
+sprite_frames = SubResource("SpriteFrames_c5rqy")
+autoplay = "default"
+frame = 1
+frame_progress = 0.0937412
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_0qees")
@@ -25,6 +67,7 @@ position_smoothing_enabled = true
 script = ExtResource("2_1ie0h")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(5, 2)
 texture = ExtResource("2_08t41")
 

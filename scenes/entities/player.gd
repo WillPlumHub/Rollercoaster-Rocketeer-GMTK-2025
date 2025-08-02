@@ -3,13 +3,8 @@ extends CharacterBody2D
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var interaction_detector: Area2D = $InteractionDetector
 
-
 const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
-
-
-
-
 
 func _unhandled_input(event: InputEvent) -> void:
 	if Input.is_action_just_pressed("prelaunch_interact"):
@@ -21,6 +16,13 @@ func _unhandled_input(event: InputEvent) -> void:
 func _physics_process(delta: float) -> void:
 
 	var direction := Input.get_axis("prelaunch_left", "prelaunch_right")
+	
+	animated_sprite_2d.speed_scale = abs(direction)
+	if direction > 0:
+		animated_sprite_2d.flip_h = false
+	if direction < 0:
+		animated_sprite_2d.flip_h = true
+		
 	if direction:
 		velocity.x = direction * SPEED
 	else:
