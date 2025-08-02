@@ -5,7 +5,7 @@ class_name LaunchStats extends Resource
 ## IMPORTANT NOTE: WHEN PROPERTY LIST IS UPDATED UPDATE THE FOLLOWING:
 ## enum AffectedProperty 
 ## affected_property_data_lookup and 
-## add, multiply and _init functions
+## add, multiply, debug_print, get_percentage_base, and _init functions
 
 @export var speed: float = 0.0
 @export var fun: float = 0.0
@@ -47,10 +47,28 @@ static var affected_property_data_lookup: Dictionary[AffectedProperty, PropertyD
 	AffectedProperty.THROUGH_GUN: PropertyData.new("Electro Orb", Color.SKY_BLUE, "through_gun")
 }
 
+static func get_percentage_base() -> LaunchStats:
+	# set all starting stats to 1 to represent 100%
+	return LaunchStats.new(
+		1.0, # speed
+		1.0, # fun
+		1.0, # gold
+		1.0, # package_count
+		1.0, # passenger_count
+		1.0, # thruster_power
+		1.0, # thruster_fuel
+		1.0, # armor
+		1.0, # normal_gun
+		1.0  # through_gun
+	)
+
 func add_property_modifier(mod: PropertyModifier):
-	var property_path = affected_property_data_lookup[mod.affected_property].property_path
+	var property_data: LaunchStats.PropertyData = affected_property_data_lookup[mod.affected_property]
+	var property_path: String = property_data.property_path
 	var current: float = get(property_path)
-	set(property_path, current + mod.amount)
+	var scale: float = 0.01 if mod.compounding_type == PropertyModifier.CompoundingType.ADDITIVE_PERCENTAGE else 1.0
+	var final_value: float = current + mod.amount * scale
+	set(property_path, final_value)
 
 func add(other: LaunchStats):
 	if other == null:
@@ -103,7 +121,17 @@ func _init(
 	normal_gun = p_normal_gun
 	through_gun = p_through_gun
 
-
+func debug_print():
+	print("speed: ", speed)
+	print("fun: ", fun)
+	print("gold: ", gold)
+	print("package_count: ", package_count)
+	print("passenger_count: ", passenger_count)
+	print("thruster_power: ", thruster_power)
+	print("thruster_fuel: ", thruster_fuel)
+	print("armor: ", armor)
+	print("normal_gun: ", normal_gun)
+	print("through_gun: ", through_gun)
 
 ## This is used to quickly grab display text/color/path
 class PropertyData extends Resource:
