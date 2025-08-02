@@ -1,0 +1,153 @@
+[gd_scene load_steps=8 format=3 uid="uid://csdj3xnqhungl"]
+
+[ext_resource type="Theme" uid="uid://wios74ose78t" path="res://assets/ui_theme.tres" id="1_8cf1f"]
+[ext_resource type="Script" uid="uid://cc0yt770nm3bk" path="res://scenes/UI/you_died.gd" id="2_8cf1f"]
+[ext_resource type="Shader" uid="uid://drdhf2mbaim50" path="res://scenes/UI/space.gdshader" id="3_4mtli"]
+[ext_resource type="PackedScene" uid="uid://lvbj5aq6xm08" path="res://scenes/props/menu_bg_floating_obj.tscn" id="4_33ace"]
+[ext_resource type="FontFile" uid="uid://byr5ua7821djh" path="res://assets/Oswald-VariableFont_wght.ttf" id="5_2jb0c"]
+[ext_resource type="PackedScene" uid="uid://bklsq5dgkbhdd" path="res://scenes/UI/custom_button.tscn" id="6_1r4tr"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2un8v"]
+shader = ExtResource("3_4mtli")
+shader_parameter/bg_color = Color(0, 0, 0, 1)
+
+[node name="YouDied" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_8cf1f")
+script = ExtResource("2_8cf1f")
+
+[node name="bg" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_2un8v")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="background_itemes" type="Control" parent="."]
+visible = false
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="menu_bg_floating_obj" parent="background_itemes" instance=ExtResource("4_33ace")]
+layout_mode = 0
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 61.0
+offset_top = 37.0
+offset_right = 287.0
+offset_bottom = 164.0
+grow_horizontal = 1
+grow_vertical = 1
+
+[node name="menu_bg_floating_obj2" parent="background_itemes" instance=ExtResource("4_33ace")]
+layout_mode = 0
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 22.0
+offset_top = 373.0
+offset_right = 357.0
+offset_bottom = 561.0
+grow_horizontal = 1
+grow_vertical = 1
+
+[node name="menu_bg_floating_obj3" parent="background_itemes" instance=ExtResource("4_33ace")]
+layout_mode = 0
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 272.0
+offset_top = 328.0
+offset_right = 1193.0
+offset_bottom = 845.0
+grow_horizontal = 1
+grow_vertical = 1
+
+[node name="menu_bg_floating_obj4" parent="background_itemes" instance=ExtResource("4_33ace")]
+layout_mode = 0
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 788.0
+offset_top = -18.0
+offset_right = 1258.0
+offset_bottom = 246.0
+grow_horizontal = 1
+grow_vertical = 1
+
+[node name="title" type="RichTextLabel" parent="."]
+modulate = Color(0.986791, 0.441303, 0.346975, 1)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -366.0
+offset_top = -192.0
+offset_right = 366.0
+offset_bottom = -66.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/normal_font = ExtResource("5_2jb0c")
+bbcode_enabled = true
+text = "[font_size=80][wave amp=0.0 freq=0.0 connected=1]You Died"
+scroll_active = false
+horizontal_alignment = 1
+
+[node name="button_container" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -242.0
+offset_top = -41.0
+offset_right = 242.0
+offset_bottom = 196.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 10
+
+[node name="start_game" parent="button_container" instance=ExtResource("6_1r4tr")]
+custom_minimum_size = Vector2(350, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 3
+text = "Restart"
+
+[node name="return_to_main_menu" parent="button_container" instance=ExtResource("6_1r4tr")]
+custom_minimum_size = Vector2(350, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 3
+text = "Return to Main Menu"
+
+[node name="credits" parent="button_container" instance=ExtResource("6_1r4tr")]
+custom_minimum_size = Vector2(350, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 3
+text = "Credits"
+
+[node name="quit" parent="button_container" instance=ExtResource("6_1r4tr")]
+custom_minimum_size = Vector2(350, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 3
+text = "Quit"
+
+[connection signal="pressed" from="button_container/start_game" to="." method="_on_start_game_pressed"]
+[connection signal="pressed" from="button_container/return_to_main_menu" to="." method="_on_return_to_main_menu_pressed"]
+[connection signal="pressed" from="button_container/credits" to="." method="_on_credits_pressed"]
+[connection signal="pressed" from="button_container/quit" to="." method="_on_quit_pressed"]
