@@ -1,0 +1,13 @@
+[gd_resource type="StyleBoxTexture" load_steps=2 format=3 uid="uid://d2xtiecw4gt18"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_moted"]
+load_path = "res://.godot/imported/CoasterMask1.png-131d16907790436e615a00d0d0ffe95a.ctex"
+
+[resource]
+content_margin_bottom = 0.0
+texture = SubResource("CompressedTexture2D_moted")
+texture_margin_left = 1.0
+texture_margin_top = 254.722
+texture_margin_right = 1.0
+texture_margin_bottom = 55.0
+region_rect = Rect2(1, 1, 192, 254)

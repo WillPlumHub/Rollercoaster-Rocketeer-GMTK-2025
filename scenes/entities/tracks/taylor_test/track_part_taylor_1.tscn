@@ -1,9 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://cy4mepircebey"]
+[gd_scene load_steps=6 format=3 uid="uid://bjnp1fackvh1e"]
 
-[ext_resource type="Script" uid="uid://dcp4881wiphnj" path="res://scenes/entities/tracks/track_part_1.gd" id="1_q0nch"]
-[ext_resource type="PackedScene" uid="uid://b7p8cmat2ofin" path="res://scenes/entities/tracks/taylor_test/track_art.tscn" id="2_8xrux"]
-[ext_resource type="StyleBox" uid="uid://60gs6lfwot3h" path="res://scenes/entities/tracks/taylor_test/styles/track_1_mask.tres" id="3_dyrmq"]
-[ext_resource type="Texture2D" uid="uid://7heeedjutgr7" path="res://scenes/entities/tracks/taylor_test/images/CoasterTrack1.png" id="4_mtlyw"]
+[ext_resource type="Script" uid="uid://b4rtlayqhmfc8" path="res://scenes/entities/tracks/taylor_test/track_part_taylor_1.gd" id="1_2qbvw"]
+[ext_resource type="PackedScene" uid="uid://b7p8cmat2ofin" path="res://scenes/entities/tracks/taylor_test/track_art.tscn" id="2_yd5bm"]
+[ext_resource type="StyleBox" uid="uid://ctu4o8nre1iw1" path="res://scenes/entities/tracks/taylor_test/styles/track_2_mask.tres" id="3_yd5bm"]
 
 [sub_resource type="Curve2D" id="Curve2D_q0nch"]
 _data = {
@@ -15,8 +14,7 @@ point_count = 5
 radius = 14.0357
 
 [node name="track_part_1" type="Node2D"]
-script = ExtResource("1_q0nch")
-track_speed = 300.0
+script = ExtResource("1_2qbvw")
 
 [node name="grab_detect" type="Button" parent="."]
 modulate = Color(1, 1, 1, 0)
@@ -57,18 +55,26 @@ collision_mask = 16
 [node name="CollisionShape2D" type="CollisionShape2D" parent="coaster_path/end/track_end"]
 shape = SubResource("CircleShape2D_oxk6s")
 
-[node name="TrackArt" parent="." node_paths=PackedStringArray("ground_marker", "left_beam_marker", "right_beam_marker") instance=ExtResource("2_8xrux")]
-unique_name_in_owner = true
-offset_top = -198.0
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="TrackArt" parent="." node_paths=PackedStringArray("ground_marker", "left_beam_marker", "right_beam_marker") instance=ExtResource("2_yd5bm")]
+offset_top = -189.0
 offset_right = 192.0
-offset_bottom = 221.0
-ground_marker = NodePath(".")
+offset_bottom = 286.0
+ground_marker = NodePath("../GroundMarker")
 left_beam_marker = NodePath("../coaster_path/start/track_start/CollisionShape2D")
 right_beam_marker = NodePath("../coaster_path/end/track_end/CollisionShape2D")
 is_right_connected = false
-style_box_mask = ExtResource("3_dyrmq")
+style_box_mask = ExtResource("3_yd5bm")
 debug_mask_layer = false
-track_path_art_behind_texture = ExtResource("4_mtlyw")
+
+[node name="GroundMarker" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 5.0
+offset_top = 222.0
+offset_right = 45.0
+offset_bottom = 262.0
 
 [connection signal="button_down" from="grab_detect" to="." method="_on_grab_detect_button_down"]
 [connection signal="button_up" from="grab_detect" to="." method="_on_grab_detect_button_up"]

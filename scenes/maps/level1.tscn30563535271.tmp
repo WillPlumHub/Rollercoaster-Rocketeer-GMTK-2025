@@ -3,14 +3,13 @@
 [ext_resource type="Script" uid="uid://dm30ouip10g0o" path="res://scenes/maps/prelaunch_area.gd" id="1_0et32"]
 [ext_resource type="PackedScene" uid="uid://b8unyji1o4s1f" path="res://scenes/UI/hud.tscn" id="2_spx7k"]
 [ext_resource type="PackedScene" uid="uid://datatrsbrqlp6" path="res://scenes/entities/tracks/track_part_2.tscn" id="2_ti75c"]
-
 [ext_resource type="PackedScene" uid="uid://cy4mepircebey" path="res://scenes/entities/tracks/track_part_1.tscn" id="3_y3ptb"]
-[ext_resource type="PackedScene" path="res://scenes/entities/tracks/track_part_3.tscn" id="5_spx7k"]
-[ext_resource type="PackedScene" path="res://scenes/entities/tracks/track_part_5.tscn" id="6_pv1k2"]
-[ext_resource type="PackedScene" path="res://scenes/entities/tracks/track_part_begin.tscn" id="7_0et32"]
-[ext_resource type="PackedScene" path="res://scenes/entities/tracks/track_part_4.tscn" id="7_ejv5p"]
+[ext_resource type="PackedScene" uid="uid://daumqxv4g2jxy" path="res://scenes/entities/tracks/track_part_3.tscn" id="5_spx7k"]
+[ext_resource type="PackedScene" uid="uid://dbwbnuxjh618g" path="res://scenes/entities/tracks/track_part_5.tscn" id="6_pv1k2"]
+[ext_resource type="PackedScene" uid="uid://di4vh4401voyy" path="res://scenes/entities/tracks/track_part_begin.tscn" id="7_0et32"]
+[ext_resource type="PackedScene" uid="uid://livv5577jy07" path="res://scenes/entities/tracks/track_part_4.tscn" id="7_ejv5p"]
 [ext_resource type="Script" uid="uid://y1g1g0ritebn" path="res://scripts/thrusters.gd" id="8_ti75c"]
-[ext_resource type="PackedScene" path="res://scenes/props/planetoid.tscn" id="9_y3ptb"]
+[ext_resource type="PackedScene" uid="uid://cqaur568cgb1w" path="res://scenes/props/planetoid.tscn" id="9_y3ptb"]
 [ext_resource type="Texture2D" uid="uid://bpie22j2ha5k" path="res://assets/art/Smoke.png" id="9_yrt3e"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_yrt3e"]
@@ -35,10 +34,9 @@ script = ExtResource("1_0et32")
 
 [node name="HUD" parent="." instance=ExtResource("2_spx7k")]
 
-[node name="TrackPart" parent="." node_paths=PackedStringArray("ground_marker") instance=ExtResource("2_ti75c")]
+[node name="TrackPart" parent="." instance=ExtResource("2_ti75c")]
 position = Vector2(200, 336)
 track_speed = 5000.0
-ground_marker = NodePath("../GroundMarker")
 
 [node name="coaster_part" parent="." node_paths=PackedStringArray("ground_marker") instance=ExtResource("3_y3ptb")]
 position = Vector2(0, 136)
@@ -63,7 +61,7 @@ position = Vector2(-32, -160)
 shape = SubResource("WorldBoundaryShape2D_yrt3e")
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="Ground"]
-z_index = -4
+z_index = -1
 position = Vector2(-569, 22)
 mesh = SubResource("QuadMesh_0et32")
 
@@ -91,26 +89,24 @@ mesh = SubResource("QuadMesh_0et32")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Dest"]
 shape = SubResource("WorldBoundaryShape2D_we6vc")
 
-[node name="TrackPart2" parent="." node_paths=PackedStringArray("ground_marker") instance=ExtResource("5_spx7k")]
+[node name="TrackPart2" parent="." instance=ExtResource("5_spx7k")]
 position = Vector2(456, 528)
 track_speed = 10000.0
-ground_marker = NodePath("../GroundMarker")
 
-[node name="track_part_1" parent="." node_paths=PackedStringArray("ground_marker") instance=ExtResource("6_pv1k2")]
+[node name="track_part_1" parent="." instance=ExtResource("6_pv1k2")]
 position = Vector2(904, 528)
-ground_marker = NodePath("../GroundMarker")
 
-[node name="track_part_2" parent="." node_paths=PackedStringArray("ground_marker") instance=ExtResource("7_ejv5p")]
+[node name="track_part_2" parent="." instance=ExtResource("7_ejv5p")]
 position = Vector2(712, 528)
-ground_marker = NodePath("../GroundMarker")
 
-[node name="track_part_3" parent="." node_paths=PackedStringArray("ground_marker") instance=ExtResource("7_ejv5p")]
+[node name="track_part_3" parent="." instance=ExtResource("7_ejv5p")]
 position = Vector2(-136, 328)
-ground_marker = NodePath("../GroundMarker")
 
-[node name="track_part_4" parent="." node_paths=PackedStringArray("ground_marker") instance=ExtResource("7_0et32")]
+[node name="track_part_4" parent="." instance=ExtResource("7_0et32")]
 position = Vector2(-384, 136)
-ground_marker = NodePath("../GroundMarker")
+
+[node name="car" parent="track_part_4/coaster_path" index="2"]
+position = Vector2(208.001, 0)
 
 [node name="RigidBody2D" parent="track_part_4/coaster_path/car" index="0"]
 mass = 1.0
@@ -135,6 +131,15 @@ color_ramp = SubResource("Gradient_pv1k2")
 
 [node name="HealthComponent" parent="track_part_4/coaster_path/car/RigidBody2D" index="5"]
 max_health = 1000
+
+[node name="car2" parent="track_part_4/coaster_path" index="3"]
+position = Vector2(156, 0)
+
+[node name="car3" parent="track_part_4/coaster_path" index="4"]
+position = Vector2(103.996, 0)
+
+[node name="car4" parent="track_part_4/coaster_path" index="5"]
+position = Vector2(51.9907, 0)
 
 [node name="Planetoid" parent="." instance=ExtResource("9_y3ptb")]
 position = Vector2(2520, -1712)
