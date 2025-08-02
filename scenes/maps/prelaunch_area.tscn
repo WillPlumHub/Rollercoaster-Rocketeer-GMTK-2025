@@ -97,7 +97,7 @@ position = Vector2(800, 192)
 ground_marker = NodePath("../GroundMarker")
 
 [node name="track_part_3" parent="." node_paths=PackedStringArray("ground_marker") instance=ExtResource("7_ib238")]
-position = Vector2(520, 384)
+position = Vector2(329, 384)
 ground_marker = NodePath("../GroundMarker")
 
 [node name="GroundMarker" type="Control" parent="."]
@@ -107,5 +107,8 @@ offset_left = 47.0
 offset_top = 602.0
 offset_right = 87.0
 offset_bottom = 642.0
+
+[node name="Node2D" type="Node2D" parent="."]
+position = Vector2(-3, -3)
 
 [connection signal="pressed" from="UI/launch" to="." method="_on_launch_pressed"]
