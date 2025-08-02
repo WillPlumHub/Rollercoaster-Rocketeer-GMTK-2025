@@ -64,9 +64,7 @@ offset_bottom = 286.0
 ground_marker = NodePath("../GroundMarker")
 left_beam_marker = NodePath("../coaster_path/start/track_start/CollisionShape2D")
 right_beam_marker = NodePath("../coaster_path/end/track_end/CollisionShape2D")
-is_right_connected = false
 style_box_mask = ExtResource("3_yd5bm")
-debug_mask_layer = false
 
 [node name="GroundMarker" type="Control" parent="."]
 layout_mode = 3
