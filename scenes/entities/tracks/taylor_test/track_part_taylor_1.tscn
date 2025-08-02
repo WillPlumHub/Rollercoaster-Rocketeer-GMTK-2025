@@ -2,11 +2,11 @@
 
 [ext_resource type="Script" uid="uid://b4rtlayqhmfc8" path="res://scenes/entities/tracks/taylor_test/track_part_taylor_1.gd" id="1_2qbvw"]
 [ext_resource type="PackedScene" uid="uid://b7p8cmat2ofin" path="res://scenes/entities/tracks/taylor_test/track_art.tscn" id="2_yd5bm"]
-[ext_resource type="StyleBox" uid="uid://d2xtiecw4gt18" path="res://scenes/entities/tracks/taylor_test/styles/track_mask.tres" id="3_ukhwx"]
+[ext_resource type="StyleBox" uid="uid://ctu4o8nre1iw1" path="res://scenes/entities/tracks/taylor_test/styles/track_2_mask.tres" id="3_yd5bm"]
 
 [sub_resource type="Curve2D" id="Curve2D_q0nch"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, -2, -1, 0, 0, 0, 0, 35, -145, 0, 0, 0, 0, 88, -174, 0, 0, 0, 0, 136, -167, 0, 0, 0, 0, 192, 1)
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 35, -145, 0, 0, 0, 0, 88, -174, 0, 0, 0, 0, 136, -167, 0, 0, 0, 0, 192, 1)
 }
 point_count = 5
 
@@ -24,6 +24,7 @@ offset_bottom = 15.0
 focus_mode = 0
 
 [node name="art" type="Polygon2D" parent="."]
+visible = false
 color = Color(0, 0, 0, 1)
 polygon = PackedVector2Array(-5, -2, 32, -147, 86, -177, 139, -170, 195, 0, 189, 3, 133, -163, 90, -169, 39, -142, 1, 2)
 
@@ -31,8 +32,7 @@ polygon = PackedVector2Array(-5, -2, 32, -147, 86, -177, 139, -170, 195, 0, 189,
 curve = SubResource("Curve2D_q0nch")
 
 [node name="start" type="PathFollow2D" parent="coaster_path"]
-position = Vector2(-2, -1)
-rotation = -1.31929
+rotation = -1.33395
 
 [node name="track_start" type="Area2D" parent="coaster_path/start"]
 rotation = 1.32109
@@ -57,11 +57,24 @@ shape = SubResource("CircleShape2D_oxk6s")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
-[node name="TrackArt" parent="." instance=ExtResource("2_yd5bm")]
-offset_top = -190.0
-offset_right = 193.0
-offset_bottom = 359.0
-style_box_mask = ExtResource("3_ukhwx")
+[node name="TrackArt" parent="." node_paths=PackedStringArray("ground_marker", "left_beam_marker", "right_beam_marker") instance=ExtResource("2_yd5bm")]
+offset_top = -189.0
+offset_right = 192.0
+offset_bottom = 286.0
+ground_marker = NodePath("../GroundMarker")
+left_beam_marker = NodePath("../coaster_path/start/track_start/CollisionShape2D")
+right_beam_marker = NodePath("../coaster_path/end/track_end/CollisionShape2D")
+is_right_connected = false
+style_box_mask = ExtResource("3_yd5bm")
+debug_mask_layer = false
+
+[node name="GroundMarker" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 5.0
+offset_top = 222.0
+offset_right = 45.0
+offset_bottom = 262.0
 
 [connection signal="button_down" from="grab_detect" to="." method="_on_grab_detect_button_down"]
 [connection signal="button_up" from="grab_detect" to="." method="_on_grab_detect_button_up"]

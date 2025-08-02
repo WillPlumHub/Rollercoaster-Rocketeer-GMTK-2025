@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://x5bgnq4rmjh"
-path="res://.godot/imported/CoasterMask1.png-131d16907790436e615a00d0d0ffe95a.ctex"
+uid="uid://dik43dnkyiwko"
+path="res://.godot/imported/CoasterTrack2.png-3099c9e0332d9c631274ceb733909d8a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/entities/tracks/taylor_test/images/CoasterMask1.png"
-dest_files=["res://.godot/imported/CoasterMask1.png-131d16907790436e615a00d0d0ffe95a.ctex"]
+source_file="res://scenes/entities/tracks/taylor_test/images/CoasterTrack2.png"
+dest_files=["res://.godot/imported/CoasterTrack2.png-3099c9e0332d9c631274ceb733909d8a.ctex"]
 
 [params]
 

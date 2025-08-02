@@ -12,6 +12,17 @@ enum TrackType {
 @export var track_right:NodePath
 @export var track_speed:float = 3
 
+@export var ground_marker: Control = null:
+	get:
+		return ground_marker
+	set(new_ground_marker):
+		ground_marker = new_ground_marker
+		_update_ground_marker()
+
+func _update_ground_marker():
+	if track_art != null:
+		track_art.ground_marker = ground_marker
+
 # READ-ONLY PROPERTIES
 var is_starting_track:bool : 
 	get: return track_type == TrackType.BEGINING
@@ -22,6 +33,7 @@ var is_ending_track: bool :
 # GETTING NODES
 @onready var coaster_path: Path2D = $coaster_path
 @onready var button: Button = $grab_detect
+@onready var track_art: TrackArt = %TrackArt
 
 # SCRIPT VARs
 var car_count:int = 5
@@ -38,6 +50,9 @@ func _ready() -> void:
 	position = Vector2(x_pos, y_pox)
 	
 	GameData.launch_train_cars.connect(_disable_button)
+	_update_ground_marker()
+	if track_art != null:
+		track_art.is_right_connected = !track_right.is_empty()
 		
 func _disable_button():
 	if grabbed:
@@ -66,6 +81,8 @@ func _process(_delta: float) -> void:
 		var x_pos = snapped(get_global_mouse_position().x + grab_offset.x, snap_size) 
 		var y_pox = snapped(get_global_mouse_position().y + grab_offset.y, snap_size)
 		position = lerp(position, Vector2(x_pos, y_pox), 0.4)
+		if track_art != null:
+			track_art.update_height()
 
 
 # RETURNS A NEW TRAIN CAR SCENE
@@ -101,12 +118,16 @@ func _on_track_end_area_entered(area: Area2D) -> void:
 	else:
 		# MAKES SURE THERES NOT ALREADY A TRACK ATTACHED
 		track_right = area.owner.get_path()
+		if track_art != null:
+			track_art.is_right_connected = true
 
 func _on_track_end_area_exited(area: Area2D) -> void:
 	# IF THE TRACK CONNECTED MOVES AWAY, DISCONNECT IT
 	# ONLY IF THE TRACK MOVES AWAY WAS THE ONE THAT WAS PREVIOUSLY CONNECTED
 	if area.owner.get_path() == track_right:
 		track_right = ""
+		if track_art != null:
+			track_art.is_right_connected = false
 
 func _on_grab_detect_button_down() -> void:
 	# WHEN MOUSE DOWN SET GRABBED TO TRUE AND GET OFFSET

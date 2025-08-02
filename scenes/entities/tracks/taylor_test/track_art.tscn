@@ -1,32 +1,107 @@
-[gd_scene load_steps=4 format=3 uid="uid://b7p8cmat2ofin"]
+[gd_scene load_steps=8 format=3 uid="uid://b7p8cmat2ofin"]
 
-[ext_resource type="StyleBox" uid="uid://d2xtiecw4gt18" path="res://scenes/entities/tracks/taylor_test/styles/track_mask.tres" id="1_jnmn6"]
 [ext_resource type="Script" uid="uid://bsgtly8plij2l" path="res://scenes/entities/tracks/taylor_test/track_art.gd" id="2_2pfkh"]
+[ext_resource type="StyleBox" uid="uid://60gs6lfwot3h" path="res://scenes/entities/tracks/taylor_test/styles/track_1_mask.tres" id="2_lt6xm"]
 [ext_resource type="StyleBox" uid="uid://bk548u4fq2k3l" path="res://scenes/entities/tracks/taylor_test/styles/track_tiling_med.tres" id="2_xtwf7"]
+[ext_resource type="Texture2D" uid="uid://7heeedjutgr7" path="res://scenes/entities/tracks/taylor_test/images/CoasterTrack1.png" id="4_uq608"]
+[ext_resource type="Texture2D" uid="uid://btirx4t6ftngv" path="res://scenes/entities/tracks/taylor_test/images/CoasterEdges.png" id="5_lt6xm"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_lt6xm"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_mj6pv"]
+texture = ExtResource("5_lt6xm")
+texture_margin_top = 87.6675
+texture_margin_bottom = 132.553
+region_rect = Rect2(0, 0, 64, 512)
 
 [node name="TrackArt" type="Control"]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+mouse_filter = 2
 script = ExtResource("2_2pfkh")
+is_right_connected = null
+debug_mask_layer = null
 
 [node name="BeamArtMask" type="Panel" parent="."]
 unique_name_in_owner = true
 clip_children = 1
+z_index = -2
 layout_mode = 2
-offset_right = 40.0
-offset_bottom = 40.0
-theme_override_styles/panel = ExtResource("1_jnmn6")
+offset_right = 206.0
+offset_bottom = 536.0
+mouse_filter = 2
+theme_override_styles/panel = ExtResource("2_lt6xm")
 
 [node name="BeamArt" type="Panel" parent="BeamArtMask"]
 unique_name_in_owner = true
-texture_filter = 4
+texture_filter = 2
 layout_mode = 0
-offset_top = -128.0
-offset_right = 384.0
-offset_bottom = 1130.0
+offset_top = -24.0
+offset_right = 418.0
+offset_bottom = 1200.0
 scale = Vector2(0.5, 0.5)
+mouse_filter = 2
 theme_override_styles/panel = ExtResource("2_xtwf7")
+
+[node name="TrackPathArtBehind" type="TextureRect" parent="."]
+unique_name_in_owner = true
+z_index = -1
+texture_filter = 4
+offset_top = 3.0
+offset_right = 384.0
+offset_bottom = 515.0
+scale = Vector2(0.5, 0.5)
+mouse_filter = 2
+texture = ExtResource("4_uq608")
+
+[node name="TrackPathArtInFront" type="TextureRect" parent="."]
+unique_name_in_owner = true
+z_index = 1
+texture_filter = 4
+offset_top = 3.0
+offset_right = 384.0
+offset_bottom = 515.0
+scale = Vector2(0.5, 0.5)
+mouse_filter = 2
+texture = SubResource("CompressedTexture2D_lt6xm")
+
+[node name="PointConverter" type="Node2D" parent="."]
+unique_name_in_owner = true
+
+[node name="LeftBeamContainer" type="Control" parent="."]
+unique_name_in_owner = true
+anchors_preset = 0
+offset_top = 200.0
+offset_right = 16.0
+offset_bottom = 240.0
+
+[node name="LeftBeam" type="Panel" parent="LeftBeamContainer"]
+unique_name_in_owner = true
+z_index = 2
+layout_mode = 0
+offset_left = -16.0
+offset_right = 48.0
+offset_bottom = 596.0
+scale = Vector2(0.5, 0.5)
+theme_override_styles/panel = SubResource("StyleBoxTexture_mj6pv")
+
+[node name="RightBeamContainer" type="Control" parent="."]
+unique_name_in_owner = true
+anchors_preset = 0
+offset_left = 186.0
+offset_top = 179.0
+offset_right = 202.0
+offset_bottom = 219.0
+
+[node name="RightBeam" type="Panel" parent="RightBeamContainer"]
+unique_name_in_owner = true
+z_index = 2
+layout_mode = 0
+offset_right = 64.0
+offset_bottom = 596.0
+scale = Vector2(0.5, 0.5)
+theme_override_styles/panel = SubResource("StyleBoxTexture_mj6pv")
 
 [connection signal="resized" from="." to="." method="_on_resized"]
