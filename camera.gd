@@ -5,13 +5,16 @@ extends Camera2D
 @export var zoom_max := 2.0
 @export var pan_speed := 200.0
 @export var min_y_position := -1.0  # Lower limit for vertical pan
-@export var max_y_position := 500.0  # Upper limit for vertical pan
+@export var max_y_position := 300.0  # Upper limit for vertical pan
 
 @export var launch := false  # If true, follow rollercoaster instead of player
 @export var player_node: Node2D
-@export var rollercoaster_node: Node2D
+var rollercoaster_node: Node2D = null
 
-var zoom_level := 1.0
+var zoom_level := 0.7
+
+func set_rollercoaster(coaster: Node2D) -> void:
+	rollercoaster_node = coaster
 
 func _ready() -> void:
 	zoom = Vector2(zoom_level, zoom_level)
