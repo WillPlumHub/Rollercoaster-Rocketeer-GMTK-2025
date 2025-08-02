@@ -25,7 +25,6 @@ func _process(delta: float) -> void:
 	if Input.is_action_pressed("prelaunch_up"):
 		pan_direction -= 1
 	if Input.is_action_pressed("prelaunch_down"):
-		print("Y pos: ", transform.y)
 		pan_direction += 1
 	if pan_direction != 0:
 		global_position.y += pan_direction * pan_speed * delta
