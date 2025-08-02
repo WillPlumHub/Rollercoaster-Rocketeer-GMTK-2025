@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dentbymqt2nkh"]
+
+[ext_resource type="Script" uid="uid://dr0d2lgsoka5e" path="res://scenes/props/trees.gd" id="1_b37hj"]
+
+[node name="trees" type="Parallax2D"]
+script = ExtResource("1_b37hj")
