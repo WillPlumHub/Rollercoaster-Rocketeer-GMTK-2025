@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://qlp16xnqphrs"]
+[gd_scene load_steps=8 format=3 uid="uid://datatrsbrqlp6"]
 
 [ext_resource type="Script" uid="uid://dcp4881wiphnj" path="res://scenes/entities/tracks/track_part_1.gd" id="1_ekg5b"]
 [ext_resource type="PackedScene" uid="uid://b7p8cmat2ofin" path="res://scenes/entities/tracks/taylor_test/track_art.tscn" id="2_4ev0u"]
