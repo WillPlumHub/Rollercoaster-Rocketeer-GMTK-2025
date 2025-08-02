@@ -13,40 +13,9 @@
 [node name="prelaunch_area" type="Node2D"]
 script = ExtResource("1_031nh")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="UI" type="CanvasLayer" parent="."]
 
-[node name="bg" type="ColorRect" parent="CanvasLayer"]
-visible = false
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-color = Color(0.38269, 0.803514, 0.859375, 1)
-
-[node name="ground" type="ColorRect" parent="CanvasLayer"]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = 592.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-color = Color(0.292969, 0.113931, 0.0354767, 1)
-
-[node name="groundgrass" type="ColorRect" parent="CanvasLayer"]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = 592.0
-offset_bottom = -36.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-color = Color(0.388965, 0.902344, 0.264359, 1)
-
-[node name="launch" type="Button" parent="CanvasLayer"]
+[node name="launch" type="Button" parent="UI"]
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
@@ -58,18 +27,55 @@ grow_horizontal = 2
 focus_mode = 0
 text = "Launch"
 
-[node name="TrackPart" parent="." instance=ExtResource("2_we6vc")]
-position = Vector2(128, 312)
+[node name="Background" type="CanvasLayer" parent="."]
+layer = -10
 
-[node name="coaster_part" parent="." instance=ExtResource("2_8q4c4")]
+[node name="bg" type="ColorRect" parent="Background"]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.38269, 0.803514, 0.859375, 1)
+
+[node name="ground" type="ColorRect" parent="Background"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 592.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.292969, 0.113931, 0.0354767, 1)
+
+[node name="groundgrass" type="ColorRect" parent="Background"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 592.0
+offset_bottom = -36.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.388965, 0.902344, 0.264359, 1)
+
+[node name="TrackPart" parent="." node_paths=PackedStringArray("ground_marker") instance=ExtResource("2_we6vc")]
+position = Vector2(128, 312)
+ground_marker = NodePath("../GroundMarker")
+
+[node name="coaster_part" parent="." node_paths=PackedStringArray("ground_marker") instance=ExtResource("2_8q4c4")]
 position = Vector2(93, 579)
 track_type = 1
+ground_marker = NodePath("../GroundMarker")
 
-[node name="coaster_part5" parent="." instance=ExtResource("2_8q4c4")]
+[node name="coaster_part5" parent="." node_paths=PackedStringArray("ground_marker") instance=ExtResource("2_8q4c4")]
 position = Vector2(864, 531)
+ground_marker = NodePath("../GroundMarker")
 
 [node name="Player" parent="." instance=ExtResource("3_feoef")]
-z_index = 1
+z_index = 10
 position = Vector2(638, 550)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
@@ -78,16 +84,28 @@ position = Vector2(561, 594)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 shape = SubResource("WorldBoundaryShape2D_we6vc")
 
-[node name="TrackPart2" parent="." instance=ExtResource("5_qxx0j")]
+[node name="TrackPart2" parent="." node_paths=PackedStringArray("ground_marker") instance=ExtResource("5_qxx0j")]
 position = Vector2(440, 288)
+ground_marker = NodePath("../GroundMarker")
 
-[node name="track_part_1" parent="." instance=ExtResource("6_yavw2")]
+[node name="track_part_1" parent="." node_paths=PackedStringArray("ground_marker") instance=ExtResource("6_yavw2")]
 position = Vector2(784, 320)
+ground_marker = NodePath("../GroundMarker")
 
-[node name="track_part_2" parent="." instance=ExtResource("7_ib238")]
+[node name="track_part_2" parent="." node_paths=PackedStringArray("ground_marker") instance=ExtResource("7_ib238")]
 position = Vector2(800, 192)
+ground_marker = NodePath("../GroundMarker")
 
-[node name="track_part_3" parent="." instance=ExtResource("7_ib238")]
+[node name="track_part_3" parent="." node_paths=PackedStringArray("ground_marker") instance=ExtResource("7_ib238")]
 position = Vector2(520, 384)
+ground_marker = NodePath("../GroundMarker")
 
-[connection signal="pressed" from="CanvasLayer/launch" to="." method="_on_launch_pressed"]
+[node name="GroundMarker" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 47.0
+offset_top = 602.0
+offset_right = 87.0
+offset_bottom = 642.0
+
+[connection signal="pressed" from="UI/launch" to="." method="_on_launch_pressed"]
