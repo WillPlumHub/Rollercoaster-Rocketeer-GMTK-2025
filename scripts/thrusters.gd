@@ -8,6 +8,7 @@ var body: RigidBody2D:
 	get: return get_parent()
 
 var fuel = 100.0
+var power = 1.0
 var _wish_direction: Vector2
 var _thrusting: bool = false
 
@@ -42,7 +43,7 @@ func _physics_process(delta: float) -> void:
 	# Thrusting
 	if _thrusting:
 		if body is RigidBody2D && !_wish_direction.is_zero_approx():
-			body.apply_central_force(FORCE * _wish_direction)
+			body.apply_central_force(FORCE * _wish_direction * power)
 		fuel -= delta
 
 
