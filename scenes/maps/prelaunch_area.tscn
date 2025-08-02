@@ -1,13 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://crtg2aujnc5rl"]
+[gd_scene load_steps=9 format=3 uid="uid://crtg2aujnc5rl"]
 
 [ext_resource type="Script" uid="uid://dm30ouip10g0o" path="res://scenes/maps/prelaunch_area.gd" id="1_031nh"]
 [ext_resource type="PackedScene" uid="uid://cy4mepircebey" path="res://scenes/entities/tracks/track_part_1.tscn" id="2_8q4c4"]
-<<<<<<< HEAD
 [ext_resource type="PackedScene" uid="uid://datatrsbrqlp6" path="res://scenes/entities/tracks/track_part_2.tscn" id="2_we6vc"]
-=======
-[ext_resource type="Texture2D" uid="uid://cnococohrhdyj" path="res://Post Launch/ima1ge.png" id="2_ib238"]
-[ext_resource type="PackedScene" uid="uid://qlp16xnqphrs" path="res://scenes/entities/tracks/track_part_2.tscn" id="2_we6vc"]
->>>>>>> 52b8b799447f526c5588c8a80a172f509aefa10d
 [ext_resource type="PackedScene" uid="uid://b2bc0hsiynf81" path="res://scenes/entities/player.tscn" id="3_feoef"]
 [ext_resource type="PackedScene" uid="uid://daumqxv4g2jxy" path="res://scenes/entities/tracks/track_part_3.tscn" id="5_qxx0j"]
 [ext_resource type="PackedScene" uid="uid://dbwbnuxjh618g" path="res://scenes/entities/tracks/track_part_5.tscn" id="6_yavw2"]
@@ -44,6 +39,27 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 color = Color(0.38269, 0.803514, 0.859375, 1)
+
+[node name="ground" type="ColorRect" parent="Background"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 592.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.292969, 0.113931, 0.0354767, 1)
+
+[node name="groundgrass" type="ColorRect" parent="Background"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 592.0
+offset_bottom = -36.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.388965, 0.902344, 0.264359, 1)
 
 [node name="TrackPart" parent="." node_paths=PackedStringArray("ground_marker") instance=ExtResource("2_we6vc")]
 position = Vector2(128, 312)
@@ -94,10 +110,5 @@ offset_bottom = 642.0
 
 [node name="Node2D" type="Node2D" parent="."]
 position = Vector2(-3, -3)
-
-[node name="Ground" type="Sprite2D" parent="."]
-position = Vector2(629, 734)
-scale = Vector2(14.12, 4.32)
-texture = ExtResource("2_ib238")
 
 [connection signal="pressed" from="UI/launch" to="." method="_on_launch_pressed"]
