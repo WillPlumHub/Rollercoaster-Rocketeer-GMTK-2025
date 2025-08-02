@@ -36,6 +36,8 @@ func _unhandled_input(event: InputEvent) -> void:
 		zoom = Vector2(zoom_level, zoom_level)
 
 func _process(delta: float) -> void:
+	if !enabled:
+		return
 	var target: Node2D = null
 	#print("launch = ", launch)
 	#if launch:
