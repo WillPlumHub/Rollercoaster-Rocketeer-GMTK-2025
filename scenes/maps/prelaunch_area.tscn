@@ -111,9 +111,4 @@ offset_bottom = 642.0
 [node name="Node2D" type="Node2D" parent="."]
 position = Vector2(-3, -3)
 
-[node name="Ground" type="Sprite2D" parent="."]
-position = Vector2(629, 905)
-scale = Vector2(14.12, 9.12)
-texture = ExtResource("2_ib238")
-
 [connection signal="pressed" from="UI/launch" to="." method="_on_launch_pressed"]
