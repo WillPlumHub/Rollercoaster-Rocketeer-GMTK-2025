@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://cc7n6b4f4dn4h"]
 
-[ext_resource type="Texture2D" uid="uid://cv0r7hvbh08kk" path="res://icon.svg" id="1_h40nn"]
+[ext_resource type="Texture2D" uid="uid://mm0ekwsn7kak" path="res://icon.svg" id="1_h40nn"]
 [ext_resource type="Script" uid="uid://qq7bkxjvax23" path="res://Post Launch/Player/ShipMouseMove.gd" id="2_oam5h"]
 [ext_resource type="PackedScene" uid="uid://bigsuppxpog77" path="res://Post Launch/Player/gun.tscn" id="2_r5ryu"]
 

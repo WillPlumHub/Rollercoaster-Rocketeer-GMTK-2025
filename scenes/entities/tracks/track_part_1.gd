@@ -21,6 +21,7 @@ var is_ending_track: bool :
 
 # GETTING NODES
 @onready var coaster_path: Path2D = $coaster_path
+@onready var button: Button = $grab_detect
 
 # SCRIPT VARs
 var car_count:int = 5
@@ -36,11 +37,12 @@ func _ready() -> void:
 	var y_pox = snapped(position.y, snap_size)
 	position = Vector2(x_pos, y_pox)
 	
-	if is_starting_track:
-		# IF THIS TRACK IS THE FIRST ONE, CONNECT TO SPAWN CARS ON SIGNAL
-		# GameData.launch_train_cars.connect(spawn_cars)
-		pass
+	GameData.launch_train_cars.connect(_disable_button)
 		
+func _disable_button():
+	if grabbed:
+		_on_grab_detect_button_up()
+	button.disabled = true
 
 func spawn_cars():
 	# SPAWNS TRAIN CARS

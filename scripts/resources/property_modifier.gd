@@ -28,6 +28,10 @@ enum CompoundingType {
 		amount = new_amount
 		emit_changed()
 
+func debug_print():
+	var property_data: LaunchStats.PropertyData = LaunchStats.affected_property_data_lookup.get(affected_property)
+	print("modifier: ", property_data.display_text, ", amount: ", amount, ", compounding type: ", compounding_type)
+
 func _init(
 	p_affected_property: LaunchStats.AffectedProperty = LaunchStats.AffectedProperty.SPEED,
 	p_amount: float = 1.0,
