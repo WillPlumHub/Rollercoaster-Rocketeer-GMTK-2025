@@ -1,9 +1,19 @@
 extends TextureRect
 
 @onready var rotation_speed:float = randf_range(-0.1, 0.1)
-@onready var direction = [-1, 1].pick_random() 
+@onready var direction = [-1, 1].pick_random()
+
+@onready var rand_textures = [
+	preload("res://assets/art/planetoid.png"),
+	preload("res://assets/art/Planet_Aychtoo-O.png"),
+	preload("res://assets/art/Planet_Blomp.png"),
+	preload("res://assets/art/Planet_Delomy.png"),
+	preload("res://assets/art/Sondy_Sphere.png")
+]
 
 func _ready() -> void:
+	texture = rand_textures.pick_random()
+	
 	pivot_offset.x = size.x/2
 	pivot_offset.y = size.y/2
 	
