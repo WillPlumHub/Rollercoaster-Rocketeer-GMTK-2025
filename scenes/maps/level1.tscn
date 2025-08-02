@@ -35,6 +35,17 @@ colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
 [node name="prelaunch_area2" type="Node2D"]
 script = ExtResource("1_0et32")
 
+[node name="background_stuff" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="bg" type="ColorRect" parent="background_stuff"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.249512, 0.640442, 0.875, 1)
+
 [node name="HUD" parent="." instance=ExtResource("2_spx7k")]
 
 [node name="TrackPart" parent="." node_paths=PackedStringArray("ground_marker") instance=ExtResource("2_ti75c")]
