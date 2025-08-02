@@ -1,6 +1,156 @@
-extends Control
+[gd_scene load_steps=10 format=3 uid="uid://11v5q80s5oyj"]
 
+[ext_resource type="Script" uid="uid://bf1veb6ctne4l" path="res://scenes/UI/credits.gd" id="1_2lgad"]
+[ext_resource type="Theme" uid="uid://myuj1yo75kir" path="res://assets/ui_theme.tres" id="2_21wcu"]
+[ext_resource type="PackedScene" uid="uid://bklsq5dgkbhdd" path="res://scenes/UI/custom_button.tscn" id="3_g3j2f"]
+[ext_resource type="FontFile" uid="uid://byr5ua7821djh" path="res://assets/Oswald-VariableFont_wght.ttf" id="3_v6dd7"]
 
+[sub_resource type="LabelSettings" id="LabelSettings_v6dd7"]
+font = ExtResource("3_v6dd7")
+font_size = 19
 
-func _on_return_pressed() -> void:
-	get_tree().change_scene_to_file("res://scenes/UI/menu.tscn")
+[sub_resource type="LabelSettings" id="LabelSettings_g3j2f"]
+font = ExtResource("3_v6dd7")
+font_size = 19
+
+[sub_resource type="LabelSettings" id="LabelSettings_jq8gn"]
+font = ExtResource("3_v6dd7")
+font_size = 19
+
+[sub_resource type="LabelSettings" id="LabelSettings_2lgad"]
+font = ExtResource("3_v6dd7")
+font_size = 19
+
+[sub_resource type="LabelSettings" id="LabelSettings_228wp"]
+font = ExtResource("3_v6dd7")
+font_size = 19
+
+[node name="Credits" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_2lgad")
+
+[node name="bg" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0703125, 0.0703125, 0.0703125, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -227.5
+offset_top = -112.0
+offset_right = 227.5
+offset_bottom = -55.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("2_21wcu")
+
+[node name="return" parent="VBoxContainer" instance=ExtResource("3_g3j2f")]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 3
+text = "Return"
+
+[node name="credits_text" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="narrative" type="Label" parent="credits_text"]
+layout_mode = 0
+offset_left = 798.0
+offset_top = 198.0
+offset_right = 951.0
+offset_bottom = 355.0
+text = "NARRATIVE
+- Devin Mercado
+- Sefray
+- William Sharon
+- Samantha Tuck"
+label_settings = SubResource("LabelSettings_v6dd7")
+
+[node name="developer" type="Label" parent="credits_text"]
+layout_mode = 0
+offset_left = 190.0
+offset_top = 195.0
+offset_right = 429.0
+offset_bottom = 448.0
+text = "DEVELOPMENT
+- Miguel, The Ace of Spade
+- Taylor Blanche
+- Renee DeVivo
+- Marcus Laudadio
+- Barrett Timmons
+- Unkawa
+- WillPlum"
+label_settings = SubResource("LabelSettings_g3j2f")
+
+[node name="music" type="Label" parent="credits_text"]
+layout_mode = 0
+offset_left = 412.0
+offset_top = 334.0
+offset_right = 527.0
+offset_bottom = 427.0
+text = "MUSIC/SFX
+- BitLag
+- Ben Colgan"
+label_settings = SubResource("LabelSettings_jq8gn")
+
+[node name="art" type="Label" parent="credits_text"]
+layout_mode = 0
+offset_left = 616.0
+offset_top = 333.0
+offset_right = 741.0
+offset_bottom = 426.0
+text = "ART
+- Marcus Laudadio
+- Sefray"
+label_settings = SubResource("LabelSettings_2lgad")
+
+[node name="lead" type="Label" parent="credits_text"]
+layout_mode = 0
+offset_left = 510.0
+offset_top = 193.0
+offset_right = 659.0
+offset_bottom = 254.0
+text = "PROJECT LEAD
+- Devin Mercado"
+label_settings = SubResource("LabelSettings_228wp")
+
+[node name="title" type="RichTextLabel" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -108.0
+offset_top = -309.0
+offset_right = 108.0
+offset_bottom = -183.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/normal_font = ExtResource("3_v6dd7")
+bbcode_enabled = true
+text = "[font_size=80][wave amp=0.0 freq=0.0 connected=1]Credits"
+scroll_active = false
+
+[connection signal="pressed" from="VBoxContainer/return" to="." method="_on_return_pressed"]
