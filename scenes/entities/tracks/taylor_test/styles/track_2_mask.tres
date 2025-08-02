@@ -1,13 +1,12 @@
 [gd_resource type="StyleBoxTexture" load_steps=2 format=3 uid="uid://ctu4o8nre1iw1"]
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ciguc"]
-load_path = "res://.godot/imported/CoasterMask1.png-131d16907790436e615a00d0d0ffe95a.ctex"
+[ext_resource type="Texture2D" uid="uid://dgap87t1p7cy0" path="res://scenes/entities/tracks/taylor_test/images/CoasterMask2_2.png" id="1_y8w3j"]
 
 [resource]
 content_margin_bottom = 0.0
-texture = SubResource("CompressedTexture2D_ciguc")
+texture = ExtResource("1_y8w3j")
 texture_margin_left = 1.0
 texture_margin_top = 254.722
 texture_margin_right = 1.0
 texture_margin_bottom = 55.0
-region_rect = Rect2(1, 1, 192, 254)
+region_rect = Rect2(1, 1, 254.512, 254)

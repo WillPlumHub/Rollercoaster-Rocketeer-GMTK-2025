@@ -90,18 +90,21 @@ mesh = SubResource("QuadMesh_0et32")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Dest"]
 shape = SubResource("WorldBoundaryShape2D_we6vc")
 
-[node name="TrackPart2" parent="." instance=ExtResource("5_spx7k")]
+[node name="TrackPart2" parent="." node_paths=PackedStringArray("ground_marker") instance=ExtResource("5_spx7k")]
 position = Vector2(456, 528)
 track_speed = 10000.0
+ground_marker = NodePath("../GroundMarker")
 
 [node name="track_part_1" parent="." instance=ExtResource("6_pv1k2")]
 position = Vector2(904, 528)
 
-[node name="track_part_2" parent="." instance=ExtResource("7_ejv5p")]
+[node name="track_part_2" parent="." node_paths=PackedStringArray("ground_marker") instance=ExtResource("7_ejv5p")]
 position = Vector2(712, 528)
+ground_marker = NodePath("../GroundMarker")
 
-[node name="track_part_3" parent="." instance=ExtResource("7_ejv5p")]
+[node name="track_part_3" parent="." node_paths=PackedStringArray("ground_marker") instance=ExtResource("7_ejv5p")]
 position = Vector2(-136, 328)
+ground_marker = NodePath("../GroundMarker")
 
 [node name="track_part_4" parent="." instance=ExtResource("7_0et32")]
 position = Vector2(-384, 136)

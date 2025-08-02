@@ -70,9 +70,9 @@ shape = SubResource("CircleShape2D_oxk6s")
 
 [node name="TrackArt" parent="." node_paths=PackedStringArray("ground_marker", "left_beam_marker", "right_beam_marker") instance=ExtResource("2_4ev0u")]
 unique_name_in_owner = true
-offset_top = -187.0
+offset_top = -201.0
 offset_right = 257.0
-offset_bottom = 232.0
+offset_bottom = 218.0
 ground_marker = NodePath(".")
 left_beam_marker = NodePath("../coaster_path/start")
 right_beam_marker = NodePath("../coaster_path/end")
