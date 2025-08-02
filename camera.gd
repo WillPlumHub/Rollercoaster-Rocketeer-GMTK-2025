@@ -20,6 +20,12 @@ func _ready() -> void:
 	zoom = Vector2(zoom_level, zoom_level)
 	player_node = get_node("../Player")
 	rollercoaster_node = get_node("../Player")
+	GameData.launch_train_cars.connect(_hide_camera)
+	set_deferred("enabled", true)
+
+func _hide_camera():
+	print("hiding camera....")
+	set_deferred("enabled", false)
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.pressed:
@@ -30,12 +36,14 @@ func _unhandled_input(event: InputEvent) -> void:
 		zoom = Vector2(zoom_level, zoom_level)
 
 func _process(delta: float) -> void:
+	if !enabled:
+		return
 	var target: Node2D = null
-	print("launch = ", launch)
-	if launch:
-		target = rollercoaster_node
-	else:
-		target = player_node
+	#print("launch = ", launch)
+	#if launch:
+		#target = rollercoaster_node
+	#else:
+	target = player_node
 
 	if target:
 		global_position.x = target.global_position.x

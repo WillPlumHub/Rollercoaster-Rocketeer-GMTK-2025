@@ -17,4 +17,6 @@ func set_progressbar(new_health: int) -> void:
 func _playercart_damage(damage_amount: int) -> void:
 	current_health -= damage_amount
 	current_health = max(current_health, 0)
+	if current_health == 0:
+		get_tree().change_scene_to_file("res://scenes/UI/you_died.tscn")
 	set_progressbar(current_health)
