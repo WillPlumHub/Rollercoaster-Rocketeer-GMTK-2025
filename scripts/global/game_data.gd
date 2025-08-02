@@ -2,6 +2,7 @@ extends Node
 
 signal launch_train_cars
 signal playercart_damage(new_health: int)
+signal player_died
 
 var player_info: PlayerInfo = PlayerInfo.new()
 
