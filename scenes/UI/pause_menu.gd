@@ -19,11 +19,9 @@ func pauseMenu():
 	paused = !paused
 	
 
-
 func _on_resume_pressed() -> void:
 	#main_scene.pauseMenu()
 	pass
-
 
 func _on_quit_pressed() -> void:
 	get_tree().quit()

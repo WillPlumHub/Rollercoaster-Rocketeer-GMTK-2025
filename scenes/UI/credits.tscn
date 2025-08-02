@@ -1,9 +1,21 @@
-[gd_scene load_steps=10 format=3 uid="uid://11v5q80s5oyj"]
+[gd_scene load_steps=14 format=3 uid="uid://11v5q80s5oyj"]
 
 [ext_resource type="Script" uid="uid://bf1veb6ctne4l" path="res://scenes/UI/credits.gd" id="1_2lgad"]
-[ext_resource type="Theme" uid="uid://myuj1yo75kir" path="res://assets/ui_theme.tres" id="2_21wcu"]
+[ext_resource type="Theme" uid="uid://wios74ose78t" path="res://assets/ui_theme.tres" id="2_21wcu"]
+[ext_resource type="Shader" uid="uid://drdhf2mbaim50" path="res://scenes/UI/space.gdshader" id="2_g3j2f"]
 [ext_resource type="PackedScene" uid="uid://bklsq5dgkbhdd" path="res://scenes/UI/custom_button.tscn" id="3_g3j2f"]
 [ext_resource type="FontFile" uid="uid://byr5ua7821djh" path="res://assets/Oswald-VariableFont_wght.ttf" id="3_v6dd7"]
+[ext_resource type="Shader" uid="uid://b2bye2xne3t0d" path="res://scenes/UI/blur_shader.gdshader" id="5_jq8gn"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jq8gn"]
+shader = ExtResource("2_g3j2f")
+shader_parameter/bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_nioxy"]
+shader = ExtResource("5_jq8gn")
+shader_parameter/blur_amount = 0.988
+shader_parameter/mix_amount = 0.0
+shader_parameter/color_over = Color(0, 0, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_v6dd7"]
 font = ExtResource("3_v6dd7")
@@ -43,6 +55,15 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.0703125, 0.0703125, 0.0703125, 1)
 
+[node name="bg2" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_jq8gn")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = 7
@@ -64,6 +85,31 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 3
 text = "Return"
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -410.5
+offset_top = -148.5
+offset_right = 410.5
+offset_bottom = 148.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="blur_bg" type="ColorRect" parent="Panel"]
+show_behind_parent = true
+material = SubResource("ShaderMaterial_nioxy")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
 
 [node name="credits_text" type="Control" parent="."]
 layout_mode = 1
