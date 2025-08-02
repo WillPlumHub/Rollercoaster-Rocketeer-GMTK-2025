@@ -8,5 +8,5 @@
 
 [resource]
 script = ExtResource("1_cj357")
-frames = Array[Texture]([ExtResource("1_bdpfn"), ExtResource("2_2ye5j"), ExtResource("3_vu8e3"), ExtResource("4_lj5cc")])
+frames = Array[CompressedTexture2D]([ExtResource("1_bdpfn"), ExtResource("2_2ye5j"), ExtResource("3_vu8e3"), ExtResource("4_lj5cc")])
 metadata/_custom_type_script = "uid://bwl7smwceha2g"
