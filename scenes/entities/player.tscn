@@ -42,7 +42,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0qees"]
-size = Vector2(50, 50)
+size = Vector2(50, 56)
 
 [node name="Player" type="CharacterBody2D"]
 collision_layer = 512
@@ -57,6 +57,7 @@ frame = 1
 frame_progress = 0.0937412
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 3)
 shape = SubResource("RectangleShape2D_0qees")
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -74,4 +75,5 @@ texture = ExtResource("2_08t41")
 [node name="InteractionDetector" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionDetector"]
+position = Vector2(0, 3)
 shape = SubResource("RectangleShape2D_0qees")
