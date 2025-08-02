@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://datatrsbrqlp6"]
+[gd_scene load_steps=8 format=3 uid="uid://qlp16xnqphrs"]
 
 [ext_resource type="Script" uid="uid://dcp4881wiphnj" path="res://scenes/entities/tracks/track_part_1.gd" id="1_ekg5b"]
 [ext_resource type="PackedScene" uid="uid://b7p8cmat2ofin" path="res://scenes/entities/tracks/taylor_test/track_art.tscn" id="2_4ev0u"]
@@ -68,17 +68,14 @@ collision_mask = 16
 [node name="CollisionShape2D" type="CollisionShape2D" parent="coaster_path/end/track_end"]
 shape = SubResource("CircleShape2D_oxk6s")
 
-[node name="TrackArt" parent="." node_paths=PackedStringArray("ground_marker", "left_beam_marker", "right_beam_marker") instance=ExtResource("2_4ev0u")]
+[node name="TrackArt" parent="." node_paths=PackedStringArray("left_beam_marker", "right_beam_marker") instance=ExtResource("2_4ev0u")]
 unique_name_in_owner = true
 offset_top = -201.0
 offset_right = 257.0
 offset_bottom = 218.0
-ground_marker = NodePath(".")
 left_beam_marker = NodePath("../coaster_path/start")
 right_beam_marker = NodePath("../coaster_path/end")
-is_right_connected = false
 style_box_mask = SubResource("StyleBoxTexture_bfdxm")
-debug_mask_layer = false
 track_path_art_behind_texture = ExtResource("3_bfdxm")
 
 [connection signal="button_down" from="grab_detect" to="." method="_on_grab_detect_button_down"]
