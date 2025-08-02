@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://b8unyji1o4s1f" path="res://scenes/UI/hud.tscn" id="2_spx7k"]
 [ext_resource type="PackedScene" uid="uid://datatrsbrqlp6" path="res://scenes/entities/tracks/track_part_2.tscn" id="2_ti75c"]
 [ext_resource type="PackedScene" uid="uid://cy4mepircebey" path="res://scenes/entities/tracks/track_part_1.tscn" id="3_y3ptb"]
+[ext_resource type="Script" uid="uid://c018cvjugx7ox" path="res://camera.gd" id="5_ejv5p"]
 [ext_resource type="PackedScene" uid="uid://daumqxv4g2jxy" path="res://scenes/entities/tracks/track_part_3.tscn" id="5_spx7k"]
 [ext_resource type="PackedScene" uid="uid://dbwbnuxjh618g" path="res://scenes/entities/tracks/track_part_5.tscn" id="6_pv1k2"]
 [ext_resource type="PackedScene" uid="uid://di4vh4401voyy" path="res://scenes/entities/tracks/track_part_begin.tscn" id="7_0et32"]
@@ -47,7 +48,12 @@ track_type = 1
 ground_marker = NodePath("../GroundMarker")
 
 [node name="track_part_4_coaster_path_car_RigidBody2D#Camera2D" type="Camera2D" parent="."]
+enabled = false
 zoom = Vector2(0.5, 0.5)
+script = ExtResource("5_ejv5p")
+
+[node name="Camera2D" type="Camera2D" parent="track_part_4_coaster_path_car_RigidBody2D#Camera2D"]
+script = ExtResource("5_ejv5p")
 
 [node name="track_part_4_coaster_path_car_RigidBody2D#Thrusters" type="Node2D" parent="."]
 script = ExtResource("8_ti75c")
