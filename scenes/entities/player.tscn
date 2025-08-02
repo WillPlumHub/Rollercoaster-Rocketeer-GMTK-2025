@@ -61,6 +61,7 @@ position = Vector2(0, 3)
 shape = SubResource("RectangleShape2D_0qees")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+unique_name_in_owner = true
 position = Vector2(0, -223)
 enabled = false
 process_callback = 0
