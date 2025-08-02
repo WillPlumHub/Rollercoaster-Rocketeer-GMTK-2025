@@ -17,4 +17,6 @@ func set_progressbar(new_health: int) -> void:
 func _playercart_damage(damage_amount: int) -> void:
 	current_health -= damage_amount
 	current_health = max(current_health, 0)
+	if current_health == 0:
+		print("You're dead!")
 	set_progressbar(current_health)

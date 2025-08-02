@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var interaction_detector: Area2D = $InteractionDetector
+@onready var camera_2d: Camera2D = %Camera2D
 
 const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
@@ -35,6 +36,4 @@ func _physics_process(delta: float) -> void:
 	
 	# Clamp player's X position within bounds
 	global_position = Vector2(clamp(global_position.x, min_x_position, max_x_position), global_position.y)
-
-
 # Unused portion of CharacterBody2D code template 
