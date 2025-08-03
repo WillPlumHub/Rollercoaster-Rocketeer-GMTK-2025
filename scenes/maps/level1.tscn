@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://debaeg15rk26a"]
+[gd_scene load_steps=24 format=3 uid="uid://debaeg15rk26a"]
 
 [ext_resource type="Script" uid="uid://dm30ouip10g0o" path="res://scenes/maps/prelaunch_area.gd" id="1_0et32"]
 [ext_resource type="Shader" uid="uid://drdhf2mbaim50" path="res://scenes/UI/space.gdshader" id="2_hj7nn"]
@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://dentbymqt2nkh" path="res://scenes/props/trees.tscn" id="16_0t0yv"]
 [ext_resource type="PackedScene" uid="uid://cs206ingo3auw" path="res://scenes/entities/planetoid3.tscn" id="16_bxwbp"]
 [ext_resource type="Texture2D" uid="uid://mm0ekwsn7kak" path="res://icon.svg" id="17_bxwbp"]
+[ext_resource type="AudioStream" uid="uid://g5y4v8krjc1i" path="res://assets/music/Setting The Tracks.mp3" id="17_ri3x5"]
 [ext_resource type="Texture2D" uid="uid://crra7ypaenlw3" path="res://scenes/props/LeftA.png" id="18_3fyaw"]
 [ext_resource type="Texture2D" uid="uid://cy5dmawqhgidf" path="res://scenes/props/RightD.png" id="19_ln88j"]
 
@@ -49,7 +50,6 @@ grow_vertical = 2
 color = Color(0.249512, 0.640442, 0.875, 1)
 
 [node name="space_bg" type="ColorRect" parent="background_stuff"]
-visible = false
 material = SubResource("ShaderMaterial_0t0yv")
 anchors_preset = 15
 anchor_right = 1.0
@@ -245,3 +245,7 @@ position = Vector2(10808, -8992)
 
 [node name="Planetoid12" parent="." instance=ExtResource("16_bxwbp")]
 position = Vector2(6608, -9072)
+
+[node name="SettingTheTracks" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("17_ri3x5")
+autoplay = true
