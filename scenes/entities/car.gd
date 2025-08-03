@@ -28,6 +28,9 @@ func _on_launch_train_cars() -> void:
 	speed = track_attached.track_speed
 	var track: TrackPart = track_attached
 	GameData.player_info.placed_tracks.clear()
+	# TODO: This needs to be moved to a base place when launch is first triggered
+	# currently it is ran for each cart which is bad, they all calculate the same
+	# number, but I'm not sure where else to get the starting track before launch
 	while track != null:
 		print("adding track info to player: ")
 		if track.part_info == null:
