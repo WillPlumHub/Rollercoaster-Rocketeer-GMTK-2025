@@ -1,0 +1,48 @@
+[gd_scene load_steps=7 format=3 uid="uid://cnv65uphmyxx3"]
+
+[ext_resource type="Script" uid="uid://mt83lmyujyhh" path="res://scenes/entities/rocket.gd" id="1_d40e5"]
+[ext_resource type="Texture2D" uid="uid://dkxfg6x85k32k" path="res://assets/art/1_carrot_rocket.webp" id="1_n2suw"]
+[ext_resource type="Script" uid="uid://lets3pwxygq1" path="res://scripts/health_component.gd" id="2_d40e5"]
+[ext_resource type="Texture2D" uid="uid://c7aupcg0bwhid" path="res://assets/art/7.webp" id="2_fn1qa"]
+[ext_resource type="Script" uid="uid://y1g1g0ritebn" path="res://scripts/thrusters.gd" id="5_vkitj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vkitj"]
+size = Vector2(64, 32)
+
+[node name="rocket" type="RigidBody2D" node_paths=PackedStringArray("rigid_body", "health_component")]
+collision_layer = 0
+collision_mask = 0
+mass = 0.5
+freeze = true
+contact_monitor = true
+max_contacts_reported = 1
+script = ExtResource("1_d40e5")
+rigid_body = NodePath(".")
+health_component = NodePath("HealthComponent")
+
+[node name="fire" type="Sprite2D" parent="."]
+position = Vector2(-31, 0)
+rotation = 1.5708
+scale = Vector2(0.180844, 0.180844)
+texture = ExtResource("2_fn1qa")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(9.9476e-14, -9.53674e-07)
+rotation = 1.5708
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("1_n2suw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_vkitj")
+
+[node name="HealthComponent" type="Node" parent="."]
+script = ExtResource("2_d40e5")
+max_health = 300
+metadata/_custom_type_script = "uid://lets3pwxygq1"
+
+[node name="Thrusters" type="Node2D" parent="."]
+script = ExtResource("5_vkitj")
+metadata/_custom_type_script = "uid://y1g1g0ritebn"
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position_smoothing_enabled = true
