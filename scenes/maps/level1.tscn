@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://dq07oysuypy30"]
+[gd_scene load_steps=28 format=3 uid="uid://debaeg15rk26a"]
 
 [ext_resource type="Script" uid="uid://dm30ouip10g0o" path="res://scenes/maps/prelaunch_area.gd" id="1_0et32"]
 [ext_resource type="Shader" uid="uid://drdhf2mbaim50" path="res://scenes/UI/space.gdshader" id="2_hj7nn"]
@@ -15,8 +15,10 @@
 [ext_resource type="Texture2D" uid="uid://bpie22j2ha5k" path="res://assets/art/Smoke.png" id="9_yrt3e"]
 [ext_resource type="Texture2D" uid="uid://d0c4gphe8hji4" path="res://assets/art/grounds.png" id="12_pv1k2"]
 [ext_resource type="PackedScene" uid="uid://b2bc0hsiynf81" path="res://scenes/entities/player.tscn" id="13_ejv5p"]
-[ext_resource type="PackedScene" uid="uid://dentbymqt2nkh" path="res://scenes/props/trees.tscn" id="16_0t0yv"]
+[ext_resource type="PackedScene" path="res://scenes/props/trees.tscn" id="16_0t0yv"]
 [ext_resource type="Texture2D" uid="uid://mm0ekwsn7kak" path="res://icon.svg" id="17_bxwbp"]
+[ext_resource type="Texture2D" uid="uid://crra7ypaenlw3" path="res://scenes/props/LeftA.png" id="18_3fyaw"]
+[ext_resource type="Texture2D" uid="uid://cy5dmawqhgidf" path="res://scenes/props/RightD.png" id="19_ln88j"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_0t0yv"]
 shader = ExtResource("2_hj7nn")
@@ -228,5 +230,15 @@ layer = -1
 
 [node name="trees" parent="trees/ParallaxLayer" instance=ExtResource("16_0t0yv")]
 scroll_offset = Vector2(0, 602)
+
+[node name="LeftA" type="Sprite2D" parent="."]
+position = Vector2(266, 539)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("18_3fyaw")
+
+[node name="RightD" type="Sprite2D" parent="."]
+position = Vector2(366, 546)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("19_ln88j")
 
 [editable path="track_part_4"]

@@ -10,7 +10,7 @@
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_we6vc"]
 
-[node name="prelaunch_area2" type="Node2D"]
+[node name="prelaunch_area3" type="Node2D"]
 script = ExtResource("1_031nh")
 
 [node name="UI" type="CanvasLayer" parent="."]

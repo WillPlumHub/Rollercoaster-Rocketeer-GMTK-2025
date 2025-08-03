@@ -13,6 +13,8 @@ func _enter_tree() -> void:
 		var cart_count = override_cart_count
 		for i in range(cart_count):
 			var c = CAR_SCENE.instantiate()
+			c.rigid_body.linear_damp = 4.0
+			c.rigid_body.angular_damp = 6.0
 			c.position = position + Vector2.RIGHT * SEPERATION * i
 			add_child(c)
 
