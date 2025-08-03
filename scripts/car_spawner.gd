@@ -19,6 +19,10 @@ func _enter_tree() -> void:
 			add_child(c)
 
 
+func _get_particle_effects() -> CPUParticles2D:
+	return preload("res://scenes/particles/thruster_smoke.tscn").instantiate()
+
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	if !Engine.is_editor_hint():
@@ -42,6 +46,7 @@ func _ready() -> void:
 				c.rigid_body.add_child(cam)
 
 				var th = Thrusters.new()
+				th.add_child(_get_particle_effects())
 				c.thrusters = th
 				c.rigid_body.add_child(th)
 		
