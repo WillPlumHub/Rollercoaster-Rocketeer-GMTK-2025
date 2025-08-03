@@ -11,10 +11,13 @@ signal buying_failed(part_info: PartInfo)
 @export var ground_marker: Control = null
 
 const MARKET_CARD_SCENE: PackedScene = preload("./market_card/market_card.tscn")
+var _rerolls = 3
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	_load_cards()
+	_update_reroll_button()
 
 
 func _load_cart_cards():
@@ -59,10 +62,20 @@ func _load_cards():
 	_load_track_cards()
 	_load_cart_cards()
 
-
+const REROLL_CHAR = '-'
 func _on_refresh_button_pressed():
 	# TODO: Subtract increasing gold on multiple refreshes
 	_load_cards()
+	_rerolls -= 1
+	_update_reroll_button()
+	
+func _update_reroll_button():
+	var dots: String = ""
+	for i in range(_rerolls):
+		dots += REROLL_CHAR
+	%RefreshButton.text = "Restock [%s]" % dots
+	if _rerolls <= 0:
+		%RefreshButton.disabled = true
 
 
 func _on_close_shop_pressed() -> void:

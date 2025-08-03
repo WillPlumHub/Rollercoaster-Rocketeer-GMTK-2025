@@ -43,6 +43,14 @@ visible = false
 [node name="YouDied" parent="." instance=ExtResource("3_y5tme")]
 visible = false
 
+[node name="RestartButton" type="Button" parent="."]
+offset_left = 24.0
+offset_top = 24.0
+offset_right = 89.0
+offset_bottom = 55.0
+text = "Restart"
+
 [connection signal="pressed" from="launch" to="." method="_on_launch_pressed"]
 [connection signal="pressed" from="market_button" to="." method="_on_market_pressed"]
 [connection signal="market_closed" from="Market" to="." method="_on_market_market_closed"]
+[connection signal="pressed" from="RestartButton" to="." method="_on_restart_button_pressed"]

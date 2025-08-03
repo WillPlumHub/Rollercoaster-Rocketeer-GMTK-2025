@@ -71,3 +71,7 @@ func _on_market_pressed() -> void:
 
 func _on_market_market_closed() -> void:
 	market.hide()
+
+
+func _on_restart_button_pressed() -> void:
+	get_tree().reload_current_scene()
