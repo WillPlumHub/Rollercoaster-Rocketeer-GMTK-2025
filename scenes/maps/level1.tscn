@@ -1,7 +1,8 @@
-[gd_scene load_steps=24 format=3 uid="uid://debaeg15rk26a"]
+[gd_scene load_steps=26 format=3 uid="uid://debaeg15rk26a"]
 
 [ext_resource type="Script" uid="uid://dm30ouip10g0o" path="res://scenes/maps/prelaunch_area.gd" id="1_0et32"]
 [ext_resource type="Shader" uid="uid://drdhf2mbaim50" path="res://scenes/UI/space.gdshader" id="2_hj7nn"]
+[ext_resource type="Script" uid="uid://bdf1mo53jpbch" path="res://scenes/maps/background_stuff.gd" id="2_ri3x5"]
 [ext_resource type="PackedScene" uid="uid://b8unyji1o4s1f" path="res://scenes/UI/hud.tscn" id="2_spx7k"]
 [ext_resource type="Script" uid="uid://c018cvjugx7ox" path="res://camera.gd" id="5_ejv5p"]
 [ext_resource type="PackedScene" uid="uid://dbwbnuxjh618g" path="res://scenes/entities/tracks/launcher_track_part.tscn" id="6_pv1k2"]
@@ -35,11 +36,16 @@ size = Vector2(10000, 50)
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_spx7k"]
 
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_ri3x5"]
+
 [node name="prelaunch_area2" type="Node2D"]
 script = ExtResource("1_0et32")
 
-[node name="background_stuff" type="CanvasLayer" parent="."]
+[node name="background_stuff" type="CanvasLayer" parent="." node_paths=PackedStringArray("background_a", "background_b")]
 layer = -1
+script = ExtResource("2_ri3x5")
+background_a = NodePath("space_bg")
+background_b = NodePath("bg")
 
 [node name="bg" type="ColorRect" parent="background_stuff"]
 anchors_preset = 15
@@ -172,7 +178,7 @@ stretch_mode = 1
 layout_mode = 0
 offset_top = 270.0
 offset_right = 100860.0
-offset_bottom = 1340.0
+offset_bottom = 19822.0
 color = Color(0.278431, 0.133333, 0.113725, 1)
 
 [node name="Planetoid" parent="." instance=ExtResource("9_y3ptb")]
@@ -249,3 +255,15 @@ position = Vector2(6608, -9072)
 [node name="SettingTheTracks" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("17_ri3x5")
 autoplay = true
+
+[node name="Border" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Border"]
+position = Vector2(-392, 2)
+rotation = 1.57079
+shape = SubResource("WorldBoundaryShape2D_ri3x5")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Border"]
+position = Vector2(14664, -6760)
+rotation = 4.71238
+shape = SubResource("WorldBoundaryShape2D_ri3x5")
