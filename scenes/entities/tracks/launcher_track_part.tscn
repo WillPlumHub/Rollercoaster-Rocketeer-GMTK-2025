@@ -14,10 +14,11 @@ point_count = 5
 [sub_resource type="CircleShape2D" id="CircleShape2D_oxk6s"]
 radius = 14.0357
 
-[node name="track_part_1" type="Node2D"]
+[node name="LauncherTrackPart" type="Node2D"]
 script = ExtResource("1_3l633")
 track_type = 2
 track_speed = 10000.0
+metadata/_custom_type_script = "uid://dcp4881wiphnj"
 
 [node name="grab_detect" type="Button" parent="."]
 modulate = Color(1, 1, 1, 0.454902)

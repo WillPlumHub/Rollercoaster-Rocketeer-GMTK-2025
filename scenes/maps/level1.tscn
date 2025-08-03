@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://debaeg15rk26a"]
+[gd_scene load_steps=21 format=3 uid="uid://debaeg15rk26a"]
 
 [ext_resource type="Script" uid="uid://dm30ouip10g0o" path="res://scenes/maps/prelaunch_area.gd" id="1_0et32"]
 [ext_resource type="Shader" uid="uid://drdhf2mbaim50" path="res://scenes/UI/space.gdshader" id="2_hj7nn"]
@@ -7,8 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://dbwbnuxjh618g" path="res://scenes/entities/tracks/launcher_track_part.tscn" id="6_pv1k2"]
 [ext_resource type="PackedScene" uid="uid://di4vh4401voyy" path="res://scenes/entities/tracks/station_track_part.tscn" id="7_0et32"]
 [ext_resource type="Script" uid="uid://y1g1g0ritebn" path="res://scripts/thrusters.gd" id="8_ti75c"]
-[ext_resource type="PackedScene" uid="uid://cqaur568cgb1w" path="res://scenes/props/planetoid.tscn" id="9_y3ptb"]
-[ext_resource type="Texture2D" uid="uid://bpie22j2ha5k" path="res://assets/art/Smoke.png" id="9_yrt3e"]
+[ext_resource type="PackedScene" uid="uid://i5aogpbxnfau" path="res://scenes/props/planetoid.tscn" id="9_y3ptb"]
 [ext_resource type="Texture2D" uid="uid://d0c4gphe8hji4" path="res://assets/art/grounds.png" id="12_pv1k2"]
 [ext_resource type="PackedScene" uid="uid://b2bc0hsiynf81" path="res://scenes/entities/player.tscn" id="13_ejv5p"]
 [ext_resource type="PackedScene" uid="uid://dentbymqt2nkh" path="res://scenes/props/trees.tscn" id="16_0t0yv"]
@@ -32,14 +31,6 @@ size = Vector2(10000, 50)
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_we6vc"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_spx7k"]
-
-[sub_resource type="Curve" id="Curve_spx7k"]
-_limits = [0.1, 1.0, 0.0, 1.0]
-_data = [Vector2(0.0326193, 0.1), 0.0, 0.267521, 0, 0, Vector2(1, 1), -0.326749, 0.0, 0, 0]
-point_count = 2
-
-[sub_resource type="Gradient" id="Gradient_pv1k2"]
-colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
 
 [node name="prelaunch_area2" type="Node2D"]
 script = ExtResource("1_0et32")
@@ -123,7 +114,7 @@ collision_mask = 2
 gravity_space_override = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Ground/Area2D"]
-position = Vector2(-32, -160)
+position = Vector2(-40, -304)
 shape = SubResource("WorldBoundaryShape2D_yrt3e")
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="Ground"]
@@ -154,28 +145,6 @@ mesh = SubResource("QuadMesh_0et32")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Dest"]
 shape = SubResource("WorldBoundaryShape2D_we6vc")
-
-[node name="track_part_1" parent="." node_paths=PackedStringArray("ground_marker") instance=ExtResource("6_pv1k2")]
-position = Vector2(592, 119)
-ground_marker = NodePath("../GroundMarker")
-
-[node name="track_part_4" parent="." node_paths=PackedStringArray("ground_marker") instance=ExtResource("7_0et32")]
-position = Vector2(208, 120)
-ground_marker = NodePath("../GroundMarker")
-
-[node name="TrackArt" parent="track_part_4" index="3"]
-metadata/_edit_use_anchors_ = true
-
-[node name="track_part_4_coaster_path_car_RigidBody2D_Thrusters#CPUParticles2D" type="CPUParticles2D" parent="."]
-amount = 16
-texture = ExtResource("9_yrt3e")
-direction = Vector2(0, 1)
-spread = 10.0
-gravity = Vector2(0, 0)
-initial_velocity_min = 146.95
-initial_velocity_max = 146.95
-scale_amount_curve = SubResource("Curve_spx7k")
-color_ramp = SubResource("Gradient_pv1k2")
 
 [node name="Planetoid" parent="." instance=ExtResource("9_y3ptb")]
 position = Vector2(2520, -1712)
@@ -215,4 +184,8 @@ position = Vector2(366, 546)
 scale = Vector2(0.3, 0.3)
 texture = ExtResource("19_ln88j")
 
-[editable path="track_part_4"]
+[node name="StationTrackPart" parent="." instance=ExtResource("7_0et32")]
+position = Vector2(504, 272)
+
+[node name="LauncherTrackPart" parent="." instance=ExtResource("6_pv1k2")]
+position = Vector2(904, 272)
