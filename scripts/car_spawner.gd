@@ -25,7 +25,7 @@ func _ready() -> void:
 		# Prepare to spawn the carts
 		var info = GameData.player_info
 		#var launch_info = info.calculate_final_launch_stats()
-		var launch_info = info.base_stats
+		#var launch_info = info.base_stats
 		var cart_count = info.linked_carts.size()
 		if override_cart_count > 0:
 			cart_count = override_cart_count
@@ -42,8 +42,7 @@ func _ready() -> void:
 				c.rigid_body.add_child(cam)
 
 				var th = Thrusters.new()
-				th.fuel = launch_info.thruster_fuel
-				th.power = launch_info.thruster_power / 100.0
+				c.thrusters = th
 				c.rigid_body.add_child(th)
 		
 		# Join the cars together

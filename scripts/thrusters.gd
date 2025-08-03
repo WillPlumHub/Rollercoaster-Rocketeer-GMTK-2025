@@ -14,10 +14,13 @@ var _thrusting: bool = false
 
 
 func _ready():
+	GameData.launch_train_cars.connect(_on_launch)
 	if !Engine.is_editor_hint():
 		if body is not RigidBody2D:
 			push_error("Parent is not a RigidBody2D!")
 
+func _on_launch():
+	pass
 
 func _process(delta: float) -> void:
 	if Engine.is_editor_hint():
