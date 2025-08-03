@@ -47,6 +47,7 @@ func _ready() -> void:
 
 				var th = Thrusters.new()
 				th.add_child(_get_particle_effects())
+				th.disabled = true
 				c.thrusters = th
 				c.rigid_body.add_child(th)
 		

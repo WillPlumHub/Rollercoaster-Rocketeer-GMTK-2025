@@ -91,6 +91,8 @@ func _process(delta: float) -> void:
 			if join_to:
 				Car._join_bodies.call_deferred(pin_joint, rigid_body, join_to.rigid_body)
 			# queue_free()
+			if thrusters:
+				thrusters.disabled = false
 			_init = false
 	
 

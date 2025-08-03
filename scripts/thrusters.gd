@@ -7,6 +7,7 @@ const FORCE = 3000.0
 var body: RigidBody2D:
 	get: return get_parent()
 
+var disabled: bool = false
 var fuel = 100.0
 var power = 1.0
 var _wish_direction: Vector2
@@ -27,7 +28,7 @@ func _process(delta: float) -> void:
 		return
 	
 	# Input
-	_thrusting = Input.is_action_pressed("launch.activate_thrust") && !is_zero_approx(fuel)
+	_thrusting = !disabled && !is_zero_approx(fuel) && Input.is_action_pressed("launch.activate_thrust")
 	if _thrusting:
 		_wish_direction = (get_global_mouse_position() - global_position).normalized()
 
