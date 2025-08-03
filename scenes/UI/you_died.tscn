@@ -128,13 +128,6 @@ size_flags_horizontal = 4
 size_flags_vertical = 3
 text = "Return to Main Menu"
 
-[node name="credits" parent="button_container" instance=ExtResource("6_1r4tr")]
-custom_minimum_size = Vector2(350, 0)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 3
-text = "Credits"
-
 [node name="quit" parent="button_container" instance=ExtResource("6_1r4tr")]
 custom_minimum_size = Vector2(350, 0)
 layout_mode = 2
@@ -144,5 +137,4 @@ text = "Quit"
 
 [connection signal="pressed" from="button_container/start_game" to="." method="_on_start_game_pressed"]
 [connection signal="pressed" from="button_container/return_to_main_menu" to="." method="_on_return_to_main_menu_pressed"]
-[connection signal="pressed" from="button_container/credits" to="." method="_on_credits_pressed"]
 [connection signal="pressed" from="button_container/quit" to="." method="_on_quit_pressed"]
