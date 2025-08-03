@@ -26,6 +26,10 @@ func _get_particle_effects() -> CPUParticles2D:
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	if !Engine.is_editor_hint():
+		_prepare_carts()
+		_add_cars_to_scene_tree.call_deferred()
+
+func _prepare_carts() -> void:
 		# Prepare to spawn the carts
 		var info = GameData.player_info
 		#var launch_info = info.calculate_final_launch_stats()
@@ -57,10 +61,9 @@ func _ready() -> void:
 		for i in range(_carts.size()-1):
 			var c = _carts[i]
 			c.join_to = _carts[i+1]
-	_spawn_cars.call_deferred()
 
 
-func _spawn_cars() -> void:
+func _add_cars_to_scene_tree() -> void:
 	if !Engine.is_editor_hint():
 		for c in _carts:
 			add_sibling(c)
