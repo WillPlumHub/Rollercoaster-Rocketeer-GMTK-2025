@@ -19,8 +19,8 @@ func _enter_tree() -> void:
 			add_child(c)
 
 
-func _get_particle_effects() -> CPUParticles2D:
-	return preload("res://scenes/particles/thruster_smoke.tscn").instantiate()
+func _get_thrusters() -> Thrusters:
+	return preload("res://scenes/thrusters/thruster_smoke.tscn").instantiate()
 
 
 # Called when the node enters the scene tree for the first time.
@@ -49,8 +49,7 @@ func _prepare_carts() -> void:
 				cam.zoom = Vector2.ONE * 0.5
 				c.rigid_body.add_child(cam)
 
-				var th = Thrusters.new()
-				th.add_child(_get_particle_effects())
+				var th = _get_thrusters()
 				th.disabled = true
 				c.thrusters = th
 				c.rigid_body.add_child(th)

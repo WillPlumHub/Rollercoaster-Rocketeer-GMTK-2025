@@ -103,7 +103,7 @@ var _uncommon_tracks: Array[PartInfo] = [
 		"Uncommon Loop",
 		PartInfo.Type.TRACK,
 		3, # cost
-		TrackScene.UNKNOWN,
+		TrackScene.LOOP,
 		preload("res://icon.svg"),
 		[
 			PropertyModifier.new(
@@ -120,7 +120,7 @@ var _rare_tracks: Array[PartInfo] = [
 		"Rare Loop",
 		PartInfo.Type.TRACK,
 		3, # cost
-		TrackScene.UNKNOWN,
+		TrackScene.LOOP,
 		preload("res://icon.svg"),
 		[
 			PropertyModifier.new(
@@ -137,7 +137,7 @@ var _legendary_tracks: Array[PartInfo] = [
 		"Legendary Loop",
 		PartInfo.Type.TRACK,
 		3, # cost
-		TrackScene.UNKNOWN,
+		TrackScene.LOOP,
 		preload("res://icon.svg"),
 		[
 			PropertyModifier.new(

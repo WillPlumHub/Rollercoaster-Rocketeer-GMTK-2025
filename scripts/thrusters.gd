@@ -11,7 +11,17 @@ var disabled: bool = false
 var fuel = 100.0
 var power = 1.0
 var _wish_direction: Vector2
-var _thrusting: bool = false
+var _thrusting: bool = false:
+	set(v):
+		_thrusting = v
+		if _thrusting:
+			for n: Node in get_children():
+				if n is AudioStreamPlayer2D:
+					n.play()
+		if !_thrusting:
+			for n: Node in get_children():
+				if n is AudioStreamPlayer2D:
+					n.stop()
 
 
 func _ready():

@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://debaeg15rk26a"]
+[gd_scene load_steps=28 format=3 uid="uid://debaeg15rk26a"]
 
 [ext_resource type="Script" uid="uid://dm30ouip10g0o" path="res://scenes/maps/prelaunch_area.gd" id="1_0et32"]
 [ext_resource type="Shader" uid="uid://drdhf2mbaim50" path="res://scenes/UI/space.gdshader" id="2_hj7nn"]
@@ -37,6 +37,14 @@ size = Vector2(10000, 50)
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_spx7k"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_ri3x5"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_ri3x5"]
+font_size = 27
+outline_size = 5
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ri3x5"]
+radius = 64.0
 
 [node name="prelaunch_area2" type="Node2D"]
 script = ExtResource("1_0et32")
@@ -267,3 +275,24 @@ shape = SubResource("WorldBoundaryShape2D_ri3x5")
 position = Vector2(14664, -6760)
 rotation = 4.71238
 shape = SubResource("WorldBoundaryShape2D_ri3x5")
+
+[node name="Label" type="Label" parent="."]
+z_index = -6
+offset_left = 480.0
+offset_top = 528.0
+offset_right = 888.0
+offset_bottom = 565.0
+text = "[Left Mouse] Activate Thrusters"
+label_settings = SubResource("LabelSettings_ri3x5")
+
+[node name="Warp" type="Area2D" parent="."]
+position = Vector2(14184, 528)
+script = ExtResource("7_gkajp")
+destination_scene = "uid://b1ib2yg3ob724"
+metadata/_custom_type_script = "uid://dsh2epqkg0c8q"
+
+[node name="Icon" type="Sprite2D" parent="Warp"]
+texture = ExtResource("17_bxwbp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Warp"]
+shape = SubResource("CircleShape2D_ri3x5")

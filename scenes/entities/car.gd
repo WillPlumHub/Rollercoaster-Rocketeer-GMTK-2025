@@ -7,6 +7,7 @@ class_name Car
 @export var pin_joint: Joint2D
 @export var join_to: Car
 @export var health_component: HealthComponent
+@export var cart_noises: AudioStreamPlayer
 
 
 var track_attached:TrackPart
@@ -14,6 +15,7 @@ var speed:float = -1
 var end_of_track:bool = false
 var _init: bool = false
 var thrusters: Thrusters = null
+var _off_track: bool = false
 
 
 func _ready() -> void:
@@ -43,6 +45,7 @@ func _on_launch_train_cars() -> void:
 	if thrusters != null:
 		thrusters.fuel = current_data.thruster_fuel
 		thrusters.power = current_data.thruster_power / 100.0
+		cart_noises.play()
 	_init = true
 
 
@@ -94,8 +97,28 @@ func _process(delta: float) -> void:
 			if thrusters:
 				thrusters.disabled = false
 			_init = false
+			_off_track = true
+			cart_noises.stop()
+	
+	# Do sound stuff
+	cart_noises.pitch_scale = max(speed / 500.0, 0.0)
 	
 
 static func _join_bodies(joint: Joint2D, bodyA: PhysicsBody2D, bodyB: PhysicsBody2D):
 	joint.node_a = bodyA.get_path()
 	joint.node_b = bodyB.get_path()
+
+
+func _on_health_component_damaged(new_health: int) -> void:
+	$ShipClankMedium.pitch_scale = randf_range(0.5, 1.5)
+	$ShipClankMedium.play()
+
+
+func _on_health_component_killed() -> void:
+	$ShipClankMedium.pitch_scale = randf_range(0.5, 1.5)
+	$Explosion.play()
+
+
+func _on_rigid_body_2d_body_entered(body: Node) -> void:
+	$ShipClankMedium.pitch_scale = randf_range(2.5, 2.75)
+	$ShipClankMedium.play()

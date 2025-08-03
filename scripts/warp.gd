@@ -1,4 +1,5 @@
 extends Area2D
+class_name Warp
 
 @export_file("*.tscn") var destination_scene: String
 
