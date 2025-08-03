@@ -11,6 +11,7 @@ enum TrackScene {
 	DOWN_HILL,
 	HILL,
 	LOOP,
+	SLANT,
 	
 }
 
@@ -21,6 +22,7 @@ var scene_lookup: Dictionary[TrackScene, PackedScene] = {
 	TrackScene.DOWN_HILL: preload("res://scenes/entities/tracks/down_hill_track_part.tscn"),
 	TrackScene.HILL: preload("res://scenes/entities/tracks/hill_track_part.tscn"),
 	TrackScene.LOOP: preload("res://scenes/entities/tracks/loop_track_part.tscn"),
+	TrackScene.SLANT: preload("res://scenes/entities/tracks/slant_up_track.tscn"),
 }
 
 func get_scene_from_part(part_info: PartInfo, ground_marker: Control) -> TrackPart:
@@ -87,6 +89,20 @@ var _common_tracks: Array[PartInfo] = [
 		PartInfo.Type.TRACK,
 		3, # cost
 		TrackScene.LOOP,
+		preload("res://icon.svg"),
+		[
+			PropertyModifier.new(
+				LaunchStats.AffectedProperty.SPEED,
+				1.0, # amount
+				PropertyModifier.CompoundingType.ADDITIVE_FLAT,
+			)
+		]
+	),
+	PartInfo.new(
+		"Common Slant",
+		PartInfo.Type.TRACK,
+		3, # cost
+		TrackScene.SLANT,
 		preload("res://icon.svg"),
 		[
 			PropertyModifier.new(

@@ -5,7 +5,7 @@
 [ext_resource type="Shader" uid="uid://drdhf2mbaim50" path="res://scenes/UI/space.gdshader" id="2_g3j2f"]
 [ext_resource type="PackedScene" uid="uid://bklsq5dgkbhdd" path="res://scenes/UI/custom_button.tscn" id="3_g3j2f"]
 [ext_resource type="FontFile" uid="uid://byr5ua7821djh" path="res://assets/Oswald-VariableFont_wght.ttf" id="3_v6dd7"]
-[ext_resource type="Shader" uid="uid://b2bye2xne3t0d" path="res://scenes/UI/blur_shader.gdshader" id="5_jq8gn"]
+[ext_resource type="Shader" path="res://scenes/UI/blur_shader.gdshader" id="5_jq8gn"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_jq8gn"]
 shader = ExtResource("2_g3j2f")
@@ -93,10 +93,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -410.5
-offset_top = -148.5
-offset_right = 410.5
-offset_bottom = 148.5
+offset_left = -410.0
+offset_top = -148.0
+offset_right = 411.0
+offset_bottom = 180.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -139,15 +139,16 @@ offset_left = 190.0
 offset_top = 185.0
 offset_right = 429.0
 offset_bottom = 470.0
-text = "DEVELOPMENT
+text = "DEVELOPMENT & PROGRAMMING
 - Miguel, The Ace of Spade
 - Taylor Blanche
 - Renee DeVivo
 - Marcus Laudadio
 - Barrett Timmons
-- Unkawa
 - WillPlum
-- Blaze_Horizon"
+- Blaze_Horizon
+- Devin Mercado
+- Bradly Cheng"
 label_settings = SubResource("LabelSettings_g3j2f")
 
 [node name="music" type="Label" parent="credits_text"]
