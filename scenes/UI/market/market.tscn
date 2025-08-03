@@ -73,6 +73,18 @@ custom_minimum_size = Vector2(250, 50)
 layout_mode = 2
 text = "Close Shop"
 
+[connection signal="buying_failed" from="." to="MarketSelection/CardListings/TrackCards/MarketCard" method="_on_market_buying_failed"]
+[connection signal="buying_failed" from="." to="MarketSelection/CardListings/TrackCards/MarketCard2" method="_on_market_buying_failed"]
+[connection signal="buying_failed" from="." to="MarketSelection/CardListings/TrackCards/MarketCard3" method="_on_market_buying_failed"]
+[connection signal="buying_failed" from="." to="MarketSelection/CardListings/CartCards/MarketCard" method="_on_market_buying_failed"]
+[connection signal="buying_failed" from="." to="MarketSelection/CardListings/CartCards/MarketCard2" method="_on_market_buying_failed"]
+[connection signal="buying_failed" from="." to="MarketSelection/CardListings/CartCards/MarketCard3" method="_on_market_buying_failed"]
+[connection signal="buying_success" from="." to="MarketSelection/CardListings/TrackCards/MarketCard" method="_on_market_buying_success"]
+[connection signal="buying_success" from="." to="MarketSelection/CardListings/TrackCards/MarketCard2" method="_on_market_buying_success"]
+[connection signal="buying_success" from="." to="MarketSelection/CardListings/TrackCards/MarketCard3" method="_on_market_buying_success"]
+[connection signal="buying_success" from="." to="MarketSelection/CardListings/CartCards/MarketCard" method="_on_market_buying_success"]
+[connection signal="buying_success" from="." to="MarketSelection/CardListings/CartCards/MarketCard2" method="_on_market_buying_success"]
+[connection signal="buying_success" from="." to="MarketSelection/CardListings/CartCards/MarketCard3" method="_on_market_buying_success"]
 [connection signal="attempt_buy" from="MarketSelection/CardListings/TrackCards/MarketCard" to="." method="_on_market_card_attempt_buy"]
 [connection signal="attempt_buy" from="MarketSelection/CardListings/TrackCards/MarketCard2" to="." method="_on_market_card_attempt_buy"]
 [connection signal="attempt_buy" from="MarketSelection/CardListings/TrackCards/MarketCard3" to="." method="_on_market_card_attempt_buy"]

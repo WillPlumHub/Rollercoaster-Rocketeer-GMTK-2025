@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://dfe0fvwak1k4r"]
 
 [ext_resource type="PackedScene" uid="uid://dtwwhoynn664" path="res://scenes/UI/cutscene_manager.tscn" id="1_onq35"]
-[ext_resource type="PackedScene" uid="uid://dq07oysuypy30" path="res://scenes/maps/level1.tscn" id="2_026dm"]
+[ext_resource type="PackedScene" uid="uid://debaeg15rk26a" path="res://scenes/maps/level1.tscn" id="2_026dm"]
 
 [node name="cutscene1" type="Control"]
 layout_mode = 3

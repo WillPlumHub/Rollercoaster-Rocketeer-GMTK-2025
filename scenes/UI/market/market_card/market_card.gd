@@ -50,3 +50,12 @@ func buyout():
 func _on_button_down() -> void:
 	print("emitting part info!")
 	attempt_buy.emit(part_info)
+
+func _on_market_buying_success(pi: PartInfo) -> void:
+	if pi == part_info:
+		print("buying succeeded!")
+		part_info = null
+
+func _on_market_buying_failed(pi: PartInfo) -> void:
+	if pi == part_info:
+		print("attempting attempting failed")

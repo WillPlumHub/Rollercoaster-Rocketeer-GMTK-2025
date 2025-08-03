@@ -183,4 +183,4 @@ texture = ExtResource("19_ln88j")
 position = Vector2(504, 272)
 
 [node name="LauncherTrackPart" parent="." instance=ExtResource("6_pv1k2")]
-position = Vector2(904, 272)
+position = Vector2(904, 448)

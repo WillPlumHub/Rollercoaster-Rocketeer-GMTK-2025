@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://b4uif563yamr4" path="res://scenes/UI/market/market_card/market_card.gd" id="1_kp7f8"]
 [ext_resource type="FontFile" uid="uid://byr5ua7821djh" path="res://assets/Oswald-VariableFont_wght.ttf" id="2_kp7f8"]
-[ext_resource type="Shader" uid="uid://b2bye2xne3t0d" path="res://scenes/UI/blur_shader.gdshader" id="2_mvhtk"]
+[ext_resource type="Shader" path="res://scenes/UI/blur_shader.gdshader" id="2_mvhtk"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mvhtk"]
 bg_color = Color(0.14, 0.14, 0.14, 0.823529)

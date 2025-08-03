@@ -1,6 +1,8 @@
 class_name Market extends MarginContainer
 
 signal market_closed
+signal buying_success(part_info: PartInfo)
+signal buying_failed(part_info: PartInfo)
 
 @onready var track_cards = %TrackCards
 @onready var cart_cards = %CartCards
@@ -30,6 +32,8 @@ func _load_cart_cards():
 		)
 		new_cart_card.part_info = CartFactory.get_random_cart_by_rarity(rarity)
 		new_cart_card.attempt_buy.connect(_on_market_card_attempt_buy)
+		new_cart_card.attempt_buy.connect(new_cart_card._on_market_buying_success)
+		new_cart_card.attempt_buy.connect(new_cart_card._on_market_buying_failed)
 		cart_cards.add_child(new_cart_card)
 
 func _load_track_cards():
@@ -47,6 +51,8 @@ func _load_track_cards():
 		)
 		new_track_card.part_info = TrackFactory.get_random_track_by_rarity(rarity)
 		new_track_card.attempt_buy.connect(_on_market_card_attempt_buy)
+		new_track_card.attempt_buy.connect(new_track_card._on_market_buying_success)
+		new_track_card.attempt_buy.connect(new_track_card._on_market_buying_failed)
 		track_cards.add_child(new_track_card)
 
 func _load_cards():
@@ -66,9 +72,10 @@ func _on_close_shop_pressed() -> void:
 func _on_market_card_attempt_buy(part_info: PartInfo) -> void:
 	print("attempting attempting to buy")
 	if add_location == null:
-		print("attempting attempting failed")
+		buying_failed.emit(part_info)
 		push_error("add location for market is not set, set it to scene parent")
 		return
 	print("getting track scene:")
 	var new_track = TrackFactory.get_scene_from_part(part_info, ground_marker)
 	add_location.add_child(new_track)
+	buying_success.emit(part_info)

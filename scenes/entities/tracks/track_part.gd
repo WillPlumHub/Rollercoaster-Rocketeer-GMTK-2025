@@ -8,6 +8,7 @@ enum TrackType {
 }
 
 # EXPORTED VARs
+@export var grabable: bool = true
 @export var track_type: TrackType
 @export var track_right: TrackPart
 @export var track_speed:float = 3
@@ -54,6 +55,8 @@ func _ready() -> void:
 	_update_ground_marker()
 	if track_art != null:
 		track_art.is_right_connected = track_right != null
+	if !grabable:
+		button.disabled = true
 
 		
 func _disable_button():
