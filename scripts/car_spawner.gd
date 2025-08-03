@@ -67,3 +67,18 @@ func _add_cars_to_scene_tree() -> void:
 	if !Engine.is_editor_hint():
 		for c in _carts:
 			add_sibling(c)
+			c.add_to_group("player")
+			c.rigid_body.add_to_group("player")
+
+
+func _clear_cars() -> void:
+	if !Engine.is_editor_hint():
+		for c in _carts:
+			c.queue_free()
+		_carts.clear()
+
+
+func reload_cars() -> void:
+	_clear_cars()
+	_prepare_carts()
+	_add_cars_to_scene_tree()

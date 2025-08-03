@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://debaeg15rk26a"]
+[gd_scene load_steps=23 format=3 uid="uid://debaeg15rk26a"]
 
 [ext_resource type="Script" uid="uid://dm30ouip10g0o" path="res://scenes/maps/prelaunch_area.gd" id="1_0et32"]
 [ext_resource type="Shader" uid="uid://drdhf2mbaim50" path="res://scenes/UI/space.gdshader" id="2_hj7nn"]
@@ -6,10 +6,13 @@
 [ext_resource type="Script" uid="uid://c018cvjugx7ox" path="res://camera.gd" id="5_ejv5p"]
 [ext_resource type="PackedScene" uid="uid://dbwbnuxjh618g" path="res://scenes/entities/tracks/launcher_track_part.tscn" id="6_pv1k2"]
 [ext_resource type="PackedScene" uid="uid://di4vh4401voyy" path="res://scenes/entities/tracks/station_track_part.tscn" id="7_0et32"]
-[ext_resource type="PackedScene" uid="uid://i5aogpbxnfau" path="res://scenes/props/planetoid.tscn" id="9_y3ptb"]
+[ext_resource type="Script" uid="uid://dsh2epqkg0c8q" path="res://scripts/warp.gd" id="7_gkajp"]
+[ext_resource type="PackedScene" uid="uid://cqaur568cgb1w" path="res://scenes/entities/planetoid.tscn" id="9_y3ptb"]
 [ext_resource type="Texture2D" uid="uid://d0c4gphe8hji4" path="res://assets/art/grounds.png" id="12_pv1k2"]
 [ext_resource type="PackedScene" uid="uid://b2bc0hsiynf81" path="res://scenes/entities/player.tscn" id="13_ejv5p"]
+[ext_resource type="PackedScene" uid="uid://2br77iw7h8p8" path="res://scenes/entities/planetoid2.tscn" id="15_hj7nn"]
 [ext_resource type="PackedScene" uid="uid://dentbymqt2nkh" path="res://scenes/props/trees.tscn" id="16_0t0yv"]
+[ext_resource type="PackedScene" uid="uid://cs206ingo3auw" path="res://scenes/entities/planetoid3.tscn" id="16_bxwbp"]
 [ext_resource type="Texture2D" uid="uid://mm0ekwsn7kak" path="res://icon.svg" id="17_bxwbp"]
 [ext_resource type="Texture2D" uid="uid://crra7ypaenlw3" path="res://scenes/props/LeftA.png" id="18_3fyaw"]
 [ext_resource type="Texture2D" uid="uid://cy5dmawqhgidf" path="res://scenes/props/RightD.png" id="19_ln88j"]
@@ -121,34 +124,65 @@ mesh = SubResource("QuadMesh_0et32")
 shape = SubResource("WorldBoundaryShape2D_we6vc")
 
 [node name="Dest" type="StaticBody2D" parent="."]
-position = Vector2(11928, -4064)
-rotation = 3.66519
+position = Vector2(4224, -11672)
+rotation = 3.14159
 
 [node name="Area2D" type="Area2D" parent="Dest"]
-position = Vector2(-529, -410)
+position = Vector2(-432, -648)
 collision_layer = 0
 collision_mask = 2
 gravity_space_override = 2
+gravity_point_center = Vector2(0, -1)
+gravity_direction = Vector2(0, -1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Dest/Area2D"]
-position = Vector2(0, 290)
 shape = SubResource("WorldBoundaryShape2D_spx7k")
 
-[node name="MeshInstance2D" type="MeshInstance2D" parent="Dest"]
-position = Vector2(-569, 22)
-mesh = SubResource("QuadMesh_0et32")
+[node name="Warp" type="Area2D" parent="Dest"]
+position = Vector2(-448, -176)
+collision_layer = 0
+collision_mask = 3
+script = ExtResource("7_gkajp")
+destination_scene = "uid://cdm5qs8i5g2t6"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Dest/Warp"]
+shape = SubResource("WorldBoundaryShape2D_spx7k")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Dest"]
 shape = SubResource("WorldBoundaryShape2D_we6vc")
 
+[node name="ground_texture" type="TextureRect" parent="Dest"]
+texture_repeat = 2
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20680.0
+offset_top = 0.0018079
+offset_right = 80080.0
+offset_bottom = 400.002
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("12_pv1k2")
+stretch_mode = 1
+
+[node name="dirt" type="ColorRect" parent="Dest/ground_texture"]
+layout_mode = 0
+offset_top = 270.0
+offset_right = 100860.0
+offset_bottom = 1340.0
+color = Color(0.278431, 0.133333, 0.113725, 1)
+
 [node name="Planetoid" parent="." instance=ExtResource("9_y3ptb")]
-position = Vector2(2520, -1712)
+position = Vector2(5928, -3752)
 
 [node name="Planetoid2" parent="." instance=ExtResource("9_y3ptb")]
-position = Vector2(5456, -2912)
+position = Vector2(3008, -7856)
 
 [node name="Planetoid3" parent="." instance=ExtResource("9_y3ptb")]
-position = Vector2(6944, -1208)
+position = Vector2(6240, -6792)
 
 [node name="GroundMarker" type="Control" parent="."]
 layout_mode = 3
@@ -184,3 +218,30 @@ position = Vector2(504, 272)
 
 [node name="LauncherTrackPart" parent="." instance=ExtResource("6_pv1k2")]
 position = Vector2(904, 448)
+
+[node name="Planetoid4" parent="." instance=ExtResource("15_hj7nn")]
+position = Vector2(3648, -5488)
+
+[node name="Planetoid5" parent="." instance=ExtResource("16_bxwbp")]
+position = Vector2(8616, -5240)
+
+[node name="Planetoid6" parent="." instance=ExtResource("16_bxwbp")]
+position = Vector2(9152, -7608)
+
+[node name="Planetoid7" parent="." instance=ExtResource("15_hj7nn")]
+position = Vector2(12344, -7152)
+
+[node name="Planetoid8" parent="." instance=ExtResource("9_y3ptb")]
+position = Vector2(11976, -3096)
+
+[node name="Planetoid9" parent="." instance=ExtResource("16_bxwbp")]
+position = Vector2(10784, -5904)
+
+[node name="Planetoid10" parent="." instance=ExtResource("15_hj7nn")]
+position = Vector2(8824, -2992)
+
+[node name="Planetoid11" parent="." instance=ExtResource("9_y3ptb")]
+position = Vector2(10808, -8992)
+
+[node name="Planetoid12" parent="." instance=ExtResource("16_bxwbp")]
+position = Vector2(6608, -9072)
