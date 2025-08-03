@@ -13,6 +13,7 @@ var track_attached:TrackPart
 var speed:float = -1
 var end_of_track:bool = false
 var _init: bool = false
+var thrusters: Thrusters = null
 
 
 func _ready() -> void:
@@ -25,6 +26,23 @@ func _ready() -> void:
 func _on_launch_train_cars() -> void:
 	# IF SPEED IS -1 THEN IT IS A NEW CAR AND DOESNT CARE ABOUT KEEPING MOMENTUM
 	speed = track_attached.track_speed
+	var track: TrackPart = track_attached
+	GameData.player_info.placed_tracks.clear()
+	# TODO: This needs to be moved to a base place when launch is first triggered
+	# currently it is ran for each cart which is bad, they all calculate the same
+	# number, but I'm not sure where else to get the starting track before launch
+	while track != null:
+		print("adding track info to player: ")
+		if track.part_info == null:
+			print("no part info..., skipping...")
+		else:
+			print("adding part info...")
+			GameData.player_info.placed_tracks.append(track.part_info)
+		track = track.track_right
+	var current_data = GameData.player_info.calculate_final_launch_stats()
+	if thrusters != null:
+		thrusters.fuel = current_data.thruster_fuel
+		thrusters.power = current_data.thruster_power / 100.0
 	_init = true
 
 

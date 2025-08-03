@@ -13,8 +13,14 @@ func _enter_tree() -> void:
 		var cart_count = override_cart_count
 		for i in range(cart_count):
 			var c = CAR_SCENE.instantiate()
+			c.rigid_body.linear_damp = 4.0
+			c.rigid_body.angular_damp = 6.0
 			c.position = position + Vector2.RIGHT * SEPERATION * i
 			add_child(c)
+
+
+func _get_particle_effects() -> CPUParticles2D:
+	return preload("res://scenes/particles/thruster_smoke.tscn").instantiate()
 
 
 # Called when the node enters the scene tree for the first time.
@@ -23,7 +29,7 @@ func _ready() -> void:
 		# Prepare to spawn the carts
 		var info = GameData.player_info
 		#var launch_info = info.calculate_final_launch_stats()
-		var launch_info = info.base_stats
+		#var launch_info = info.base_stats
 		var cart_count = info.linked_carts.size()
 		if override_cart_count > 0:
 			cart_count = override_cart_count
@@ -40,8 +46,8 @@ func _ready() -> void:
 				c.rigid_body.add_child(cam)
 
 				var th = Thrusters.new()
-				th.fuel = launch_info.thruster_fuel
-				th.power = launch_info.thruster_power / 100.0
+				th.add_child(_get_particle_effects())
+				c.thrusters = th
 				c.rigid_body.add_child(th)
 		
 		# Join the cars together

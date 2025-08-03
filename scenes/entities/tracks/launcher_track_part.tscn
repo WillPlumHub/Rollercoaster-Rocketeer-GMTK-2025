@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://dbwbnuxjh618g"]
 
-[ext_resource type="Script" uid="uid://dcp4881wiphnj" path="res://scenes/entities/tracks/track_part_1.gd" id="1_3l633"]
+[ext_resource type="Script" uid="uid://dcp4881wiphnj" path="res://scenes/entities/tracks/track_part.gd" id="1_3l633"]
 [ext_resource type="PackedScene" uid="uid://b7p8cmat2ofin" path="res://scenes/entities/tracks/taylor_test/track_art.tscn" id="2_ubhg1"]
 [ext_resource type="StyleBox" uid="uid://dlt145v0je6ai" path="res://scenes/entities/tracks/taylor_test/styles/track_5_mask.tres" id="3_lioxm"]
 [ext_resource type="Texture2D" uid="uid://do0h6te2f6gmw" path="res://scenes/entities/tracks/taylor_test/images/CoasterTrack5.png" id="4_lkvhq"]
@@ -14,10 +14,11 @@ point_count = 5
 [sub_resource type="CircleShape2D" id="CircleShape2D_oxk6s"]
 radius = 14.0357
 
-[node name="track_part_1" type="Node2D"]
+[node name="LauncherTrackPart" type="Node2D"]
 script = ExtResource("1_3l633")
 track_type = 2
 track_speed = 10000.0
+metadata/_custom_type_script = "uid://dcp4881wiphnj"
 
 [node name="grab_detect" type="Button" parent="."]
 modulate = Color(1, 1, 1, 0.454902)
