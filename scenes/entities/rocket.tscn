@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://cnv65uphmyxx3"]
+[gd_scene load_steps=7 format=3 uid="uid://cnv65uphmyxx3"]
 
 [ext_resource type="Script" uid="uid://mt83lmyujyhh" path="res://scenes/entities/rocket.gd" id="1_d40e5"]
 [ext_resource type="Texture2D" uid="uid://dkxfg6x85k32k" path="res://assets/art/1_carrot_rocket.webp" id="1_n2suw"]
 [ext_resource type="Script" uid="uid://lets3pwxygq1" path="res://scripts/health_component.gd" id="2_d40e5"]
 [ext_resource type="Texture2D" uid="uid://c7aupcg0bwhid" path="res://assets/art/7.webp" id="2_fn1qa"]
+[ext_resource type="Script" uid="uid://y1g1g0ritebn" path="res://scripts/thrusters.gd" id="5_vkitj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vkitj"]
 size = Vector2(64, 32)
@@ -38,3 +39,10 @@ shape = SubResource("RectangleShape2D_vkitj")
 script = ExtResource("2_d40e5")
 max_health = 300
 metadata/_custom_type_script = "uid://lets3pwxygq1"
+
+[node name="Thrusters" type="Node2D" parent="."]
+script = ExtResource("5_vkitj")
+metadata/_custom_type_script = "uid://y1g1g0ritebn"
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position_smoothing_enabled = true

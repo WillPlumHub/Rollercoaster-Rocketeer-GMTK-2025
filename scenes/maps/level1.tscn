@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://dq07oysuypy30"]
+[gd_scene load_steps=28 format=3 uid="uid://dq07oysuypy30"]
 
 [ext_resource type="Script" uid="uid://dm30ouip10g0o" path="res://scenes/maps/prelaunch_area.gd" id="1_0et32"]
 [ext_resource type="Shader" uid="uid://drdhf2mbaim50" path="res://scenes/UI/space.gdshader" id="2_hj7nn"]
@@ -17,6 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://b2bc0hsiynf81" path="res://scenes/entities/player.tscn" id="13_ejv5p"]
 [ext_resource type="PackedScene" uid="uid://dentbymqt2nkh" path="res://scenes/props/trees.tscn" id="16_0t0yv"]
 [ext_resource type="Texture2D" uid="uid://br2dq51m72fka" path="res://assets/art/cloud.webp" id="16_ri3x5"]
+[ext_resource type="Texture2D" uid="uid://d4m5kul287ufa" path="res://assets/art/cloud2.webp" id="17_3fyaw"]
 [ext_resource type="PackedScene" uid="uid://cnv65uphmyxx3" path="res://scenes/entities/rocket.tscn" id="18_ri3x5"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_0t0yv"]
@@ -209,8 +210,24 @@ position = Vector2(182, 558)
 [node name="clouds" type="CPUParticles2D" parent="."]
 z_index = -20
 position = Vector2(-1735, -275)
-amount = 50
+amount = 30
 texture = ExtResource("16_ri3x5")
+lifetime = 50.0
+preprocess = 10.0
+emission_shape = 3
+emission_rect_extents = Vector2(100, 500)
+spread = 3.31
+gravity = Vector2(0, 0)
+initial_velocity_min = 52.63
+initial_velocity_max = 94.74
+scale_amount_min = 0.5
+scale_amount_curve = SubResource("Curve_ri3x5")
+
+[node name="clouds2" type="CPUParticles2D" parent="."]
+z_index = -20
+position = Vector2(-1735, -275)
+amount = 30
+texture = ExtResource("17_3fyaw")
 lifetime = 50.0
 preprocess = 10.0
 emission_shape = 3
