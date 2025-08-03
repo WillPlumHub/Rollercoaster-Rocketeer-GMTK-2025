@@ -3,13 +3,9 @@
 [ext_resource type="Script" uid="uid://dm30ouip10g0o" path="res://scenes/maps/prelaunch_area.gd" id="1_0et32"]
 [ext_resource type="Shader" uid="uid://drdhf2mbaim50" path="res://scenes/UI/space.gdshader" id="2_hj7nn"]
 [ext_resource type="PackedScene" uid="uid://b8unyji1o4s1f" path="res://scenes/UI/hud.tscn" id="2_spx7k"]
-[ext_resource type="PackedScene" uid="uid://datatrsbrqlp6" path="res://scenes/entities/tracks/track_part_2.tscn" id="2_ti75c"]
-[ext_resource type="PackedScene" uid="uid://cy4mepircebey" path="res://scenes/entities/tracks/track_part_1.tscn" id="3_y3ptb"]
 [ext_resource type="Script" uid="uid://c018cvjugx7ox" path="res://camera.gd" id="5_ejv5p"]
-[ext_resource type="PackedScene" uid="uid://daumqxv4g2jxy" path="res://scenes/entities/tracks/track_part_3.tscn" id="5_spx7k"]
-[ext_resource type="PackedScene" uid="uid://dbwbnuxjh618g" path="res://scenes/entities/tracks/track_part_5.tscn" id="6_pv1k2"]
-[ext_resource type="PackedScene" uid="uid://di4vh4401voyy" path="res://scenes/entities/tracks/track_part_begin.tscn" id="7_0et32"]
-[ext_resource type="PackedScene" uid="uid://livv5577jy07" path="res://scenes/entities/tracks/track_part_4.tscn" id="7_ejv5p"]
+[ext_resource type="PackedScene" uid="uid://dbwbnuxjh618g" path="res://scenes/entities/tracks/launcher_track_part.tscn" id="6_pv1k2"]
+[ext_resource type="PackedScene" uid="uid://di4vh4401voyy" path="res://scenes/entities/tracks/station_track_part.tscn" id="7_0et32"]
 [ext_resource type="Script" uid="uid://y1g1g0ritebn" path="res://scripts/thrusters.gd" id="8_ti75c"]
 [ext_resource type="PackedScene" uid="uid://cqaur568cgb1w" path="res://scenes/props/planetoid.tscn" id="9_y3ptb"]
 [ext_resource type="Texture2D" uid="uid://bpie22j2ha5k" path="res://assets/art/Smoke.png" id="9_yrt3e"]
@@ -84,7 +80,8 @@ initial_velocity_min = 52.63
 initial_velocity_max = 94.74
 scale_amount_curve = SubResource("Curve_ri3x5")
 
-[node name="HUD" parent="." instance=ExtResource("2_spx7k")]
+[node name="HUD" parent="." node_paths=PackedStringArray("add_location", "ground_marker") instance=ExtResource("2_spx7k")]
+add_location = NodePath("..")
 
 [node name="TrackPart" parent="." node_paths=PackedStringArray("ground_marker") instance=ExtResource("2_ti75c")]
 position = Vector2(200, 336)
@@ -107,10 +104,6 @@ script = ExtResource("5_ejv5p")
 [node name="track_part_4_coaster_path_car_RigidBody2D#Thrusters" type="Node2D" parent="."]
 script = ExtResource("8_ti75c")
 metadata/_custom_type_script = "uid://y1g1g0ritebn"
-
-[node name="coaster_part5" parent="." node_paths=PackedStringArray("ground_marker") instance=ExtResource("3_y3ptb")]
-position = Vector2(440, -24)
-ground_marker = NodePath("../GroundMarker")
 
 [node name="Ground" type="StaticBody2D" parent="."]
 position = Vector2(561, 594)
@@ -171,26 +164,16 @@ mesh = SubResource("QuadMesh_0et32")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Dest"]
 shape = SubResource("WorldBoundaryShape2D_we6vc")
 
-[node name="TrackPart2" parent="." node_paths=PackedStringArray("ground_marker") instance=ExtResource("5_spx7k")]
-position = Vector2(456, 528)
-track_speed = 10000.0
-ground_marker = NodePath("../GroundMarker")
-
 [node name="track_part_1" parent="." node_paths=PackedStringArray("ground_marker") instance=ExtResource("6_pv1k2")]
-position = Vector2(904, 528)
-ground_marker = NodePath("../GroundMarker")
-
-[node name="track_part_2" parent="." node_paths=PackedStringArray("ground_marker") instance=ExtResource("7_ejv5p")]
-position = Vector2(712, 528)
-ground_marker = NodePath("../GroundMarker")
-
-[node name="track_part_3" parent="." node_paths=PackedStringArray("ground_marker") instance=ExtResource("7_ejv5p")]
-position = Vector2(-136, 328)
+position = Vector2(592, 119)
 ground_marker = NodePath("../GroundMarker")
 
 [node name="track_part_4" parent="." node_paths=PackedStringArray("ground_marker") instance=ExtResource("7_0et32")]
-position = Vector2(-384, 136)
+position = Vector2(208, 120)
 ground_marker = NodePath("../GroundMarker")
+
+[node name="TrackArt" parent="track_part_4" index="3"]
+metadata/_edit_use_anchors_ = true
 
 [node name="track_part_4_coaster_path_car_RigidBody2D_Thrusters#CPUParticles2D" type="CPUParticles2D" parent="."]
 amount = 16

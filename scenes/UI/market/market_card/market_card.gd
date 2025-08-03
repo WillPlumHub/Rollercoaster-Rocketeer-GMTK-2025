@@ -1,10 +1,12 @@
 @tool
 class_name MarketCard extends Button
+signal attempt_buy(part_info: PartInfo)
 
-const PROPERTY_LABEL_SCENE: PackedScene = preload("res://scenes/maps/market/market_card/property_label/property_label.tscn")
+const PROPERTY_LABEL_SCENE: PackedScene = preload("./property_label/property_label.tscn")
 
 @onready var property_label_container = %PropertyLabelContainer
 @onready var name_label = %NameLabel
+@onready var cost_label: Label = %CostLabel
 
 @export var part_info: PartInfo = null:
 	get:
@@ -28,9 +30,11 @@ func _update_part_info_scene():
 		property_label_container.remove_child(old_child)
 		old_child.queue_free()
 	if part_info == null:
-		name_label.text = "no data"
+		name_label.text = "Sold Out"
+		cost_label.text = ""
 		return
 	name_label.text = part_info.name
+	cost_label.text = str(part_info.cost, "g")
 	for modifier in part_info.modifiers:
 		var new_child = PROPERTY_LABEL_SCENE.instantiate()
 		new_child.modifier = modifier
@@ -39,3 +43,10 @@ func _update_part_info_scene():
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	_update_part_info()
+
+func buyout():
+	print("clear out card when bought")
+
+func _on_button_down() -> void:
+	print("emitting part info!")
+	attempt_buy.emit(part_info)

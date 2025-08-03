@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://livv5577jy07"]
 
-[ext_resource type="Script" uid="uid://dcp4881wiphnj" path="res://scenes/entities/tracks/track_part_1.gd" id="1_cftvv"]
+[ext_resource type="Script" uid="uid://dcp4881wiphnj" path="res://scenes/entities/tracks/track_part.gd" id="1_cftvv"]
 [ext_resource type="PackedScene" uid="uid://b7p8cmat2ofin" path="res://scenes/entities/tracks/taylor_test/track_art.tscn" id="2_yvu3b"]
 [ext_resource type="StyleBox" uid="uid://bqfnsrrygxbp5" path="res://scenes/entities/tracks/taylor_test/styles/track_4_mask.tres" id="3_d1eac"]
 [ext_resource type="Texture2D" uid="uid://cthvye8me4f5q" path="res://scenes/entities/tracks/taylor_test/images/CoasterTrack4.png" id="3_hm3ms"]

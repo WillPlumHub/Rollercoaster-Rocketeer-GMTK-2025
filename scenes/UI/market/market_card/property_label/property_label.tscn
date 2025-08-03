@@ -1,7 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://b8fb5npj56ygd"]
 
-[ext_resource type="Script" uid="uid://cchlf2nn02rar" path="res://scenes/maps/market/market_card/property_label/property_label.gd" id="1_hhpyu"]
+[ext_resource type="Script" uid="uid://cchlf2nn02rar" path="res://scenes/UI/market/market_card/property_label/property_label.gd" id="1_hhpyu"]
 [ext_resource type="FontFile" uid="uid://byr5ua7821djh" path="res://assets/Oswald-VariableFont_wght.ttf" id="2_677vs"]
+
 
 [sub_resource type="LabelSettings" id="LabelSettings_wd26x"]
 font = ExtResource("2_677vs")

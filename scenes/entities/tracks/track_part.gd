@@ -11,6 +11,7 @@ enum TrackType {
 @export var track_type: TrackType
 @export var track_right:NodePath
 @export var track_speed:float = 3
+@export var part_info: PartInfo = null
 
 @export var ground_marker: Control = null:
 	get:
