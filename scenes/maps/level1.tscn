@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://debaeg15rk26a"]
+[gd_scene load_steps=24 format=3 uid="uid://debaeg15rk26a"]
 
 [ext_resource type="Script" uid="uid://dm30ouip10g0o" path="res://scenes/maps/prelaunch_area.gd" id="1_0et32"]
 [ext_resource type="Shader" uid="uid://drdhf2mbaim50" path="res://scenes/UI/space.gdshader" id="2_hj7nn"]
@@ -11,7 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://bpie22j2ha5k" path="res://assets/art/Smoke.png" id="9_yrt3e"]
 [ext_resource type="Texture2D" uid="uid://d0c4gphe8hji4" path="res://assets/art/grounds.png" id="12_pv1k2"]
 [ext_resource type="PackedScene" uid="uid://b2bc0hsiynf81" path="res://scenes/entities/player.tscn" id="13_ejv5p"]
-[ext_resource type="PackedScene" path="res://scenes/props/trees.tscn" id="16_0t0yv"]
+[ext_resource type="PackedScene" uid="uid://dentbymqt2nkh" path="res://scenes/props/trees.tscn" id="16_0t0yv"]
 [ext_resource type="Texture2D" uid="uid://mm0ekwsn7kak" path="res://icon.svg" id="17_bxwbp"]
 [ext_resource type="Texture2D" uid="uid://crra7ypaenlw3" path="res://scenes/props/LeftA.png" id="18_3fyaw"]
 [ext_resource type="Texture2D" uid="uid://cy5dmawqhgidf" path="res://scenes/props/RightD.png" id="19_ln88j"]
@@ -82,15 +82,6 @@ scale_amount_curve = SubResource("Curve_ri3x5")
 
 [node name="HUD" parent="." node_paths=PackedStringArray("add_location", "ground_marker") instance=ExtResource("2_spx7k")]
 add_location = NodePath("..")
-
-[node name="TrackPart" parent="." node_paths=PackedStringArray("ground_marker") instance=ExtResource("2_ti75c")]
-position = Vector2(200, 336)
-track_speed = 5000.0
-ground_marker = NodePath("../GroundMarker")
-
-[node name="coaster_part" parent="." node_paths=PackedStringArray("ground_marker") instance=ExtResource("3_y3ptb")]
-position = Vector2(0, 136)
-track_type = 1
 ground_marker = NodePath("../GroundMarker")
 
 [node name="track_part_4_coaster_path_car_RigidBody2D#Camera2D" type="Camera2D" parent="."]

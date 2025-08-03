@@ -9,7 +9,7 @@ enum TrackType {
 
 # EXPORTED VARs
 @export var track_type: TrackType
-@export var track_right:NodePath
+@export var track_right: TrackPart
 @export var track_speed:float = 3
 @export var part_info: PartInfo = null
 
@@ -53,7 +53,8 @@ func _ready() -> void:
 	GameData.launch_train_cars.connect(_disable_button)
 	_update_ground_marker()
 	if track_art != null:
-		track_art.is_right_connected = !track_right.is_empty()
+		track_art.is_right_connected = track_right != null
+
 		
 func _disable_button():
 	if grabbed:
@@ -109,7 +110,7 @@ func pass_on_train_car(car, speed):
 		car.speed = speed
 		if cars_on_track.has(car):
 			cars_on_track.remove_at(cars_on_track.find(car))
-		get_node(track_right).grab_train_car(car)
+		track_right.grab_train_car(car)
 
 func _on_track_end_area_entered(area: Area2D) -> void:
 	# GETS THE TRACK THAT IS IN PROXIMITY FROM AREA 2D
@@ -118,15 +119,17 @@ func _on_track_end_area_entered(area: Area2D) -> void:
 		return
 	else:
 		# MAKES SURE THERES NOT ALREADY A TRACK ATTACHED
-		track_right = area.owner.get_path()
+		if area.owner is TrackPart:
+			print("adding track part")
+			track_right = area.owner
 		if track_art != null:
 			track_art.is_right_connected = true
 
 func _on_track_end_area_exited(area: Area2D) -> void:
 	# IF THE TRACK CONNECTED MOVES AWAY, DISCONNECT IT
 	# ONLY IF THE TRACK MOVES AWAY WAS THE ONE THAT WAS PREVIOUSLY CONNECTED
-	if area.owner.get_path() == track_right:
-		track_right = ""
+	if area.owner == track_right:
+		track_right = null
 		if track_art != null:
 			track_art.is_right_connected = false
 
