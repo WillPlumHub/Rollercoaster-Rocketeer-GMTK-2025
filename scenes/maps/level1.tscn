@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://dq07oysuypy30"]
+[gd_scene load_steps=28 format=3 uid="uid://debaeg15rk26a"]
 
 [ext_resource type="Script" uid="uid://dm30ouip10g0o" path="res://scenes/maps/prelaunch_area.gd" id="1_0et32"]
 [ext_resource type="Shader" uid="uid://drdhf2mbaim50" path="res://scenes/UI/space.gdshader" id="2_hj7nn"]
@@ -7,18 +7,22 @@
 [ext_resource type="PackedScene" uid="uid://dbwbnuxjh618g" path="res://scenes/entities/tracks/launcher_track_part.tscn" id="6_pv1k2"]
 [ext_resource type="PackedScene" uid="uid://di4vh4401voyy" path="res://scenes/entities/tracks/station_track_part.tscn" id="7_0et32"]
 [ext_resource type="Script" uid="uid://y1g1g0ritebn" path="res://scripts/thrusters.gd" id="8_ti75c"]
-[ext_resource type="PackedScene" path="res://scenes/props/planetoid.tscn" id="9_y3ptb"]
+[ext_resource type="PackedScene" uid="uid://cqaur568cgb1w" path="res://scenes/props/planetoid.tscn" id="9_y3ptb"]
 [ext_resource type="Texture2D" uid="uid://bpie22j2ha5k" path="res://assets/art/Smoke.png" id="9_yrt3e"]
 [ext_resource type="Texture2D" uid="uid://d0c4gphe8hji4" path="res://assets/art/grounds.png" id="12_pv1k2"]
 [ext_resource type="PackedScene" uid="uid://b2bc0hsiynf81" path="res://scenes/entities/player.tscn" id="13_ejv5p"]
-[ext_resource type="PackedScene" uid="uid://dentbymqt2nkh" path="res://scenes/props/trees.tscn" id="16_0t0yv"]
-[ext_resource type="Texture2D" uid="uid://br2dq51m72fka" path="res://assets/art/cloud.webp" id="16_ri3x5"]
-[ext_resource type="Texture2D" uid="uid://d4m5kul287ufa" path="res://assets/art/cloud2.webp" id="17_3fyaw"]
-[ext_resource type="PackedScene" uid="uid://cnv65uphmyxx3" path="res://scenes/entities/rocket.tscn" id="18_ri3x5"]
+[ext_resource type="PackedScene" path="res://scenes/props/trees.tscn" id="16_0t0yv"]
+[ext_resource type="Texture2D" uid="uid://mm0ekwsn7kak" path="res://icon.svg" id="17_bxwbp"]
+[ext_resource type="Texture2D" uid="uid://crra7ypaenlw3" path="res://scenes/props/LeftA.png" id="18_3fyaw"]
+[ext_resource type="Texture2D" uid="uid://cy5dmawqhgidf" path="res://scenes/props/RightD.png" id="19_ln88j"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_0t0yv"]
 shader = ExtResource("2_hj7nn")
 shader_parameter/bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Curve" id="Curve_ri3x5"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.158824, 1), 0.0, 0.0, 0, 0, Vector2(0.535294, 1), 0.0, 0.0, 0, 0, Vector2(0.847059, 1), 0.0, 0.0, 0, 0, Vector2(0.964706, 0), 0.0, 0.0, 0, 0]
+point_count = 5
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_yrt3e"]
 
@@ -36,10 +40,6 @@ point_count = 2
 
 [sub_resource type="Gradient" id="Gradient_pv1k2"]
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
-
-[sub_resource type="Curve" id="Curve_ri3x5"]
-_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.158824, 1), 0.0, 0.0, 0, 0, Vector2(0.535294, 1), 0.0, 0.0, 0, 0, Vector2(0.847059, 1), 0.0, 0.0, 0, 0, Vector2(0.964706, 0), 0.0, 0.0, 0, 0]
-point_count = 5
 
 [node name="prelaunch_area2" type="Node2D"]
 script = ExtResource("1_0et32")
@@ -63,6 +63,22 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="clouds" type="CPUParticles2D" parent="."]
+modulate = Color(100, 100, 99.401, 1)
+z_index = -5
+position = Vector2(-775, 134)
+amount = 50
+texture = ExtResource("17_bxwbp")
+lifetime = 30.0
+preprocess = 10.0
+emission_shape = 3
+emission_rect_extents = Vector2(100, 500)
+spread = 3.31
+gravity = Vector2(0, 0)
+initial_velocity_min = 52.63
+initial_velocity_max = 94.74
+scale_amount_curve = SubResource("Curve_ri3x5")
 
 [node name="HUD" parent="." node_paths=PackedStringArray("add_location", "ground_marker") instance=ExtResource("2_spx7k")]
 add_location = NodePath("..")
@@ -106,7 +122,7 @@ stretch_mode = 1
 layout_mode = 0
 offset_top = 270.0
 offset_right = 100860.0
-offset_bottom = 3683.0
+offset_bottom = 1340.0
 color = Color(0.278431, 0.133333, 0.113725, 1)
 
 [node name="Area2D" type="Area2D" parent="Ground"]
@@ -190,91 +206,22 @@ offset_bottom = 647.0
 [node name="Player" parent="." instance=ExtResource("13_ejv5p")]
 position = Vector2(182, 558)
 
-[node name="clouds" type="CPUParticles2D" parent="."]
-z_index = -20
-position = Vector2(-1735, -275)
-amount = 30
-texture = ExtResource("16_ri3x5")
-lifetime = 50.0
-preprocess = 10.0
-emission_shape = 3
-emission_rect_extents = Vector2(100, 500)
-spread = 3.31
-gravity = Vector2(0, 0)
-initial_velocity_min = 52.63
-initial_velocity_max = 94.74
-scale_amount_min = 0.5
-scale_amount_curve = SubResource("Curve_ri3x5")
-
-[node name="clouds2" type="CPUParticles2D" parent="."]
-z_index = -20
-position = Vector2(-1735, -275)
-amount = 30
-texture = ExtResource("17_3fyaw")
-lifetime = 50.0
-preprocess = 10.0
-emission_shape = 3
-emission_rect_extents = Vector2(100, 500)
-spread = 3.31
-gravity = Vector2(0, 0)
-initial_velocity_min = 52.63
-initial_velocity_max = 94.74
-scale_amount_min = 0.5
-scale_amount_curve = SubResource("Curve_ri3x5")
-
 [node name="trees" type="ParallaxBackground" parent="."]
 layer = -1
 
-[node name="ParallaxLayer2" type="ParallaxLayer" parent="trees"]
-modulate = Color(0.542969, 0.542969, 0.542969, 1)
-position = Vector2(0, -194)
-scale = Vector2(1.3, 1.3)
-motion_scale = Vector2(0.8, 0.8)
-
-[node name="trees" parent="trees/ParallaxLayer2" instance=ExtResource("16_0t0yv")]
-scroll_offset = Vector2(-2160, 463.846)
-
-[node name="ground_texture" type="TextureRect" parent="trees/ParallaxLayer2"]
-texture_repeat = 2
-offset_left = -5552.0
-offset_top = 606.154
-offset_right = 95208.0
-offset_bottom = 1006.15
-scale = Vector2(0.3, 0.3)
-texture = ExtResource("12_pv1k2")
-stretch_mode = 1
-
-[node name="dirt" type="ColorRect" parent="trees/ParallaxLayer2/ground_texture"]
-layout_mode = 0
-offset_top = 270.0
-offset_right = 100860.0
-offset_bottom = 3683.0
-color = Color(0.278431, 0.133333, 0.113725, 1)
-
 [node name="ParallaxLayer" type="ParallaxLayer" parent="trees"]
-motion_scale = Vector2(0.9, 0.9)
 
 [node name="trees" parent="trees/ParallaxLayer" instance=ExtResource("16_0t0yv")]
-scroll_offset = Vector2(-2160, 469.2)
+scroll_offset = Vector2(0, 602)
 
-[node name="ground_texture" type="TextureRect" parent="trees/ParallaxLayer"]
-texture_repeat = 2
-offset_left = -7712.0
-offset_top = 596.0
-offset_right = 93048.0
-offset_bottom = 996.0
+[node name="LeftA" type="Sprite2D" parent="."]
+position = Vector2(266, 539)
 scale = Vector2(0.3, 0.3)
-texture = ExtResource("12_pv1k2")
-stretch_mode = 1
+texture = ExtResource("18_3fyaw")
 
-[node name="dirt" type="ColorRect" parent="trees/ParallaxLayer/ground_texture"]
-layout_mode = 0
-offset_top = 270.0
-offset_right = 100860.0
-offset_bottom = 3683.0
-color = Color(0.278431, 0.133333, 0.113725, 1)
-
-[node name="rocket" parent="." instance=ExtResource("18_ri3x5")]
-position = Vector2(675, 541)
+[node name="RightD" type="Sprite2D" parent="."]
+position = Vector2(366, 546)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("19_ln88j")
 
 [editable path="track_part_4"]
