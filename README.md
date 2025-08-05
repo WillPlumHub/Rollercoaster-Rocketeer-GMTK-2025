@@ -1,4 +1,4 @@
-# gmtk-2025-project
+# Rollercoaster Rocketeer
 
 Themed after rollercoaster loops, this puzzle game challenges players to build roller coasters capable of launching into space for next-day package delivery. Built in 96 hours as a part of the annual 2025 GTMK Game Jam. Feel free to play the web version at: https://elevatorpitchstudios.itch.io/roller-coaster-rocketeer
 
